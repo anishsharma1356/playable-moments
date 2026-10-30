@@ -1,0 +1,539 @@
+{
+  "date": "2026-10-28",
+  "scope": "Final local app image with captions and fresh production dependency tree; offline scan with existing 28 October DB. Public promotion pending.",
+  "imageTag": "playable-moments:local",
+  "manifestIndexId": "sha256:37fa78a300ce6dce03604eedbe0435d81f10b4be1a0667348488f246d7e5bb77",
+  "scannedConfigId": "sha256:618c5d5de00ebfb3d136193f96147440c1167d79c1f1009bfc6bc2c4ef5a4da6",
+  "scanner": "Trivy 0.76.1",
+  "reportSha256": "715ec59b20957b43b894ba75bf4a4e88abeab5dad968e6db01c8aaab68899aa0",
+  "findings": {
+    "CRITICAL": 0,
+    "HIGH": 43,
+    "MEDIUM": 58,
+    "LOW": 61,
+    "UNKNOWN": 1
+  },
+  "runtimeJsPackages": 85,
+  "runtimeJsLicenseMetadataMissing": 0,
+  "missingTopLevelNotice": [
+    "abstract-logging@2.0.1"
+  ],
+  "runtimeOsPackages": 83,
+  "runtimeJsVulnerabilityOccurrences": 0,
+  "customFfmpegCoverage": "Separate source/patch assessment in DEPENDENCY_SECURITY.md; not covered by this package scan",
+  "proxy": "Unchanged hardened proxy: one high and one unknown; see prior dependency-hardening evidence",
+  "checks": {
+    "container": 9,
+    "application": 61,
+    "httpsProxy": 5,
+    "browser": 6,
+    "runtimeBoundaries": "passed"
+  },
+  "promotion": "Not publicly deployed or approved as vulnerability-free",
+  "advisories": [
+    {
+      "VulnerabilityID": "CVE-2005-2541",
+      "Severity": "LOW",
+      "PkgName": "tar",
+      "Title": "tar: does not properly warn the user when extracting setuid or setgid files",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2007-5686",
+      "Severity": "LOW",
+      "PkgName": "login.defs",
+      "Title": "initscripts in rPath Linux 1 sets insecure permissions for the /var/lo ...",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2010-4756",
+      "Severity": "LOW",
+      "PkgName": "libc-bin",
+      "Title": "glibc: glob implementation can cause excessive CPU and memory consumption due to crafted glob expressions",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2011-3374",
+      "Severity": "LOW",
+      "PkgName": "apt",
+      "Title": "It was found that apt-key in apt, all versions, do not correctly valid ...",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2011-4116",
+      "Severity": "LOW",
+      "PkgName": "perl-base",
+      "Title": "perl: File:: Temp insecure temporary file handling",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2013-4392",
+      "Severity": "LOW",
+      "PkgName": "libsystemd0",
+      "Title": "systemd: TOCTOU race condition when updating file permissions and SELinux security contexts",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2017-18018",
+      "Severity": "LOW",
+      "PkgName": "coreutils",
+      "Title": "coreutils: race condition vulnerability in chown and chgrp",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2018-20796",
+      "Severity": "LOW",
+      "PkgName": "libc-bin",
+      "Title": "glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2019-1010022",
+      "Severity": "LOW",
+      "PkgName": "libc6",
+      "Title": "glibc: stack guard protection bypass",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2019-1010023",
+      "Severity": "LOW",
+      "PkgName": "libc6",
+      "Title": "glibc: running ldd on malicious ELF leads to code execution because of wrong size computation",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2019-1010024",
+      "Severity": "LOW",
+      "PkgName": "libc-bin",
+      "Title": "glibc: ASLR bypass using cache of thread stack and heap",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2019-1010025",
+      "Severity": "LOW",
+      "PkgName": "libc6",
+      "Title": "glibc: information disclosure of heap addresses of pthread_created thread",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2019-9192",
+      "Severity": "LOW",
+      "PkgName": "libc6",
+      "Title": "glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2021-45346",
+      "Severity": "LOW",
+      "PkgName": "libsqlite3-0",
+      "Title": "sqlite: crafted SQL query allows a malicious user to obtain sensitive information",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2022-0563",
+      "Severity": "LOW",
+      "PkgName": "libmount1",
+      "Title": "util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2023-31437",
+      "Severity": "LOW",
+      "PkgName": "libudev1",
+      "Title": "An issue was discovered in systemd 253. An attacker can modify a seale ...",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2023-31438",
+      "Severity": "LOW",
+      "PkgName": "libudev1",
+      "Title": "An issue was discovered in systemd 253. An attacker can truncate a sea ...",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2023-31439",
+      "Severity": "LOW",
+      "PkgName": "libudev1",
+      "Title": "An issue was discovered in systemd 253. An attacker can modify the con ...",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2024-56433",
+      "Severity": "LOW",
+      "PkgName": "login.defs",
+      "Title": "shadow-utils: Default subordinate ID configuration in /etc/login.defs could lead to compromise",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2025-25467",
+      "Severity": "LOW",
+      "PkgName": "libx264-164",
+      "Title": "Insufficient tracking and releasing of allocated used memory in libx26 ...",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2025-5278",
+      "Severity": "LOW",
+      "PkgName": "coreutils",
+      "Title": "coreutils: Heap Buffer Under-Read in GNU Coreutils sort via Key Specification",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2025-6141",
+      "Severity": "LOW",
+      "PkgName": "libtinfo6",
+      "Title": "gnu-ncurses: ncurses Stack Buffer Overflow",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2025-69720",
+      "Severity": "HIGH",
+      "PkgName": "libtinfo6",
+      "Title": "ncurses: ncurses: Buffer overflow vulnerability may lead to arbitrary code execution.",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2025-70873",
+      "Severity": "LOW",
+      "PkgName": "libsqlite3-0",
+      "Title": "sqlite: SQLite: Information Disclosure via Crafted ZIP File",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-102010",
+      "Severity": "MEDIUM",
+      "PkgName": "libstdc++6",
+      "Title": "gcc-toolset-15-gcc: gcc: gcc-toolset-16: gcc: Denial of Service via use-after-free in binary heap erase_if",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-102473",
+      "Severity": "LOW",
+      "PkgName": "dash",
+      "Title": "dash: dash: Super-polynomial backtracking in pmatch when libc fnmatch is disabled",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-102474",
+      "Severity": "LOW",
+      "PkgName": "dash",
+      "Title": "dash: dash: Heap out-of-bounds write in conv_escape via undersized Unicode escape reservation",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-15059",
+      "Severity": "MEDIUM",
+      "PkgName": "libsystemd0",
+      "Title": "systemd: systemd-oomd: Unprivileged users can terminate arbitrary processes via IPC API",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-15534",
+      "Severity": "MEDIUM",
+      "PkgName": "perl-base",
+      "Title": "perl: Perl: Arbitrary code execution via out-of-bounds memory access in regular expression engine.",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-16742",
+      "Severity": "HIGH",
+      "PkgName": "libsystemd0",
+      "Title": "systemd: systemd-homed: Local privilege escalation via missing home-record signature verification",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-18374",
+      "Severity": "MEDIUM",
+      "PkgName": "libc-bin",
+      "Title": "glibc: glibc: Heap buffer overflow via attacker-controlled fopen mode string",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-18477",
+      "Severity": "MEDIUM",
+      "PkgName": "tar",
+      "Title": "tar: tar: TOCTOU in incremental dumpdir 'X' rename handling allows restore path escape",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-18508",
+      "Severity": "MEDIUM",
+      "PkgName": "tar",
+      "Title": "tar: tar: --one-top-level hardlink targets not confined to top-level directory enabling arbitrary file overwrite",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-19499",
+      "Severity": "MEDIUM",
+      "PkgName": "libc-bin",
+      "Title": "glibc: Buffer Overflow in strfmon right-justification padding",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-19542",
+      "Severity": "MEDIUM",
+      "PkgName": "libc6",
+      "Title": "glibc: Fix out-of-bounds array write in tdelete",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-27171",
+      "Severity": "MEDIUM",
+      "PkgName": "zlib1g",
+      "Title": "zlib: zlib: Denial of Service via infinite loop in CRC32 combine functions",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-3184",
+      "Severity": "MEDIUM",
+      "PkgName": "libblkid1",
+      "Title": "util-linux: util-linux: Access control bypass due to improper hostname canonicalization",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-40228",
+      "Severity": "LOW",
+      "PkgName": "libudev1",
+      "Title": "systemd: systemd-journald: Unintended output to user terminals via logger command",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-42250",
+      "Severity": "MEDIUM",
+      "PkgName": "libbz2-1.0",
+      "Title": "bzip2: bzip2: Denial of Service in bzip2recover via a specially crafted file",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-50812",
+      "Severity": "MEDIUM",
+      "PkgName": "libsqlite3-0",
+      "Title": "sqlite: SQLite: Denial of Service via malformed changeset in Session Extension",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-50813",
+      "Severity": "MEDIUM",
+      "PkgName": "libsqlite3-0",
+      "Title": "sqlite: SQLite: Information disclosure via Session Extension changeset merge path",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53910",
+      "Severity": "LOW",
+      "PkgName": "diffutils",
+      "Title": "diffutils: heap‑based buffer overflow due to multiple signed integer overflows in line‑mapping calculations",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-5435",
+      "Severity": "MEDIUM",
+      "PkgName": "libc-bin",
+      "Title": "glibc: glibc: Out-of-bounds write via TSIG record processing",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-54369",
+      "Severity": "HIGH",
+      "PkgName": "libacl1",
+      "Title": "acl: Symlink traversal privilege escalation via libacl functions",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-54370",
+      "Severity": "MEDIUM",
+      "PkgName": "libacl1",
+      "Title": "acl: TOCTOU Symlink Traversal via getfacl/setfacl",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-54371",
+      "Severity": "MEDIUM",
+      "PkgName": "libattr1",
+      "Title": "attr: attr: Symlink Traversal Privilege Escalation via getfattr and setfattr",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-54411",
+      "Severity": "MEDIUM",
+      "PkgName": "libpam0g",
+      "Title": "linux-pam: Plaintext password recovery via timing discrepancy in pam_userdb module",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-56391",
+      "Severity": "LOW",
+      "PkgName": "coreutils",
+      "Title": "coreutils: GNU coreutils uniq: Denial of Service and information disclosure via out-of-bounds read with multibyte input",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-56392",
+      "Severity": "LOW",
+      "PkgName": "coreutils",
+      "Title": "coreutils: GNU coreutils unexpand: Denial of Service via crafted tab stop values",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-5704",
+      "Severity": "MEDIUM",
+      "PkgName": "tar",
+      "Title": "tar: tar: Hidden file injection via crafted archives",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-6238",
+      "Severity": "MEDIUM",
+      "PkgName": "libc-bin",
+      "Title": "glibc: glibc: Application crash or uninitialized memory read via crafted DNS response",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-6368",
+      "Severity": "MEDIUM",
+      "PkgName": "libc-bin",
+      "Title": "glibc: glibc: Process abort due to invalid memory in wordexp",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-6791",
+      "Severity": "MEDIUM",
+      "PkgName": "libc-bin",
+      "Title": "glibc: Glibc: Denial of Service via stack exhaustion during tilde expansion",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-76642",
+      "Severity": "HIGH",
+      "PkgName": "mount",
+      "Title": "util-linux: util-linux: failed external mount helper still runs privileged X-mount post-hooks",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-77117",
+      "Severity": "MEDIUM",
+      "PkgName": "libc-bin",
+      "Title": "glibc: Non-progress DoS in SHIFT_JISX0213 -&gt",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-78408",
+      "Severity": "HIGH",
+      "PkgName": "libsmartcols1",
+      "Title": "util-linux: util-linux: nsenter --join-cgroup leaks root cgroup migration authority",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-78409",
+      "Severity": "HIGH",
+      "PkgName": "libuuid1",
+      "Title": "util-linux: util-linux: X-mount.subdir detached-tree resolution can escape via intermediate symlinks",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-78410",
+      "Severity": "HIGH",
+      "PkgName": "util-linux",
+      "Title": "util-linux: util-linux: restricted bind mounts do not pin the source, allowing X-mount.owner/group/mode redirection",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-80489",
+      "Severity": "MEDIUM",
+      "PkgName": "libc-bin",
+      "Title": "glibc: Non-progress DoS in EUC_JISX0213 -> UCS-4 conversion state",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-82560",
+      "Severity": "UNKNOWN",
+      "PkgName": "perl-base",
+      "Title": "Pod::Text versions before 6.1.1 for Perl allow CPU and memory exhausti ...",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-85091",
+      "Severity": "MEDIUM",
+      "PkgName": "zlib1g",
+      "Title": "zlib versions 1.3.1.2 through 1.3.2 contain a heap buffer overflow vul ...",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-8674",
+      "Severity": "MEDIUM",
+      "PkgName": "libc-bin",
+      "Title": "glibc: glibc DNS stub resolver: Denial of Service via long search domain in configuration",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-86805",
+      "Severity": "MEDIUM",
+      "PkgName": "libc-bin",
+      "Title": "glibc: glibc: Privilege escalation and arbitrary code execution via TOCTOU race condition in dynamic loader",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-89092",
+      "Severity": "MEDIUM",
+      "PkgName": "libc6",
+      "Title": "glibc: nscd stack overflow leads to degraded DNS resolution",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-9538",
+      "Severity": "HIGH",
+      "PkgName": "perl-base",
+      "Title": "perl-Archive-Tar: perl-Archive-Tar: Denial of Service via crafted tar header with large entry size",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-95619",
+      "Severity": "MEDIUM",
+      "PkgName": "libgcc-s1",
+      "Title": "gcc: libstdc++ integer overflow in `new` operator",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-95818",
+      "Severity": "MEDIUM",
+      "PkgName": "libc-bin",
+      "Title": "glibc: glibc: Local attacker can cause denial of service and information disclosure via stack-based buffer overflow.",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "CVE-2026-97399",
+      "Severity": "LOW",
+      "PkgName": "libc-bin",
+      "Title": "glibc: glibc: Denial of Service via out-of-bounds read in strncasecmp",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "TEMP-0290435-0B57B5",
+      "Severity": "LOW",
+      "PkgName": "tar",
+      "Title": "[tar's rmt command may have undesired side effects]",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "TEMP-0517018-A83CE6",
+      "Severity": "LOW",
+      "PkgName": "sysvinit-utils",
+      "Title": "[sysvinit: no-root option in expert installer exposes locally exploitable security flaw]",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "TEMP-0628843-DBAD28",
+      "Severity": "LOW",
+      "PkgName": "login.defs",
+      "Title": "[more related to CVE-2005-4890]",
+      "FixedVersion": null
+    },
+    {
+      "VulnerabilityID": "TEMP-0841856-B18BAF",
+      "Severity": "LOW",
+      "PkgName": "bash",
+      "Title": "[Privilege escalation possible to other user than root]",
+      "FixedVersion": null
+    }
+  ]
+}

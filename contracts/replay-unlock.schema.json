@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playable-moments.local/schemas/replay-unlock.json",
+  "title": "replay-unlock",
+  "type": "object",
+  "properties": {
+    "attemptId": {
+      "type": "string"
+    },
+    "releaseId": {
+      "type": "string"
+    },
+    "optionId": {
+      "type": "string",
+      "enum": [
+        "A",
+        "B"
+      ]
+    },
+    "revealUrl": {
+      "type": "string",
+      "pattern": "^/api/replay/attempts/[^/]+/reveal$"
+    }
+  },
+  "required": [
+    "attemptId",
+    "releaseId",
+    "optionId",
+    "revealUrl"
+  ],
+  "additionalProperties": false
+}

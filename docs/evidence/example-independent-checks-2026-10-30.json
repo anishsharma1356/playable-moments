@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-30",
+  "scope": "Example-independent local judge checks",
+  "judgePrepare": {
+    "result": "passed",
+    "node": "24.22.1",
+    "checks": [
+      "SQLite migrations",
+      "writable isolated data directory",
+      "disk reserve",
+      "H.264/AAC tools",
+      "loopback configuration"
+    ],
+    "mode": "DEMO",
+    "twitchEnabled": false,
+    "fixtureGenerated": true,
+    "automaticallyPublished": false
+  },
+  "judgeStartup": {
+    "result": "passed",
+    "url": "http://127.0.0.1:5180",
+    "dataDirectory": "data/judge-demo"
+  },
+  "browserRegression": {
+    "result": "incomplete",
+    "detail": "Runner emitted startup warnings but no scenario results before cancellation with Ctrl+C. No new browser pass is claimed."
+  },
+  "manualZoom": {
+    "result": "not performed",
+    "detail": "Computer Use stopped because it could not confidently determine the current Chrome URL. No alternative UI automation was attempted."
+  },
+  "limitations": [
+    "Existing computer and installed dependencies; not fresh-machine installation.",
+    "Spoken screen-reader, physical-phone, independent-viewer and public-host checks remain pending.",
+    "No remote repository, final video or contest submission was published."
+  ]
+}

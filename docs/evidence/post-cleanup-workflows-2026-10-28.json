@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-28",
+  "authorization": "User explicitly requested: remove them and proceed further",
+  "cleanup": {
+    "deletedArchiveCount": 10,
+    "bytesRemoved": 1674059000.0,
+    "freeBeforeGiB": 2.1,
+    "freeAfterGiB": 3.66,
+    "scope": "Only seven reviewed image-export TARs and three fully extracted download ZIPs. No recursive deletion, source/media/database/backup deletion or Docker cache/image/volume pruning."
+  },
+  "browserRerun": {
+    "command": "playwright test tests/e2e/workflow.spec.ts",
+    "exitCode": 0,
+    "passed": 2,
+    "failed": 0,
+    "projects": [
+      "desktop",
+      "phone-sized viewport"
+    ],
+    "seconds": 113.7,
+    "limits": "Default 2 GiB reserve and 500 MiB upload cap retained",
+    "logSha256": "dc36d6e250a448805b75ee3ac20b757e6cbbd8e3868ebc07dac451c6843e8d41"
+  },
+  "combinedBrowserStatus": "All six scenarios have passed: four from the preceding full run, plus the two formerly disk-blocked upload workflows in this targeted rerun. Not a claim of one new six-scenario run.",
+  "scope": "Synthetic local upload/review/choice/reveal browser coverage; not human audiovisual acceptance or physical-phone/live-Twitch verification.",
+  "applicationCodeChangedSinceEarlierRun": false
+}

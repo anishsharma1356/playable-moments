@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-28",
+  "verifiedAt": "2026-10-28T14:29:17.714Z",
+  "momentId": "c1c3fd42-f5cd-406b-87dd-a6ec4056bef1",
+  "slug": "aa098843-76e4-49b1-b77e-7b92af0e5cdb",
+  "revision": {
+    "editId": "56961526-6c95-46c9-95d5-d4de3fcab1da",
+    "version": 3,
+    "status": "APPROVED",
+    "setupStartMs": 20000,
+    "setupEndMs": 30000,
+    "revealStartMs": 96500,
+    "revealEndMs": 106500,
+    "reviewHash": "d4a16e4ddba718efce6087ff86052013d91a090a5584365ac8caf0119c7d722b",
+    "setup": {
+      "key": "03bacff7-c9b4-4113-a55a-eb401d8fb889.mp4",
+      "sha256": "124b10b408aeeb538376d733f4dbf388798230e74bff780b845ca761c53a4632",
+      "durationMs": 10000,
+      "captionSha256": "43db55cc65b1dcaf565944e6f3704351e9454c3eb030d5290e7c949f82917a85",
+      "text": "A dark screen asks which colour the creator should choose. Two labelled options appear side by side: A, Red and B, Blue. Viewers may choose before seeing the outcome. The neutral overlay does not reveal either option's vote count."
+    },
+    "reveal": {
+      "key": "59bb3ada-16a4-4e19-a936-df4d4f49b915.mp4",
+      "sha256": "fed79959ec9d4825ac578fba4aa0dbdb78b3ee88d25eb8f748a3610d0306e215",
+      "durationMs": 10000,
+      "captionSha256": "290615bace4fe1554a595bd5165175249ec967219a9daf9674e5aac814295cc5",
+      "text": "The creator's recorded choice is B, Blue. The Blue option is highlighted and a short tone sounds. This is the actual recorded outcome; a later viewer's choice does not change it."
+    },
+    "history": {
+      "mode": "REAL_TWITCH",
+      "count_a": 1,
+      "count_b": 0,
+      "total": 1
+    },
+    "activeReleaseCount": 1
+  },
+  "release": {
+    "id": "781b2dad-f34f-424c-9d1b-bd009c481e35",
+    "version": 2,
+    "edit_id": "56961526-6c95-46c9-95d5-d4de3fcab1da",
+    "snapshot_id": "19f51abc-b6f7-48cd-a5af-877b9cbc82c2",
+    "published_at_ms": 1793197614259,
+    "revoked_at_ms": null
+  },
+  "approvedEdit": {
+    "version": 3,
+    "status": "APPROVED",
+    "review_hash": "d4a16e4ddba718efce6087ff86052013d91a090a5584365ac8caf0119c7d722b",
+    "approved_at_ms": 1793197602428
+  },
+  "oldRelease": {
+    "id": "ba5d91ae-74d5-4ced-9cc5-40247864d331",
+    "revoked_at_ms": 1793196882003
+  },
+  "backup": {
+    "path": "data/revision-preparation/j8ql-before-captions-2026-10-28",
+    "verifiedBeforeChanges": true
+  },
+  "humanReview": {
+    "reviewer": "Anish",
+    "method": "Actual application revision 3 setup/reveal played fully twice with captions showing and audio unmuted; both text descriptions expanded.",
+    "response": "Yes — approve and publish locally",
+    "approved": true
+  },
+  "status": "Human-reviewed revision 3 published locally as release 2",
+  "checks": [
+    "Fresh session receives setup description only; no reveal, creator choice or historical split in manifest",
+    "Public setup captions match the human-reviewed file",
+    "Saved personal A choice unlocks exact reveal captions, description, media Range and actual B comparison",
+    "Separate unchosen session is denied reveal video, captions and result; has no unlocked description",
+    "Previous release is revoked; stale caption URL returns 410",
+    "Frozen REAL_TWITCH A=1/B=0/total=1 unchanged after personal replay test"
+  ],
+  "historyAfter": {
+    "mode": "REAL_TWITCH",
+    "count_a": 1,
+    "count_b": 0,
+    "total": 1
+  },
+  "scope": "Local publication and session-gate checks. One automated personal replay choice was saved; no Twitch vote or public broadcast was sent. No full screen-reader, phone, independent-viewer or WCAG claim.",
+  "browserVerification": "Published replay shows the setup description and default English caption track before any choice; reveal description is absent."
+}

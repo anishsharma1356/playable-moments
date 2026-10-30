@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-28",
+  "scope": "Built Linux image; isolated synthetic DEMO, no human-review/live-Twitch claim",
+  "node": "v24.22.1",
+  "uid": 1000,
+  "checks": [
+    "production dependencies only; npm/yarn and development tools absent",
+    "FFmpeg has only file/pipe protocols and MP4/lavfi inputs; network formats absent",
+    "non-root runtime and read-only application filesystem",
+    "Linux doctor: SQLite migrations, writable data and H.264/AAC tools",
+    "compiled server and static Studio startup",
+    "synthetic upload, private master, separate setup/reveal encoding and full decode",
+    "publication, spoiler-safe manifest, Range, choice/reveal and cross-session denial",
+    "server restart retains published release, personal choice and frozen history",
+    "stopped backup/verify/restore replays the same release with session gates intact"
+  ],
+  "release": {
+    "releaseId": "4bb5d031-ee2e-4728-8218-32d42a4b5057",
+    "version": 1,
+    "slug": "3bd40e66-4929-4549-b313-64a4d0f7499e",
+    "url": "/m/3bd40e66-4929-4549-b313-64a4d0f7499e"
+  }
+}

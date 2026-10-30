@@ -1,0 +1,4 @@
+ops/media/*.patch -text
+ops/media/SHA256SUMS text eol=lf
+ops/media/*.sh text eol=lf
+ops/proxy/*.sh text eol=lf

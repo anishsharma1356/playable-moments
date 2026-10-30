@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-28",
+  "reviewer": "Anish",
+  "environment": "Windows, Codex in-app browser, isolated local judge demo",
+  "scenario": "Two doors. One decision. Synthetic A=5/B=7, total=12, creator B",
+  "status": "Guided core replay keyboard workflow passed",
+  "guidance": "Assistant initially positioned focus on choose-now. User followed individual keyboard instructions to open choices, move from Red to Blue, select Blue and play reveal, then supplied the resulting comparison text.",
+  "observations": [
+    "User confirmed choices appeared after Enter",
+    "User confirmed the next step after Tab to Blue and Enter",
+    "User supplied final comparison: own B, creator B, synthetic counts 5 and 7, total 12",
+    "Browser observations showed focus on first choice, reveal action and final comparison heading"
+  ],
+  "foundIssue": "Comparison heading incorrectly always said Different choices, including B versus B",
+  "fix": "Choose Same choice when own and creator options match; preserve Different choices otherwise",
+  "fixVerification": [
+    "TypeScript noEmit passed",
+    "ESLint passed for main.tsx",
+    "Running browser showed Same choice for B versus B after reveal; counts remained 5 and 7"
+  ],
+  "limitations": [
+    "Guided replay check, not independent navigation of every page or media control",
+    "No spoken screen-reader acceptance yet",
+    "No physical-phone or actual browser-zoom acceptance yet",
+    "Synthetic fixture; no new Twitch participation",
+    "Source review v4 and existing built images predate the heading fix"
+  ]
+}

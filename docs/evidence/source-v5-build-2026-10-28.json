@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-28",
+  "sourceArchive": "data/submission/playable-moments-source-review-2026-10-28-v5-candidate.zip",
+  "sourceArchiveSha256": "4f67cc893f2943de8bae5235aa2757ed9e15a5046a2bc1c1b801f705f7eeba31",
+  "imageTag": "playable-moments:source-review-v5",
+  "imageId": "sha256:f2d00fd92e4352b57e39db5986af3aa47c1f5623db1dd6c933f09dfafaaf784d",
+  "productionBuild": "passed from clean extraction",
+  "frozenInstall": "passed",
+  "containerChecks": 9,
+  "licenseRetention": {
+    "originalLicense": "MIT",
+    "licenseSha256": "2fb23c580f7e728b7f965418ff131008c0169a5feda30e1e5754dd3bd2581a0b",
+    "thirdPartyNoticesRetained": true
+  },
+  "scope": "Local Linux Docker build from clean source extraction. Cached pinned base/media stages reused. No new vulnerability scan, remote-host acceptance, public deployment or genuine Twitch event.",
+  "containerEvidenceSha256": "06db8949b557382899152a5b8f59c0055bbca7a268286b7c6831166b18960dbe"
+}

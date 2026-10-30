@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-28",
+  "scope": "Private Docker network HTTPS with temporary CA and restored synthetic release; not public TLS or real Twitch authorization",
+  "checks": [
+    "HTTPS certificate and hostname verified with dedicated test CA; compiled Studio served",
+    "HTTP redirect, private health endpoints and owner authentication",
+    "secure anonymous session cookie, spoiler-safe manifest and exact media Range through proxy",
+    "Origin rejection, choice-gated reveal, cross-session denial and unchanged synthetic history",
+    "live SSE snapshot arrives through HTTPS proxy without buffered delay or spoiler fields"
+  ]
+}

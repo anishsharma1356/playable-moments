@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playable-moments.local/schemas/replay-public.json",
+  "title": "replay-public",
+  "type": "object",
+  "properties": {
+    "slug": {
+      "type": "string"
+    },
+    "releaseId": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 80
+    },
+    "question": {
+      "type": "string",
+      "maxLength": 180
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "A",
+              "B"
+            ]
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          }
+        },
+        "required": [
+          "id",
+          "label"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "REAL_TWITCH",
+        "DEMO"
+      ]
+    },
+    "setup": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "pattern": "^/api/replay/[^/]+/setup\\?releaseId=[A-Za-z0-9_-]+$"
+        },
+        "durationMs": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "url",
+        "durationMs"
+      ],
+      "additionalProperties": false
+    },
+    "csrfToken": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "slug",
+    "releaseId",
+    "title",
+    "question",
+    "options",
+    "mode",
+    "setup",
+    "csrfToken"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-30",
+  "basis": "v8 reviewed file list plus current verification and clarified judge documentation",
+  "applicationFilesComparedWithV8": 75,
+  "applicationSourceChanged": false,
+  "browserScenariosPassed": 6,
+  "requiredNoticesPresent": [
+    ".env.example",
+    ".gitattributes",
+    ".gitignore",
+    "LICENSE",
+    "docs/JUDGE_GUIDE.md",
+    "docs/THIRD_PARTY_NOTICES.md",
+    "docs/licenses/FFmpeg-COPYING.GPLv2",
+    "docs/licenses/FFmpeg-COPYING.LGPLv2.1",
+    "docs/licenses/abstract-logging-MIT.txt",
+    "docs/licenses/runtime-npm-notices.txt",
+    "pnpm-lock.yaml"
+  ],
+  "knownLocalSecretMatches": 0,
+  "checkedCredentialPatternMatches": 0,
+  "primaryJudgeLinksPackaged": true,
+  "privateDataAndBinariesExcluded": true,
+  "freshLocalGitRepository": true,
+  "branch": "codex/submission-ready",
+  "commitCreated": false,
+  "remoteCreated": false,
+  "whitespaceScope": "First-party files, CRLF-aware; preserve upstream notices and hash-pinned patches byte-for-byte.",
+  "limitations": "Bounded file/secret-pattern checks. No review of the original workspace Git history, fresh-machine acceptance, binary-distribution clearance, new vulnerability scan or public-host acceptance."
+}

@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-28",
+  "node": "24.22.1",
+  "checks": [
+    {
+      "script": "typecheck",
+      "exitCode": 0,
+      "seconds": 9.01
+    },
+    {
+      "script": "lint",
+      "exitCode": 0,
+      "seconds": 9.03
+    },
+    {
+      "script": "test",
+      "exitCode": 0,
+      "seconds": 50.19
+    },
+    {
+      "script": "build",
+      "exitCode": 0,
+      "seconds": 11.84
+    }
+  ],
+  "vitest": {
+    "passed": 61,
+    "failed": 0,
+    "files": 7
+  },
+  "browser": {
+    "passed": 4,
+    "failed": 2,
+    "failedScenarios": [
+      "desktop upload workflow",
+      "phone-sized upload workflow"
+    ],
+    "observedFailure": "Both stop at Private master recording after the UI reports Not enough free disk space for this recording.",
+    "hostFreeGiBAtDiagnosis": 2.08,
+    "defaultReserveGiB": 2,
+    "additionalMaximumUploadReservationGiB": 1.46484375,
+    "status": "Full browser suite NOT passed; repeat the two workflow scenarios after freeing disk space.",
+    "passedScope": "Public-page accessibility/reflow/reduced-motion and fixture Twitch workflow on desktop and phone-sized viewports. Not human screen-reader or physical-phone acceptance."
+  },
+  "container": {
+    "cleanExtractionBuild": "passed",
+    "workflowAndRecoveryChecks": 9,
+    "licenseRetention": "passed"
+  },
+  "sourceChanges": [
+    "eslint.config.js excludes portable .tools dependencies",
+    "privacy test matches the quoted viewer identity instead of digits embedded in a numeric timestamp"
+  ],
+  "environmentIssues": [
+    "Initial temp-file move denied by Windows sandbox; workspace temp rerun resolved it.",
+    "Initial browser server stalled in sandbox; isolated test rerun outside sandbox reached the real disk-reserve rejection."
+  ],
+  "unchanged": "No reduction of production disk reserve; no real Twitch history or approved media changed."
+}

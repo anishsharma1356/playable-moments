@@ -1,0 +1,144 @@
+{
+  "date": "2026-10-30",
+  "result": "passed",
+  "scenarioCount": 6,
+  "failedScenarioCount": 0,
+  "processExitCode": 0,
+  "reportedRunDuration": "3.0 minutes",
+  "node": "24.22.1",
+  "browser": "Installed Google Chrome via Playwright",
+  "scenarios": [
+    {
+      "project": "desktop",
+      "test": "public accessibility, keyboard skip, 320 CSS-pixel reflow, reduced motion",
+      "seconds": 6.1
+    },
+    {
+      "project": "desktop",
+      "test": "fixture Twitch authorization, live controls, overlay and reviewed replay",
+      "seconds": 33.5
+    },
+    {
+      "project": "desktop",
+      "test": "upload, render, review, publish, separate-session choice, reveal and comparison",
+      "seconds": 39.6
+    },
+    {
+      "project": "phone-sized",
+      "test": "public accessibility, keyboard skip, 320 CSS-pixel reflow, reduced motion",
+      "seconds": 5.2
+    },
+    {
+      "project": "phone-sized",
+      "test": "fixture Twitch authorization, live controls, overlay and reviewed replay",
+      "seconds": 29.6
+    },
+    {
+      "project": "phone-sized",
+      "test": "upload, render, review, publish, separate-session choice, reveal and comparison",
+      "seconds": 38.1
+    }
+  ],
+  "extraAgentKeyboardCheck": {
+    "browser": "Codex side browser",
+    "actions": [
+      "Tab to skip link",
+      "Enter to main",
+      "Tab/Enter to Studio",
+      "Tab/Enter to local sign-in"
+    ],
+    "focusOutline": "3px solid rgb(196,180,255)",
+    "homeHorizontalOverflow": false
+  },
+  "actualZoom": {
+    "result": "unverified",
+    "reason": "Side-browser Ctrl-plus did not change viewport dimensions or device pixel ratio; a separately controllable Chrome browser was unavailable."
+  },
+  "applicationFiles": {
+    "apps/server/migrations/001_initial.sql": "810c8cc8bac4c960651205cf7a4e521499f051b7a3be97f6f43034615f72bb76",
+    "apps/server/migrations/002_twitch_oauth.sql": "0b4ee61bc05c59fb6b02a2b96304f29447dd78fed134645f051cf9b429fd63f4",
+    "apps/server/migrations/003_media_cleanup.sql": "08ea1d8d4f6bb81817f0d2d7c3bca3b9bc7ae2b38d9f551f1d67de8c367c3c95",
+    "apps/server/migrations/004_media_alternatives.sql": "1d95af53ba02a6977793977715c99bf5a310862821f62953b378f44211cc8592",
+    "apps/server/package.json": "22477fc973809006a3bc35b0476fceb4528148c132bca05d9736d100a40fda98",
+    "apps/server/src/app.ts": "e26141c663421110868b9d69f6b500ed7daf8d32ef0f39c54a1d2d42d4512a49",
+    "apps/server/src/config.ts": "52373efa683a4a4ce3dc03ee6907d4403fb9d233b9caa278a9625699fc76dba3",
+    "apps/server/src/domain.ts": "fb956210a49aacb5c6d9a6995ada23980d5dc77b326ce8532b540389ddc886e4",
+    "apps/server/src/main.ts": "8f9605ed6951f49cf2d25c86b0e37777453997e42831048c1963fe8baf32b86c",
+    "apps/server/src/media.ts": "7045914d7456dcd88b100d0c1fceb1f21e435eb4c047f40ffb052b2036c9d0b5",
+    "apps/server/src/overlay.ts": "5121472f1b78947786758f053649b3009164406954ab50ae4cc91dcdf2ec6152",
+    "apps/server/src/retention.ts": "baf27e5d3fc51a4b1617cebdff9a61f2edffcc3fc79bb9462a9456a54156e238",
+    "apps/server/src/storage.ts": "09abec81e60d1233b68498c6f3b0f814191c703c0a5d1ff0b96ffd1bc203a557",
+    "apps/server/src/twitch-auth.ts": "4aa410d86d548d9e2896444b504a608459fc884f590ad69925d968537f50f0a2",
+    "apps/server/src/twitch-intake.ts": "a05a7489b4e1bcdba02abee4f8775a7f0fb64dbaf61d318ce7bcb749de42ff51",
+    "apps/web/index.html": "9afd831155ee10ff706e48f3b0c3f6ebb89a78fe73a47150ca991e33b1067eb5",
+    "apps/web/package.json": "fd7af1d0b041ddebefee58216f98e3fc1ffa725af7b97d1e9fceb22394e8d097",
+    "apps/web/src/api.ts": "c3a7e0670308533e0007f8b49b2c9df8a82ad1c176372a250446d5589297a4fe",
+    "apps/web/src/data-controls.tsx": "a3b71cc1fbb4599fc881d861d25b698bb5874c24e9776f585769a6d279c9e4fd",
+    "apps/web/src/live.tsx": "c20be75f3795bc5aefd3ec3b3863eed20664651cecde676fe42de320271b2128",
+    "apps/web/src/main.tsx": "43d6155035aa64b824e67ec7c9226478be9e8c974912e663cc77312fce62c033",
+    "apps/web/src/style.css": "f95a093d96bd4d72f43616dd93d91dff4b92ef4535f0eae4bfe73b81e3e36bd9",
+    "apps/web/vite.config.ts": "4cff1b9aa83875b1e614ddd6846423f5528e31edf36a0c07dd12ea7aaf2dcd0b",
+    "ops/Caddyfile": "7fc30dd1c462bf5d232dd59cc6c30d986a799d4412a847dd9b3711e2797662b8",
+    "ops/backup.ts": "2b00c3ee540513883d81c1c3a25d3497ec43de77ef9802cd4c1bc790559305cd",
+    "ops/container-smoke.mjs": "bfbd671352feffaa93ab33de38900eb524674c1a344d10cd638f2fe99e36791e",
+    "ops/dev.ts": "c752fbacf84ad9747e84122eaf7a900d68450392acfb9320c35660a7ebebae55",
+    "ops/e2e-server.ts": "50e74604ef302dec527f71805e69cb68b40f82397725b829b081f6aa4686c745",
+    "ops/judge-server.ts": "84abf18257207f5e599ab6d639b4a1f0070fa6b1810c4073cdb10c4a53cea916",
+    "ops/judge.mjs": "579c5a5820b431ed5c765c451b25208bd495b70b89c172c2c43c54a2d8e3bbcc",
+    "ops/license-inventory.mjs": "55d433b6480185373f0d680f34d8123f514243a5a518b3ab858aa324a0ae961c",
+    "ops/load-test.ts": "4ce9fbc097cdba0f3383ba1c9b4c58f1d19d67c16010eaa072d7a939176d5b76",
+    "ops/manage.ts": "710077ef8f80d7f88771f7d9b9eb1c17f9486fff1004d1e0a5ddc35983c23083",
+    "ops/media/SHA256SUMS": "1629aae100253b1176f11382cf71dc0a83a45764c41ece96293de14cd4e0725d",
+    "ops/media/apply-and-test.sh": "05930538bb4ccc5b272cc0f70042c5b6812128222d3b23cfdbfef50bf50556fb",
+    "ops/media/hdr-metadata.patch": "fb9d5c7625495040858ef316396d10d8be62c514187d0e19cc455410dbce79a9",
+    "ops/media/pssh-append-backport.patch": "825524bc1d8cb1e74155dfde175c481cf2e843ca89422c76abf278a4cd66a751",
+    "ops/media/pssh-append.patch": "1fd3c8a2b37bb24fe4c8500422090453e18a06634e2647d8fb50216beb5332b8",
+    "ops/media/pssh-free.patch": "594a0cbca9527bc1edab7f76679af5a73cee23aadc878e2cc6a9001e22742c45",
+    "ops/media/pssh-mov.patch": "af4bf01465777b2b8d159e8cd8a2185f155a0db39baa7fc2c0e6acf4d5f734b8",
+    "ops/media/security-regressions.c": "6f15db4eba58b226504536e9a8795103d8efcbc6514cd70c5e0a65930cbb4e47",
+    "ops/prepare-obs.mjs": "2e760ed2cf51e12f03ec38a5d421c553450698aa3bc43ea72eabd984ddb6c0cc",
+    "ops/production.env.example": "c6ee406797de6d86c5ca116de2829efb7f16f9d102e64e83e42a09d18a8a792d",
+    "ops/proxy-fixture.mjs": "882a3dce6ec31ffd6d576b848bc6b0255fa984a1c7eec554b03e19336e7edfa8",
+    "ops/proxy-smoke.mjs": "3faf1c970f94fbc689a142461edb9a9f131a6aa8eb28d1b07da6a9af5ff73a44",
+    "ops/proxy/Dockerfile": "ed1dfcf8f023da98090bceb48e0a7ffd7bc1438d2fa48708b18ce1069f4930a4",
+    "ops/proxy/collect-licenses.sh": "d3bc9c31a97e42909e85003e20c877d66b905a9d70859de60e11f5f9f41949ae",
+    "ops/proxy/go.mod": "a9b226d40d98598ab55eea78197efc7277643ca6ce1c77d667475c34666c2c76",
+    "ops/proxy/go.sum": "e2f1fe04f59f16949483db9602c194150330b4c11daaa41ca74c8b3516890d6c",
+    "ops/proxy/main.go": "dbad7eae1930be3ba46f7cb799a3294af3572584f4a5af28893592866bf06773",
+    "ops/runtime-security-check.mjs": "cd226482d3b92e2c6dbe401d557d8dbf58d543aa82363be9514265397f2d86f6",
+    "ops/runtime/assemble.mjs": "3c41f7dcbb7685c1a40bc24252d6c540663e356465da7ee529a5352a9a0aa3cb",
+    "ops/runtime/check.mjs": "52a7367a00f4b92fbfa7cce3088f271e299f9eb3575e15e92fcd2d8f2daa69bc",
+    "ops/setup-judge.ps1": "38a7dc1b324772177e94ccf97c75d43ae8706fd82ebd19e0d57c268cdffbb12a",
+    "ops/setup-media.ps1": "8c424fd3458960c8be24b822fc80c84409f7973f0521dadc6157fceaa1a64a7f",
+    "ops/setup-twitch.ps1": "04c576a185afd695ebfffc440a0a7c7e65ca8b605b07e377dfe86a8956f58bcc",
+    "ops/video-load.mjs": "61e2f288bff239b7e976225a405cb037ba1ec9822845b4cb6121240b6b3dfaa7",
+    "packages/contracts/package.json": "53b48dcc3619f82308fd237e4c012bd0248d4da280cf46875057e3009866820d",
+    "packages/contracts/src/index.ts": "84bbe8ca3083e1849a904b953d8d397ea3d1dd0343545e6097b9c8b04ff5c9a5",
+    "packages/core/package.json": "1759ef2bf5c1109e71da90ef8c6d6636c89e042fb2d9d0b9fdc1454abfde2dc8",
+    "packages/core/src/captions.ts": "f690e4413c9d4a6d7d529f325570613dcb561d10a0a22770f320f5134e2d8a48",
+    "packages/core/src/index.ts": "6a372fec3f7aa2a5e8aa30e509191ccfaafe00833b2d8560ecaf222cc8bcd8b4",
+    "tests/e2e/accessibility.spec.ts": "8e0e12f7e46b236e859c1ef24b1823eb5a9b2e7bdf968c6f62471dd7aecf8f10",
+    "tests/e2e/accessibility.ts": "6298964d6049ba45fd80155d08be9cfbb7bcf776408620a9687b7e201a0228da",
+    "tests/e2e/twitch.spec.ts": "2224c5e82f165b9c8bdd74804c43a747bc4851f64e26b1e71e69231e3e0eb4ee",
+    "tests/e2e/workflow.spec.ts": "f277335735617f6b6ba6d4cdeeba60cb6776f0822beed28507d75e2cde39c96d",
+    "tests/fixtures/generate.ts": "a6a1440d7cc01d30cf612fd416b427bbbcf72427cff03d11ff4ac004b7e73f30",
+    "tests/fixtures/twitch.ts": "439b982eb5ae77ef3f1fb9a7f82bdfe3ac5722d0eab35ebd2244e9eac6c66dc3",
+    "tests/integration/deployment.test.ts": "8df3bf6b379a6a47bd76559c2dfed5c8ea924664c0cbf0d3503e3e60eb0dee71",
+    "tests/integration/hardening.test.ts": "02131fb5f1aed1ac47e497fbde970e0735bf9b76b1a9397155639ef9e75b6ad3",
+    "tests/integration/media-timing.test.ts": "a4afa326d52ba7db2171166c10bf3b1bd98f54559775d3e18a64c4bc95a2b316",
+    "tests/integration/twitch.test.ts": "25c547782e1eb17977272ce631f6a4435d9aae1ffedb0307b10fbd358c52db14",
+    "tests/integration/workflow.test.ts": "601c470710806695271aea804de0eb3c248614d3aa841bb53891164bee79074b",
+    "tests/unit/captions.test.ts": "94ed31293b18c6731efb31ae7b5c0e95cacc62be3e52a64ac08799b7a5c3001c",
+    "tests/unit/domain.test.ts": "8c66c9f67eac0aaf473eb05bd5a74b7de251831d2e00448e9e14a348a956ab4a"
+  },
+  "limitations": [
+    "Automated synthetic fixtures and muted accelerated test playback do not constitute human media approval.",
+    "Phone-sized Chrome emulation is not a physical-device check.",
+    "No new genuine Twitch, independent-viewer broadcast, fresh-computer, spoken screen-reader, container or vulnerability-scan claim."
+  ],
+  "privateReports": [
+    "playwright-report/index.html",
+    "test-results/.last-run.json",
+    "data/qa-2026-10-30/studio-ready.png"
+  ]
+}

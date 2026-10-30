@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-28T10:48:03.318Z",
+  "scope": "Synthetic moving 720p video; private Docker-network HTTPS, certificate validated. Five then ten clients, one 512 KiB-or-smaller Range per client/second, alternating setup and authorized reveal. Not browser playback, Internet bandwidth, 1000 video viewers or combined rendering/intake capacity.",
+  "requestCount": 220,
+  "totalBytes": 115343360,
+  "stages": [
+    {
+      "clients": 5,
+      "requests": 40,
+      "seconds": 7.03,
+      "bytes": 20971520,
+      "aggregateMbps": 23.87,
+      "latency": {
+        "p50Ms": 21.48,
+        "p95Ms": 46.33,
+        "p99Ms": 47.75,
+        "maxMs": 47.75
+      },
+      "scheduledToCompleteP95Ms": 47.9,
+      "clipBytes": [
+        2068864,
+        2528041
+      ],
+      "clientCpuMs": 257.082
+    },
+    {
+      "clients": 10,
+      "requests": 180,
+      "seconds": 17.05,
+      "bytes": 94371840,
+      "aggregateMbps": 44.28,
+      "latency": {
+        "p50Ms": 39.63,
+        "p95Ms": 85.72,
+        "p99Ms": 201.59,
+        "maxMs": 209.21
+      },
+      "scheduledToCompleteP95Ms": 88.1,
+      "clipBytes": [
+        2068864,
+        2528041
+      ],
+      "clientCpuMs": 1044.575
+    }
+  ],
+  "serverLimits": {
+    "appCpu": 2,
+    "appMemoryGiB": 3,
+    "proxyCpu": 1,
+    "proxyMemoryMiB": 512
+  },
+  "sharedIpLimit": "All clients share one IP; production rate limit is 300 requests/minute. Higher request rates may hit429 rather than CPU saturation.",
+  "correctness": "All bytes matched source ranges; pre-choice denied; frozen5/7 history unchanged."
+}

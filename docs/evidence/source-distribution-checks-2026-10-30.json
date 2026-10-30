@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-30",
+  "basis": "Reviewed v7 file list with corrected FFmpeg notice and follow-up documents",
+  "sourceFilesComparedWithV7": 75,
+  "applicationSourceChanged": false,
+  "requiredNoticesPresent": [
+    "LICENSE",
+    "docs/JUDGE_GUIDE.md",
+    "docs/THIRD_PARTY_NOTICES.md",
+    "docs/licenses/FFmpeg-COPYING.GPLv2",
+    "docs/licenses/FFmpeg-COPYING.LGPLv2.1",
+    "docs/licenses/abstract-logging-MIT.txt",
+    "docs/licenses/runtime-npm-notices.txt",
+    "pnpm-lock.yaml"
+  ],
+  "ffmpegPatchHashesMatched": [
+    "hdr-metadata.patch",
+    "pssh-append-backport.patch",
+    "pssh-append.patch",
+    "pssh-free.patch",
+    "pssh-mov.patch"
+  ],
+  "runtimeNoticePackageCoverage": 85,
+  "runtimeInventoryDate": "2026-10-28T10:46:11.091Z",
+  "knownLocalSecretMatches": 0,
+  "checkedCredentialPatternMatches": 0,
+  "privateDataBinaryScreenshotFilesIncluded": false,
+  "limitations": "Bounded file/secret-pattern and notice checks; no new vulnerability scan, binary-distribution approval, historical Git review or public launch approval."
+}

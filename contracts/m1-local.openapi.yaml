@@ -1,0 +1,88 @@
+openapi: 3.1.0
+info:
+  title: Playable Moments local M1 additions
+  version: 0.1.0
+  description: Loopback-only demo conveniences. No real or hosted admin bypass. Baseline routes remain in openapi.yaml.
+servers:
+  - url: http://localhost:3000
+paths:
+  /auth/demo:
+    post:
+      operationId: post_auth_demo
+      summary: Establish a local demo owner session after exact Origin and loopback checks
+      responses:
+        '200':
+          description: HttpOnly pm_owner cookie and baseline OwnerIdentity JSON
+        '403':
+          description: Origin, Host or remote address denied
+  /api/owner/demo/moments:
+    post:
+      operationId: post_demo_moment
+      summary: Create the explicitly synthetic door fixture through the domain state machine
+      security:
+        - ownerCookie: []
+      description: Requires X-CSRF-Token and Idempotency-Key. Stores DEMO provenance and 5 A / 7 B synthetic votes. Returns a baseline Moment.
+      responses:
+        '201':
+          description: Created DEMO moment
+  /api/owner/library:
+    get:
+      operationId: get_owner_library
+      security:
+        - ownerCookie: []
+      responses:
+        '200':
+          description: Array of baseline Moment DTOs for the sole local owner
+  /api/owner/moments/{momentId}/workspace:
+    get:
+      operationId: get_owner_workspace
+      security:
+        - ownerCookie: []
+      parameters:
+        - name: momentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Owner-only review workspace; never reused by replay routes
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [moment, assets, edits, jobs, release]
+                additionalProperties: false
+                properties:
+                  moment:
+                    $ref: './openapi.yaml#/components/schemas/Moment'
+                  assets:
+                    type: array
+                    items:
+                      type: object
+                      required: [id, kind, status, durationMs, url]
+                      additionalProperties: false
+                      properties:
+                        id: {type: string}
+                        kind: {type: string}
+                        status: {type: string}
+                        durationMs: {type: [integer, 'null']}
+                        url: {type: string}
+                  edits:
+                    type: array
+                    items:
+                      $ref: './openapi.yaml#/components/schemas/Edit'
+                  jobs:
+                    type: array
+                    items:
+                      $ref: './openapi.yaml#/components/schemas/Job'
+                  release:
+                    anyOf:
+                      - $ref: './openapi.yaml#/components/schemas/ReleaseInfo'
+                      - type: 'null'
+components:
+  securitySchemes:
+    ownerCookie:
+      type: apiKey
+      in: cookie
+      name: pm_owner

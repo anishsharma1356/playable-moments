@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-28",
+  "archive": "data/submission/playable-moments-source-review-2026-10-28-v5.zip",
+  "fileCount": 169,
+  "bytes": 456295,
+  "sha256": "592e9ab8cb0410d27628609f0f3818ffd344e0e06df00319740df5169f408906",
+  "archiveIntegrity": "passed",
+  "extractedFileHashes": "all match",
+  "knownLocalSecretMatches": 0,
+  "sourceCoverage": "All 75 files returned by rg under apps/packages/ops/tests included",
+  "privateEnvDatabaseRecordingBinaryFilesIncluded": false,
+  "buildInputsComparedWithCandidate": 55,
+  "scope": "Private source review bundle, not published. Exact-value checks are not comprehensive secret-scanner certification. Clean extraction build evidence is separate."
+}

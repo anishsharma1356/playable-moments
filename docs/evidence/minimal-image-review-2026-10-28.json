@@ -1,0 +1,307 @@
+{
+  "date": "2026-10-28",
+  "scope": "Minimal Linux application runtime and unchanged hardened proxy. Local verification only; public host not deployed.",
+  "imageTag": "playable-moments:local",
+  "manifestIndexId": "sha256:cf0f1652b4fae3a27621cd61c44484aaef70bfc597a10094b7d697f74702f339",
+  "scannedConfigId": "sha256:5b5b0f97d5bfb6fa1d28051e2fba8f63d6f2b7198b412e915fa0ed1de0b12260",
+  "rollbackTag": "playable-moments:pre-minimal-20261028",
+  "rollbackManifestIndexId": "sha256:37fa78a300ce6dce03604eedbe0435d81f10b4be1a0667348488f246d7e5bb77",
+  "scanner": "Trivy 0.76.1",
+  "scanCreatedAt": "2026-10-28T11:36:53.048197994Z",
+  "scanMode": "Offline with cached 28 October advisory DB; no ignores or upload",
+  "reportSha256": "c60f8552193840122c082f2388068bbfa45d2070ca602c176d6a4c2a084b3522",
+  "findings": {
+    "CRITICAL": 0,
+    "HIGH": 0,
+    "MEDIUM": 17,
+    "LOW": 9,
+    "UNKNOWN": 0
+  },
+  "findingOccurrences": 26,
+  "distinctAdvisories": 24,
+  "runtimeOsPackageProvenanceRecords": 7,
+  "runtimeJsPackages": 85,
+  "scannerNodePackageRecords": 92,
+  "runtimeJsVulnerabilityOccurrences": 0,
+  "coverageLimitations": [
+    "Custom FFmpeg assessed separately against upstream source/advisories; see DEPENDENCY_SECURITY.md",
+    "Node 24.22.1 upstream security release checked separately; package scan is not exhaustive native/runtime analysis",
+    "Windows Node/FFmpeg and public host are not covered"
+  ],
+  "proxy": {
+    "manifestIndexId": "sha256:c4e80f9f8ef0e07bf09bfbb2a0e75f86932db22e0f5294b522d1a4c69750243b",
+    "findings": {
+      "HIGH": 1,
+      "UNKNOWN": 1
+    },
+    "assessment": "Unchanged hardened proxy; scoped reachability assessment, not a fixed Go JOSE v3 release"
+  },
+  "checks": {
+    "container": 9,
+    "privateHttps": 5,
+    "runtime": "passed",
+    "hashedRuntimeFiles": 20,
+    "dependencyLicenseTexts": "Debian copyright plus common-licenses, Node/FFmpeg and extra abstract-logging notice retained",
+    "twitchTls": "DNS and verified TLS reached official Twitch endpoint; 401 with no credentials, not an OAuth authorization test",
+    "lintAndFormatting": "passed for ops/runtime/*.mjs",
+    "productionBuild": "passed",
+    "applicationAndBrowserSuites": "Prior 61 application / 6 browser checks; not rerun for this packaging-only change"
+  },
+  "evidence": [
+    {
+      "path": "docs/evidence/minimal-final-container-2026-10-28.json",
+      "sha256": "9ff992532320f8461145e8c5dd0ba6a853c43945dd983a3bd74c2f70b0a3aa2d"
+    },
+    {
+      "path": "docs/evidence/minimal-final-proxy-2026-10-28.json",
+      "sha256": "0de0a92f8e1e7ff607a3fdc59fdf8e29b2fa747e21a7fe9af2644d80950b65c6"
+    },
+    {
+      "path": "docs/evidence/minimal-final-runtime-check-2026-10-28.json",
+      "sha256": "b08aff148788602dad4d51d3275db7a82752bc46a95ae0e1f675b305cde5c58d"
+    },
+    {
+      "path": "docs/evidence/minimal-final-runtime-manifest-2026-10-28.json",
+      "sha256": "58f4e3e6a2f5ff807cd10eeafe4a3bb7051603900efccccee7fdcc619e324f74"
+    }
+  ],
+  "originalProjectLicense": "Pending user decision; proposal only",
+  "distribution": "Source repository planned. No images/binaries uploaded; corresponding-source bundle is a separate gate if binary distribution is selected.",
+  "publicDeployment": false,
+  "advisories": [
+    {
+      "VulnerabilityID": "CVE-2026-18374",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "MEDIUM",
+      "Title": "glibc: glibc: Heap buffer overflow via attacker-controlled fopen mode string",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-18374"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-19499",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "MEDIUM",
+      "Title": "glibc: Buffer Overflow in strfmon right-justification padding",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-19499"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-19542",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "MEDIUM",
+      "Title": "glibc: Fix out-of-bounds array write in tdelete",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-19542"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-5435",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "MEDIUM",
+      "Title": "glibc: glibc: Out-of-bounds write via TSIG record processing",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-5435"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-6238",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "MEDIUM",
+      "Title": "glibc: glibc: Application crash or uninitialized memory read via crafted DNS response",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-6238"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-6368",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "MEDIUM",
+      "Title": "glibc: glibc: Process abort due to invalid memory in wordexp",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-6368"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-6791",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "MEDIUM",
+      "Title": "glibc: Glibc: Denial of Service via stack exhaustion during tilde expansion",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-6791"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-77117",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "MEDIUM",
+      "Title": "glibc: Non-progress DoS in SHIFT_JISX0213 -&gt",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-77117"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-80489",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "MEDIUM",
+      "Title": "glibc: Non-progress DoS in EUC_JISX0213 -> UCS-4 conversion state",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-80489"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-8674",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "MEDIUM",
+      "Title": "glibc: glibc DNS stub resolver: Denial of Service via long search domain in configuration",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-8674"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-86805",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "MEDIUM",
+      "Title": "glibc: glibc: Privilege escalation and arbitrary code execution via TOCTOU race condition in dynamic loader",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-86805"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-89092",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "MEDIUM",
+      "Title": "glibc: nscd stack overflow leads to degraded DNS resolution",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-89092"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-95818",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "MEDIUM",
+      "Title": "glibc: glibc: Local attacker can cause denial of service and information disclosure via stack-based buffer overflow.",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-95818"
+    },
+    {
+      "VulnerabilityID": "CVE-2010-4756",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "LOW",
+      "Title": "glibc: glob implementation can cause excessive CPU and memory consumption due to crafted glob expressions",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2010-4756"
+    },
+    {
+      "VulnerabilityID": "CVE-2018-20796",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "LOW",
+      "Title": "glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-20796"
+    },
+    {
+      "VulnerabilityID": "CVE-2019-1010022",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "LOW",
+      "Title": "glibc: stack guard protection bypass",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-1010022"
+    },
+    {
+      "VulnerabilityID": "CVE-2019-1010023",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "LOW",
+      "Title": "glibc: running ldd on malicious ELF leads to code execution because of wrong size computation",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-1010023"
+    },
+    {
+      "VulnerabilityID": "CVE-2019-1010024",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "LOW",
+      "Title": "glibc: ASLR bypass using cache of thread stack and heap",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-1010024"
+    },
+    {
+      "VulnerabilityID": "CVE-2019-1010025",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "LOW",
+      "Title": "glibc: information disclosure of heap addresses of pthread_created thread",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-1010025"
+    },
+    {
+      "VulnerabilityID": "CVE-2019-9192",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "LOW",
+      "Title": "glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-9192"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-97399",
+      "PkgName": "libc6",
+      "InstalledVersion": "2.41-12+deb13u4",
+      "Severity": "LOW",
+      "Title": "glibc: glibc: Denial of Service via out-of-bounds read in strncasecmp",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-97399"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-102010",
+      "PkgName": "libgcc-s1",
+      "InstalledVersion": "14.2.0-19",
+      "Severity": "MEDIUM",
+      "Title": "gcc-toolset-15-gcc: gcc: gcc-toolset-16: gcc: Denial of Service via use-after-free in binary heap erase_if",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-102010"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-95619",
+      "PkgName": "libgcc-s1",
+      "InstalledVersion": "14.2.0-19",
+      "Severity": "MEDIUM",
+      "Title": "gcc: libstdc++ integer overflow in `new` operator",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-95619"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-102010",
+      "PkgName": "libstdc++6",
+      "InstalledVersion": "14.2.0-19",
+      "Severity": "MEDIUM",
+      "Title": "gcc-toolset-15-gcc: gcc: gcc-toolset-16: gcc: Denial of Service via use-after-free in binary heap erase_if",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-102010"
+    },
+    {
+      "VulnerabilityID": "CVE-2026-95619",
+      "PkgName": "libstdc++6",
+      "InstalledVersion": "14.2.0-19",
+      "Severity": "MEDIUM",
+      "Title": "gcc: libstdc++ integer overflow in `new` operator",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-95619"
+    },
+    {
+      "VulnerabilityID": "CVE-2025-25467",
+      "PkgName": "libx264-164",
+      "InstalledVersion": "2:0.164.3108+git31e19f9-2+b1",
+      "Severity": "LOW",
+      "Title": "Insufficient tracking and releasing of allocated used memory in libx26 ...",
+      "FixedVersion": null,
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-25467"
+    }
+  ]
+}

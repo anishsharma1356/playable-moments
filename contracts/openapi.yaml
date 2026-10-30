@@ -1,0 +1,1726 @@
+openapi: 3.1.0
+info:
+  title: Playable Moments — MVP API (M1 subset implemented)
+  version: 1.0.1
+  description: Baseline MVP contract with the M0/M1 local subset implemented. Twitch, overlay, deletion and optional completion endpoints remain planned. See docs/PROGRESS.md and contracts/m1-local.openapi.yaml. Binary HEAD responses omit bodies.
+servers:
+- url: http://localhost:3000
+  description: Local development after implementation
+paths:
+  /auth/twitch/start:
+    get:
+      summary: Begin browser-bound Twitch OAuth
+      operationId: get_auth_twitch_start
+      description: Begin browser-bound Twitch OAuth
+      tags:
+      - Public
+      security: []
+      responses:
+        '302':
+          description: Redirect after validated authentication step
+        default: &id001
+          description: Validation, permission, conflict, provider or state error;
+            see error.code.
+  /auth/twitch/callback:
+    get:
+      summary: Complete OAuth and verify allowlisted broadcaster
+      operationId: get_auth_twitch_callback
+      description: Complete OAuth and verify allowlisted broadcaster
+      tags:
+      - Public
+      security: []
+      responses:
+        '302':
+          description: Redirect after validated authentication step
+        default: *id001
+      parameters:
+      - name: code
+        in: query
+        required: false
+        schema: &id002
+          type: string
+      - name: state
+        in: query
+        required: false
+        schema: *id002
+      - name: error
+        in: query
+        required: false
+        schema: *id002
+  /api/owner/me:
+    get:
+      summary: Get owner identity and CSRF context
+      operationId: get_api_owner_me
+      description: Get owner identity and CSRF context
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OwnerIdentity'
+        default: *id001
+  /api/owner/logout:
+    post:
+      summary: End owner session
+      operationId: post_api_owner_logout
+      description: End owner session
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ok'
+        default: *id001
+      parameters:
+      - &id003
+        name: X-CSRF-Token
+        in: header
+        required: true
+        schema: *id002
+      - &id004
+        name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          minLength: 16
+          maxLength: 128
+  /api/owner/twitch/status:
+    get:
+      summary: Get Twitch connection health
+      operationId: get_api_owner_twitch_status
+      description: Get Twitch connection health
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwitchStatus'
+        default: *id001
+  /api/owner/twitch/disconnect:
+    post:
+      summary: Disconnect Twitch and interrupt open voting
+      operationId: post_api_owner_twitch_disconnect
+      description: Disconnect Twitch and interrupt open voting
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ok'
+        default: *id001
+      parameters:
+      - *id003
+      - *id004
+  /api/owner/sessions:
+    get:
+      summary: List owner stream sessions
+      operationId: get_api_owner_sessions
+      description: List owner stream sessions
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StreamSession'
+        default: *id001
+    post:
+      summary: Create stream session in configured provenance mode
+      operationId: post_api_owner_sessions
+      description: Create stream session in configured provenance mode
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StreamSession'
+        default: *id001
+      parameters:
+      - *id003
+      - *id004
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSession'
+  /api/owner/sessions/{sessionId}/moments:
+    get:
+      summary: List moments
+      operationId: get_api_owner_sessions_sessionId_moments
+      description: List moments
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Moment'
+        default: *id001
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        schema: *id002
+    post:
+      summary: Create DRAFT moment
+      operationId: post_api_owner_sessions_sessionId_moments
+      description: Create DRAFT moment
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Moment'
+        default: *id001
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        schema: *id002
+      - *id003
+      - *id004
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMoment'
+  /api/owner/moments/{momentId}:
+    get:
+      summary: Read creator-only moment state
+      operationId: get_api_owner_moments_momentId
+      description: Read creator-only moment state
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Moment'
+        default: *id001
+      parameters:
+      - name: momentId
+        in: path
+        required: true
+        schema: *id002
+    patch:
+      summary: Edit only while DRAFT
+      operationId: patch_api_owner_moments_momentId
+      description: Edit only while DRAFT
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Moment'
+        default: *id001
+      parameters:
+      - name: momentId
+        in: path
+        required: true
+        schema: *id002
+      - *id003
+      - *id004
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchMoment'
+    delete:
+      summary: Revoke then deliberately purge moment and files
+      operationId: delete_api_owner_moments_momentId
+      description: Must report pending cleanup honestly; full success only after deletion
+        is complete.
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ok'
+        default: *id001
+      parameters:
+      - name: momentId
+        in: path
+        required: true
+        schema: *id002
+      - *id003
+      - *id004
+  /api/owner/moments/{momentId}/open:
+    post:
+      summary: Open moment with idempotency and version check
+      operationId: post_api_owner_moments_momentId_open
+      description: Open moment with idempotency and version check
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Moment'
+        default: *id001
+      parameters:
+      - name: momentId
+        in: path
+        required: true
+        schema: *id002
+      - *id003
+      - *id004
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VersionInput'
+  /api/owner/moments/{momentId}/lock:
+    post:
+      summary: Lock moment with idempotency and version check
+      operationId: post_api_owner_moments_momentId_lock
+      description: Lock moment with idempotency and version check
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Moment'
+        default: *id001
+      parameters:
+      - name: momentId
+        in: path
+        required: true
+        schema: *id002
+      - *id003
+      - *id004
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VersionInput'
+  /api/owner/moments/{momentId}/cancel:
+    post:
+      summary: Cancel moment with idempotency and version check
+      operationId: post_api_owner_moments_momentId_cancel
+      description: Cancel moment with idempotency and version check
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Moment'
+        default: *id001
+      parameters:
+      - name: momentId
+        in: path
+        required: true
+        schema: *id002
+      - *id003
+      - *id004
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VersionInput'
+  /api/owner/moments/{momentId}/outcome:
+    post:
+      summary: Record actual creator choice and real outcome
+      operationId: post_api_owner_moments_momentId_outcome
+      description: Record actual creator choice and real outcome
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Moment'
+        default: *id001
+      parameters:
+      - name: momentId
+        in: path
+        required: true
+        schema: *id002
+      - *id003
+      - *id004
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OutcomeInput'
+  /api/owner/moments/{momentId}/media:
+    post:
+      summary: Upload authorised MP4 and queue normalisation
+      operationId: post_api_owner_moments_momentId_media
+      description: Stream bounded upload, validate/decode server-side, and retain
+        original privately. Repeated upload keys resolve only after file content hash
+        validation; different bytes with the same key are a conflict.
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '202':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueuedJob'
+        default: *id001
+      parameters:
+      - name: momentId
+        in: path
+        required: true
+        schema: *id002
+      - *id003
+      - *id004
+      - name: X-Moment-Version
+        in: header
+        required: true
+        description: Optimistic moment version before replacing the source.
+        schema:
+          type: integer
+          minimum: 1
+      - name: X-Content-SHA256
+        in: header
+        required: true
+        description: Lowercase SHA-256 of file bytes; always verified, including retries.
+        schema:
+          type: string
+          pattern: '^[a-f0-9]{64}$'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+              required:
+              - file
+              additionalProperties: false
+  /api/owner/assets/{assetId}/content:
+    get:
+      summary: Read private asset with owner authentication
+      operationId: get_api_owner_assets_assetId_content
+      description: Read private asset with owner authentication
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Full authorised file
+          content:
+            video/mp4:
+              schema:
+                type: string
+                format: binary
+        '206':
+          description: Authorised single byte-range response
+          content:
+            video/mp4:
+              schema:
+                type: string
+                format: binary
+        '416':
+          description: Invalid or unsupported Range
+        default: *id001
+      parameters:
+      - name: assetId
+        in: path
+        required: true
+        schema: *id002
+      - name: Range
+        in: header
+        required: false
+        schema: *id002
+    head:
+      summary: Inspect private asset
+      operationId: head_api_owner_assets_assetId_content
+      description: Inspect private asset
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Full authorised file
+        '206':
+          description: Authorised single byte-range response
+        '416':
+          description: Invalid or unsupported Range
+        default: *id001
+      parameters:
+      - name: assetId
+        in: path
+        required: true
+        schema: *id002
+      - name: Range
+        in: header
+        required: false
+        schema: *id002
+  /api/owner/jobs/{jobId}:
+    get:
+      summary: Read media job status
+      operationId: get_api_owner_jobs_jobId
+      description: Read media job status
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        default: *id001
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema: *id002
+  /api/owner/jobs/{jobId}/retry:
+    post:
+      summary: Retry failed immutable-input job
+      operationId: post_api_owner_jobs_jobId_retry
+      description: Retry failed immutable-input job
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '202':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        default: *id001
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema: *id002
+      - *id003
+      - *id004
+  /api/owner/moments/{momentId}/edits:
+    post:
+      summary: Create immutable edit and render job
+      operationId: post_api_owner_moments_momentId_edits
+      description: Create immutable edit and render job
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '202':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueuedEdit'
+        default: *id001
+      parameters:
+      - name: momentId
+        in: path
+        required: true
+        schema: *id002
+      - *id003
+      - *id004
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditInput'
+  /api/owner/edits/{editId}:
+    get:
+      summary: Get private processed-preview review
+      operationId: get_api_owner_edits_editId
+      description: Get private processed-preview review
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Edit'
+        default: *id001
+      parameters:
+      - name: editId
+        in: path
+        required: true
+        schema: *id002
+  /api/owner/edits/{editId}/approve:
+    post:
+      summary: Approve current output and content hashes
+      operationId: post_api_owner_edits_editId_approve
+      description: Approve current output and content hashes
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Edit'
+        default: *id001
+      parameters:
+      - name: editId
+        in: path
+        required: true
+        schema: *id002
+      - *id003
+      - *id004
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApproveInput'
+  /api/owner/moments/{momentId}/publish:
+    post:
+      summary: Publish reviewed immutable release
+      operationId: post_api_owner_moments_momentId_publish
+      description: Publish reviewed immutable release
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReleaseInfo'
+        default: *id001
+      parameters:
+      - name: momentId
+        in: path
+        required: true
+        schema: *id002
+      - *id003
+      - *id004
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishInput'
+  /api/owner/moments/{momentId}/unpublish:
+    post:
+      summary: Revoke active publication
+      operationId: post_api_owner_moments_momentId_unpublish
+      description: Revoke active publication
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ok'
+        default: *id001
+      parameters:
+      - name: momentId
+        in: path
+        required: true
+        schema: *id002
+      - *id003
+      - *id004
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VersionInput'
+  /api/owner/sessions/{sessionId}/overlay-key:
+    post:
+      summary: Rotate scoped read-only overlay capability
+      operationId: post_api_owner_sessions_sessionId_overlay_key
+      description: Rotate scoped read-only overlay capability
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OverlayKey'
+        default: *id001
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        schema: *id002
+      - *id003
+      - *id004
+  /api/owner/sessions/{sessionId}/events:
+    get:
+      summary: Stream owner projections
+      operationId: get_api_owner_sessions_sessionId_events
+      description: Stream owner projections
+      tags:
+      - Owner
+      security:
+      - ownerCookie: []
+      responses:
+        '200':
+          description: Authorised projection stream; reconnect receives fresh snapshot
+          content:
+            text/event-stream:
+              schema: *id002
+        default: *id001
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        schema: *id002
+  /api/overlay/{key}/state:
+    get:
+      summary: Read capability-scoped spoiler-free overlay
+      operationId: get_api_overlay_key_state
+      description: The path key is a high-entropy read-only capability stored hashed.
+        It is not an owner credential.
+      tags:
+      - Public
+      security: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OverlayState'
+        default: *id001
+      parameters:
+      - name: key
+        in: path
+        required: true
+        schema: *id002
+  /api/overlay/{key}/events:
+    get:
+      summary: Stream safe overlay projections
+      operationId: get_api_overlay_key_events
+      description: Stream safe overlay projections
+      tags:
+      - Public
+      security: []
+      responses:
+        '200':
+          description: Authorised projection stream; reconnect receives fresh snapshot
+          content:
+            text/event-stream:
+              schema: *id002
+        default: *id001
+      parameters:
+      - name: key
+        in: path
+        required: true
+        schema: *id002
+  /api/replay/{slug}:
+    get:
+      summary: Get spoiler-safe manifest and anonymous session context
+      operationId: get_api_replay_slug
+      description: Get spoiler-safe manifest and anonymous session context
+      tags:
+      - Public
+      security: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReplayPublic'
+        default: *id001
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        schema: *id002
+  /api/replay/{slug}/setup:
+    get:
+      summary: Read only the approved setup asset
+      operationId: get_api_replay_slug_setup
+      description: Serve only this exact active release setup, or return 410; never
+        silently swap in a different published revision.
+      tags:
+      - Public
+      security: []
+      responses:
+        '200':
+          description: Full authorised file
+          content:
+            video/mp4:
+              schema:
+                type: string
+                format: binary
+        '206':
+          description: Authorised single byte-range response
+          content:
+            video/mp4:
+              schema:
+                type: string
+                format: binary
+        '416':
+          description: Invalid or unsupported Range
+        default: *id001
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        schema: *id002
+      - name: Range
+        in: header
+        required: false
+        schema: *id002
+      - name: releaseId
+        in: query
+        required: true
+        schema:
+          type: string
+    head:
+      summary: Read only the approved setup asset
+      operationId: head_api_replay_slug_setup
+      description: Serve only this exact active release setup, or return 410; never
+        silently swap in a different published revision.
+      tags:
+      - Public
+      security: []
+      responses:
+        '200':
+          description: Full authorised file
+        '206':
+          description: Authorised single byte-range response
+        '416':
+          description: Invalid or unsupported Range
+        default: *id001
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        schema: *id002
+      - name: Range
+        in: header
+        required: false
+        schema: *id002
+      - name: releaseId
+        in: query
+        required: true
+        schema:
+          type: string
+  /api/replay/{slug}/attempts:
+    post:
+      summary: Commit personal first choice for exact active release
+      operationId: post_api_replay_slug_attempts
+      description: Commit personal first choice for exact active release
+      tags:
+      - Replay
+      security:
+      - viewerCookie: []
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReplayUnlock'
+        default: *id001
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        schema: *id002
+      - *id003
+      - *id004
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChoiceInput'
+  /api/replay/{slug}/attempt:
+    get:
+      summary: Restore this browser session attempt without other sessions data
+      operationId: get_api_replay_slug_attempt
+      description: Returns 404 if this session has no attempt. Never returns a different
+        session attempt.
+      tags:
+      - Replay
+      security:
+      - viewerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReplayUnlock'
+        default: *id001
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        schema: *id002
+  /api/replay/attempts/{attemptId}/reveal:
+    get:
+      summary: Read reveal only for owning committed replay session
+      operationId: get_api_replay_attempts_attemptId_reveal
+      description: Read reveal only for owning committed replay session
+      tags:
+      - Replay
+      security:
+      - viewerCookie: []
+      responses:
+        '200':
+          description: Full authorised file
+          content:
+            video/mp4:
+              schema:
+                type: string
+                format: binary
+        '206':
+          description: Authorised single byte-range response
+          content:
+            video/mp4:
+              schema:
+                type: string
+                format: binary
+        '416':
+          description: Invalid or unsupported Range
+        default: *id001
+      parameters:
+      - name: attemptId
+        in: path
+        required: true
+        schema: *id002
+      - name: Range
+        in: header
+        required: false
+        schema: *id002
+    head:
+      summary: Read reveal only for owning committed replay session
+      operationId: head_api_replay_attempts_attemptId_reveal
+      description: Read reveal only for owning committed replay session
+      tags:
+      - Replay
+      security:
+      - viewerCookie: []
+      responses:
+        '200':
+          description: Full authorised file
+        '206':
+          description: Authorised single byte-range response
+        '416':
+          description: Invalid or unsupported Range
+        default: *id001
+      parameters:
+      - name: attemptId
+        in: path
+        required: true
+        schema: *id002
+      - name: Range
+        in: header
+        required: false
+        schema: *id002
+  /api/replay/attempts/{attemptId}/result:
+    get:
+      summary: Get outcome and frozen historical comparison after choice
+      operationId: get_api_replay_attempts_attemptId_result
+      description: Get outcome and frozen historical comparison after choice
+      tags:
+      - Replay
+      security:
+      - viewerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReplayResult'
+        default: *id001
+      parameters:
+      - name: attemptId
+        in: path
+        required: true
+        schema: *id002
+  /api/replay/attempts/{attemptId}/complete:
+    post:
+      summary: Idempotently mark replay complete without changing choice
+      operationId: post_api_replay_attempts_attemptId_complete
+      description: Idempotently mark replay complete without changing choice
+      tags:
+      - Replay
+      security:
+      - viewerCookie: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ok'
+        default: *id001
+      parameters:
+      - name: attemptId
+        in: path
+        required: true
+        schema: *id002
+      - *id003
+      - *id004
+  /health/live:
+    get:
+      summary: Process liveness
+      operationId: get_health_live
+      description: Process liveness
+      tags:
+      - Public
+      security: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+        default: *id001
+  /health/ready:
+    get:
+      summary: Storage/database/media-tool readiness
+      operationId: get_health_ready
+      description: Storage/database/media-tool readiness
+      tags:
+      - Public
+      security: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+        default: *id001
+components:
+  securitySchemes:
+    ownerCookie:
+      type: apiKey
+      in: cookie
+      name: pm_owner
+    viewerCookie:
+      type: apiKey
+      in: cookie
+      name: pm_viewer
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code: *id002
+            message: *id002
+            requestId: *id002
+            retryable:
+              type: boolean
+          required:
+          - code
+          - message
+          - requestId
+          - retryable
+          additionalProperties: false
+      required:
+      - error
+      additionalProperties: false
+    VersionInput:
+      type: object
+      properties:
+        expectedVersion:
+          type: integer
+          minimum: 1
+      required:
+      - expectedVersion
+      additionalProperties: false
+    CreateSession:
+      type: object
+      properties:
+        label:
+          type: string
+          minLength: 1
+          maxLength: 80
+      required:
+      - label
+      additionalProperties: false
+    CreateMoment:
+      type: object
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 80
+        question:
+          type: string
+          minLength: 1
+          maxLength: 180
+        optionA:
+          type: string
+          minLength: 1
+          maxLength: 80
+        optionB:
+          type: string
+          minLength: 1
+          maxLength: 80
+        durationSeconds:
+          type: integer
+          minimum: 20
+          maximum: 180
+          default: 45
+      required:
+      - title
+      - question
+      - optionA
+      - optionB
+      - durationSeconds
+      additionalProperties: false
+    PatchMoment:
+      type: object
+      properties:
+        expectedVersion:
+          type: integer
+          minimum: 1
+        title:
+          type: string
+          minLength: 1
+          maxLength: 80
+        question:
+          type: string
+          minLength: 1
+          maxLength: 180
+        optionA:
+          type: string
+          minLength: 1
+          maxLength: 80
+        optionB:
+          type: string
+          minLength: 1
+          maxLength: 80
+        durationSeconds:
+          type: integer
+          minimum: 20
+          maximum: 180
+      required:
+      - expectedVersion
+      additionalProperties: false
+    OutcomeInput:
+      type: object
+      properties:
+        expectedVersion:
+          type: integer
+          minimum: 1
+        creatorChoice: &id006
+          type: string
+          enum:
+          - A
+          - B
+        outcomeSummary:
+          type: string
+          minLength: 1
+          maxLength: 500
+        resolvedAnswer:
+          type:
+          - string
+          - 'null'
+          enum:
+          - A
+          - B
+          - null
+      required:
+      - expectedVersion
+      - creatorChoice
+      - outcomeSummary
+      additionalProperties: false
+    EditInput:
+      type: object
+      properties:
+        expectedVersion:
+          type: integer
+          minimum: 1
+        masterAssetId: *id002
+        setupStartMs: &id005
+          type: integer
+          minimum: 0
+        setupEndMs: *id005
+        revealStartMs: *id005
+        revealEndMs: *id005
+      required:
+      - expectedVersion
+      - masterAssetId
+      - setupStartMs
+      - setupEndMs
+      - revealStartMs
+      - revealEndMs
+      additionalProperties: false
+    ApproveInput:
+      type: object
+      properties:
+        editVersion:
+          type: integer
+          minimum: 1
+        reviewHash: *id002
+        watchedSetup:
+          const: true
+        watchedReveal:
+          const: true
+        audioChecked:
+          const: true
+        rightsConfirmed:
+          const: true
+        metadataChecked:
+          const: true
+      required:
+      - editVersion
+      - reviewHash
+      - watchedSetup
+      - watchedReveal
+      - audioChecked
+      - rightsConfirmed
+      - metadataChecked
+      additionalProperties: false
+    PublishInput:
+      type: object
+      properties:
+        expectedVersion:
+          type: integer
+          minimum: 1
+        editId: *id002
+        reviewHash: *id002
+      required:
+      - expectedVersion
+      - editId
+      - reviewHash
+      additionalProperties: false
+    ChoiceInput:
+      type: object
+      properties:
+        releaseId: *id002
+        optionId: *id006
+      required:
+      - releaseId
+      - optionId
+      additionalProperties: false
+    ReplayPublic:
+      type: object
+      properties:
+        slug: *id002
+        releaseId: *id002
+        title:
+          type: string
+          maxLength: 80
+        question:
+          type: string
+          maxLength: 180
+        options:
+          type: array
+          items: &id008
+            type: object
+            properties:
+              id: *id006
+              label:
+                type: string
+                minLength: 1
+                maxLength: 80
+            required:
+            - id
+            - label
+            additionalProperties: false
+          minItems: 2
+          maxItems: 2
+        mode: &id007
+          type: string
+          enum:
+          - REAL_TWITCH
+          - DEMO
+        setup:
+          type: object
+          properties:
+            url:
+              type: string
+              pattern: ^/api/replay/[^/]+/setup\?releaseId=[A-Za-z0-9_-]+$
+            durationMs:
+              type: integer
+              minimum: 1
+          required:
+          - url
+          - durationMs
+          additionalProperties: false
+        csrfToken: *id002
+      required:
+      - slug
+      - releaseId
+      - title
+      - question
+      - options
+      - mode
+      - setup
+      - csrfToken
+      additionalProperties: false
+    ReplayUnlock:
+      type: object
+      properties:
+        attemptId: *id002
+        releaseId: *id002
+        optionId: *id006
+        revealUrl:
+          type: string
+          pattern: ^/api/replay/attempts/[^/]+/reveal$
+      required:
+      - attemptId
+      - releaseId
+      - optionId
+      - revealUrl
+      additionalProperties: false
+    HistoricalSplit:
+      type: object
+      properties:
+        countA: *id005
+        countB: *id005
+        total: *id005
+        mode: *id007
+        lockedAtMs: *id005
+      required:
+      - countA
+      - countB
+      - total
+      - mode
+      - lockedAtMs
+      additionalProperties: false
+    ReplayResult:
+      type: object
+      properties:
+        attemptId: *id002
+        yourChoice: *id006
+        creatorChoice: *id006
+        outcomeSummary: *id002
+        resolvedAnswer:
+          type:
+          - string
+          - 'null'
+          enum:
+          - A
+          - B
+          - null
+        historical:
+          $ref: '#/components/schemas/HistoricalSplit'
+      required:
+      - attemptId
+      - yourChoice
+      - creatorChoice
+      - outcomeSummary
+      - resolvedAnswer
+      - historical
+      additionalProperties: false
+    Job:
+      type: object
+      properties:
+        id: *id002
+        status:
+          enum:
+          - QUEUED
+          - RUNNING
+          - SUCCEEDED
+          - FAILED
+        progressPercent:
+          type: integer
+          minimum: 0
+          maximum: 100
+        errorCode:
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - status
+      - progressPercent
+      - errorCode
+      additionalProperties: false
+    QueuedJob:
+      type: object
+      properties:
+        assetId: *id002
+        jobId: *id002
+      required:
+      - assetId
+      - jobId
+      additionalProperties: false
+    QueuedEdit:
+      type: object
+      properties:
+        editId: *id002
+        jobId: *id002
+        editVersion:
+          type: integer
+          minimum: 1
+      required:
+      - editId
+      - jobId
+      - editVersion
+      additionalProperties: false
+    ReleaseInfo:
+      type: object
+      properties:
+        releaseId: *id002
+        version:
+          type: integer
+          minimum: 1
+        slug: *id002
+        url: *id002
+      required:
+      - releaseId
+      - version
+      - slug
+      - url
+      additionalProperties: false
+    OwnerIdentity:
+      type: object
+      properties:
+        creatorId: *id002
+        twitchUserId: *id002
+        login: *id002
+        csrfToken: *id002
+        mode: *id007
+      required:
+      - creatorId
+      - twitchUserId
+      - login
+      - csrfToken
+      - mode
+      additionalProperties: false
+    TwitchStatus:
+      type: object
+      properties:
+        state:
+          enum:
+          - DISCONNECTED
+          - CONNECTING
+          - SUBSCRIBING
+          - READY
+          - RECONNECTING
+          - REAUTH_REQUIRED
+          - ERROR
+        channelId:
+          type:
+          - string
+          - 'null'
+        lastHealthyAtMs:
+          type:
+          - integer
+          - 'null'
+        safeMessage: *id002
+      required:
+      - state
+      - channelId
+      - lastHealthyAtMs
+      - safeMessage
+      additionalProperties: false
+    StreamSession:
+      type: object
+      properties:
+        id: *id002
+        label: *id002
+        channelId: *id002
+        mode: *id007
+        status:
+          enum:
+          - ACTIVE
+          - ENDED
+        createdAtMs: *id005
+      required:
+      - id
+      - label
+      - channelId
+      - mode
+      - status
+      - createdAtMs
+      additionalProperties: false
+    Moment:
+      type: object
+      properties:
+        id: *id002
+        sessionId: *id002
+        code: *id002
+        publicSlug: *id002
+        title: *id002
+        question: *id002
+        optionA: *id002
+        optionB: *id002
+        durationSeconds:
+          type: integer
+        captureState:
+          enum:
+          - DRAFT
+          - OPEN
+          - LOCKED
+          - OUTCOME_RECORDED
+          - INTERRUPTED
+          - CANCELLED
+        version:
+          type: integer
+        openedAtMs:
+          type:
+          - integer
+          - 'null'
+        deadlineAtMs:
+          type:
+          - integer
+          - 'null'
+        lockedAtMs:
+          type:
+          - integer
+          - 'null'
+        creatorChoice:
+          type:
+          - string
+          - 'null'
+          enum:
+          - A
+          - B
+          - null
+        outcomeSummary:
+          type:
+          - string
+          - 'null'
+        historical:
+          anyOf:
+          - $ref: '#/components/schemas/HistoricalSplit'
+          - type: 'null'
+      required:
+      - id
+      - sessionId
+      - code
+      - publicSlug
+      - title
+      - question
+      - optionA
+      - optionB
+      - durationSeconds
+      - captureState
+      - version
+      - openedAtMs
+      - deadlineAtMs
+      - lockedAtMs
+      - creatorChoice
+      - outcomeSummary
+      - historical
+      additionalProperties: false
+    OverlayState:
+      type: object
+      properties:
+        connected:
+          type: boolean
+        mode: *id007
+        phase:
+          enum:
+          - IDLE
+          - OPEN
+          - CLOSED
+          - INTERRUPTED
+        question:
+          type:
+          - string
+          - 'null'
+        options:
+          type: array
+          items: *id008
+          maxItems: 2
+        code:
+          type:
+          - string
+          - 'null'
+        deadlineAtMs:
+          type:
+          - integer
+          - 'null'
+        serverTimeMs: *id005
+        totalAccepted: *id005
+        revision:
+          type: integer
+          minimum: 0
+      required:
+      - connected
+      - mode
+      - phase
+      - question
+      - options
+      - code
+      - deadlineAtMs
+      - serverTimeMs
+      - totalAccepted
+      - revision
+      additionalProperties: false
+    Edit:
+      type: object
+      properties:
+        id: *id002
+        version:
+          type: integer
+        status:
+          enum:
+          - DRAFT
+          - QUEUED
+          - RENDERING
+          - NEEDS_REVIEW
+          - APPROVED
+          - FAILED
+        masterAssetId: *id002
+        setupStartMs: *id005
+        setupEndMs: *id005
+        revealStartMs: *id005
+        revealEndMs: *id005
+        setupPreviewUrl:
+          type:
+          - string
+          - 'null'
+        revealPreviewUrl:
+          type:
+          - string
+          - 'null'
+        reviewHash:
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - version
+      - status
+      - masterAssetId
+      - setupStartMs
+      - setupEndMs
+      - revealStartMs
+      - revealEndMs
+      - setupPreviewUrl
+      - revealPreviewUrl
+      - reviewHash
+      additionalProperties: false
+    OverlayKey:
+      type: object
+      properties:
+        url: *id002
+        keyId: *id002
+      required:
+      - url
+      - keyId
+      additionalProperties: false
+    Ok:
+      type: object
+      properties:
+        ok:
+          const: true
+      required:
+      - ok
+      additionalProperties: false
+    Health:
+      type: object
+      properties:
+        status:
+          enum:
+          - ok
+          - not_ready
+      required:
+      - status
+      additionalProperties: false

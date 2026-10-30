@@ -1,0 +1,148 @@
+{
+  "date": "2026-10-28T10:49:53.850Z",
+  "scope": "Synthetic provider/socket fixtures through real EventSub validation and SQLite transactions. No Twitch network, engagement or unique-person claim. Render idle. Finite bursts; not proof of overload protection at unbounded input rates.",
+  "hardware": {
+    "platform": "linux",
+    "arch": "x64",
+    "cpu": "Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz",
+    "visibleCpuCount": 12,
+    "node": "v24.22.1",
+    "cpuMax": "200000 100000",
+    "memoryMax": "3221225472",
+    "hostMemoryBytes": 8259842048
+  },
+  "method": {
+    "scheduledLatency": "Includes intended dispatch delay to avoid hiding burst backlog",
+    "receiptLatency": "Synchronous actual vote transaction return; filesystem durability uses SQLite configuration, not power-loss testing",
+    "burst": "1000 already-available events in one finite batch; lock inserted after event500",
+    "limits": "Production guard interrupts at 1024 pending handlers; separately regression-tested. This finite benchmark is not sustained-overload acceptance. Event-loop histogram is omitted for synchronous bursts because it cannot observe that blocking batch; scheduled latency exposes the backlog."
+  },
+  "cases": [
+    {
+      "kind": "paced-35-per-second",
+      "inputEvents": 1050,
+      "accepted": 1000,
+      "rejectedBeforeLateProbe": 50,
+      "lateProbeRejected": true,
+      "elapsedMs": 29991.49,
+      "eventsPerSecond": 35.01,
+      "receiptToPersist": {
+        "count": 1000,
+        "p50Ms": 1,
+        "p95Ms": 2.618,
+        "p99Ms": 10.649,
+        "maxMs": 30.103
+      },
+      "scheduledToPersist": {
+        "count": 1000,
+        "p50Ms": 1.262,
+        "p95Ms": 3.362,
+        "p99Ms": 13.868,
+        "maxMs": 31.015
+      },
+      "allTransactionCalls": {
+        "count": 1051,
+        "p50Ms": 0.956,
+        "p95Ms": 2.599,
+        "p99Ms": 10.643,
+        "maxMs": 30.097
+      },
+      "rssBeforeBytes": 101433344,
+      "peakRssBytes": 136691712,
+      "peakOutstandingHandlerPromises": 1,
+      "eventLoopP95Ms": 11.198,
+      "cpuMs": 2366.689,
+      "snapshot": {
+        "countA": 500,
+        "countB": 500,
+        "total": 1000,
+        "mode": "REAL_TWITCH",
+        "lockedAtMs": 1793184592069
+      }
+    },
+    {
+      "kind": "burst-1000",
+      "inputEvents": 1000,
+      "accepted": 1000,
+      "rejectedBeforeLateProbe": 0,
+      "lateProbeRejected": true,
+      "elapsedMs": 1129.12,
+      "eventsPerSecond": 885.65,
+      "receiptToPersist": {
+        "count": 1000,
+        "p50Ms": 0.521,
+        "p95Ms": 1.541,
+        "p99Ms": 9.495,
+        "maxMs": 26.844
+      },
+      "scheduledToPersist": {
+        "count": 1000,
+        "p50Ms": 566.949,
+        "p95Ms": 1062.091,
+        "p99Ms": 1086.963,
+        "maxMs": 1093.759
+      },
+      "allTransactionCalls": {
+        "count": 1001,
+        "p50Ms": 0.52,
+        "p95Ms": 1.537,
+        "p99Ms": 9.493,
+        "maxMs": 26.841
+      },
+      "rssBeforeBytes": 138919936,
+      "peakRssBytes": 180469760,
+      "peakOutstandingHandlerPromises": 1001,
+      "eventLoopP95Ms": null,
+      "cpuMs": 913.983,
+      "snapshot": {
+        "countA": 500,
+        "countB": 500,
+        "total": 1000,
+        "mode": "REAL_TWITCH",
+        "lockedAtMs": 1793184593250
+      }
+    },
+    {
+      "kind": "lock-mid-burst",
+      "inputEvents": 1000,
+      "accepted": 500,
+      "rejectedBeforeLateProbe": 500,
+      "lateProbeRejected": true,
+      "elapsedMs": 580.67,
+      "eventsPerSecond": 1722.15,
+      "receiptToPersist": {
+        "count": 500,
+        "p50Ms": 0.453,
+        "p95Ms": 0.956,
+        "p99Ms": 6.923,
+        "maxMs": 23.67
+      },
+      "scheduledToPersist": {
+        "count": 500,
+        "p50Ms": 244.236,
+        "p95Ms": 438.298,
+        "p99Ms": 447.855,
+        "maxMs": 450.838
+      },
+      "allTransactionCalls": {
+        "count": 1001,
+        "p50Ms": 0.347,
+        "p95Ms": 0.761,
+        "p99Ms": 6.357,
+        "maxMs": 23.668
+      },
+      "rssBeforeBytes": 180600832,
+      "peakRssBytes": 185188352,
+      "peakOutstandingHandlerPromises": 1001,
+      "eventLoopP95Ms": null,
+      "cpuMs": 529.273,
+      "snapshot": {
+        "countA": 250,
+        "countB": 250,
+        "total": 500,
+        "mode": "REAL_TWITCH",
+        "lockedAtMs": 1793184593707
+      }
+    }
+  ]
+}

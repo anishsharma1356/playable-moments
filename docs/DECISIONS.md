@@ -1,0 +1,85 @@
+# Decision log
+- 2026-10-28: Harden Twitch reconnect ownership with an attempt generation and preserve the fixed directed-handover deadline when the old socket receives more messages. Both defects were reproduced by regression tests. Negotiate a 30-second keepalive while honoring the welcome value, retain the bounded two-second grace and fail-closed interruption, and expose only bounded owner-only timing/counter diagnostics. The historical Q72G timeout cannot be causally attributed without the diagnostics absent from that run; see `TWITCH_RELIABILITY.md`.
+- 2026-10-28: User authorized independent M3 hardening while real participants are unavailable. Creator erasure removes database access atomically and uses a separate durable file-removal queue, so Windows file locks or process crashes cannot leave a publicly accessible half-deleted release. Running uploads/encoders and OPEN rounds must finish/close first. Only generated files in the managed media directory are removed.
+- 2026-10-28: Scrub cached response content on moment erasure but retain opaque expiring retry metadata marked 410, preventing delayed create retries from recreating deleted content. This is application-level deletion, not a secure-overwrite or external-backup erasure claim. Preserve master/edit/release revisions until explicit erasure.
+- 2026-10-28: Use native HTML dialogs for publication/deletion focus handling; add viewer-session choice erasure and periodic expiry cleanup. No new dependencies or external services are introduced. M2/M3 live acceptance remains pending real viewers and creator review.
+- 2026-10-27: M2 implementation uses Node 24's native WebSocket client and fixed Twitch provider endpoints; no additional runtime dependency was required. Startup and 55-minute token validation, single-flight refresh, authenticated encryption and session generation checks protect real owner access.
+- 2026-10-27: Preserve the user's demo using separate `.env.twitch` / `data/twitch` and a dedicated Windows launcher. A private interactive setup script resolves the explicitly entered broadcaster username through Twitch's API and generates independent keys; it does not adopt the first account that signs in.
+- 2026-10-27: M2 remains local-only. The genuine Twitch/OBS gate is pending user setup and real participants even though automated provider fixtures pass. Production mode is still rejected pending M4.
+- 2026-10-27: Overlay URLs are read-only capabilities scoped to a stream session, expire after 12 hours, and can be replaced. Public overlay DTOs are explicit allowlists and never reuse owner workspace objects.
+- 2026-10-26: Playable Moments only; preserve original live choices and actual outcome.
+- 2026-10-26: One broadcaster, two options, mandatory moment code, first accepted account vote.
+- 2026-10-26: Single Fastify deployment, SQLite, SSE, outbound EventSub WSS, bounded FFmpeg process.
+- 2026-10-26: Manual authorised recording upload; no automated OBS capture dependency.
+- 2026-10-26: Separate setup/reveal assets, creator approval, immutable publication; no pause-timer-only gating.
+- 2026-10-26: No runtime AI, infrastructure expansion, or return to prior brainstormed products.
+
+## M0/M1 implementation decisions — 26 October 2026
+
+- Imported the ZIP into a fresh `playable-moments` folder and merged only the supplied v2 start/context additions. Original README is preserved as `HANDOFF_README.md`; original handoff checksums are not implementation checksums.
+- The schema remains baseline 1.0, applied as versioned `apps/server/migrations/001_initial.sql`. No schema relaxation was needed. Separate strict TypeScript workspace directories share dependencies pinned centrally at the root.
+- M1 is explicitly `APP_MODE=demo`, loopback-only, and refuses production/real mode. `POST /auth/demo` checks Host, Origin and actual peer address before issuing a session. No automatic owner authorization on a public read. M2 must replace this bootstrap before hosting.
+- The reference upload contract omitted an optimistic version and a wire representation for retry content identity. Added `X-Moment-Version` and `X-Content-SHA256` to the API contract and implementation. Uploaded bytes are hashed on every request, including retries. A changed digest or version cannot silently reuse a key. Multipart stays file-only, avoiding field-order dependencies. The browser currently hashes its selected file in memory; server intake streams.
+- Local bootstrap, fixture creation, library and owner-workspace projection are documented in `contracts/m1-local.openapi.yaml`. They are demo conveniences, never real integration endpoints. Baseline publication/attempt creation return 201, and a missing current attempt returns 404 as specified.
+- All relevant content/source replacements invalidate approval. Rendering produces immutable new assets/revisions. Approval and publication reread file hashes. Explicit unpublish revokes subsequent exact-release media/result access.
+- Initial format probing occurs before upload 202. Expensive normalization and split encoding are durable queued jobs. Progress is honest phase progress (5/50/100), not claimed frame-level completion. A job uses one encoding subprocess at a time, two encoder threads and a total ten-minute deadline; at most three attempts. Reclaimed jobs generate new outputs. Orphan cleanup beyond private temporary files remains M3.
+- Removed npm-bundled FFmpeg 6.1.1/FFprobe 4.0.2 after checking their actual versions. Installed checksum-verified FFmpeg/FFprobe 9.0.2 from Gyan, linked by FFmpeg's official download page. Binary archive SHA-256: `60f467265b1e312373dbcd92200c2618a74850f98d3d078e94296bb3fa2047ba`. Tools and their licence files stay local/ignored. See https://ffmpeg.org/download.html and https://www.gyan.dev/ffmpeg/builds/.
+- `pnpm run doctor` is the documented invocation because pnpm 11's built-in `doctor` shadows the project shorthand. The required package script exists.
+- `DATA_DIR` owns the M1 database path. Future OAuth, token secrets, overlay limits and deployment settings in the supplied environment template are reserved; they are not implemented merely because the placeholders exist.
+- Kept the supplied M2–M5 boundaries. No accounts, remote repository, publication to hosting, real Twitch evidence, presentation deck or submission was created.
+
+## Deployment and accessibility preparation — 28 October 2026
+
+- Replace the blanket production rejection with explicit real-mode/HTTPS/exact-origin/callback validation so hosted behavior can be tested locally. Local/demo bindings remain loopback-only. This enables preparation, not a public launch claim.
+- Hosted ingress is exactly one private Caddy hop, without a published API port. Owner/OAuth local-address checks apply only to local mode; hosted mode retains the broadcaster allowlist, session authorization, CSRF, exact Host/Origin and secure OAuth/session cookies.
+- Add stopped-app backup/restore commands using SQLite backup plus database-linked media hashes. The CLI requires an operator stop assertion and refuses existing destinations; it is not a process-lock detector. Secrets remain a separate backup responsibility.
+- Container templates are not marked runtime-verified: Docker Desktop's Linux engine was unreachable. Production base images/packages still need digest recording, vulnerability/license checks and a real host rehearsal.
+- Accessibility combines axe scans with keyboard/focus/reflow tests and screenshot inspection. Incomplete rules and missing caption/audio-description support remain explicit human/content acceptance gaps. Automated success does not establish WCAG compliance.
+
+## Container verification and security findings — 28 October 2026
+
+- Supersede the earlier Docker-unavailable status: repair only verified temporary socket directories, preserve them by rename, and retain all data volumes. The resulting Linux engine ran the real compiled image and FFmpeg workflow.
+- Pin tested Node/Caddy base digests; install production dependencies with the frozen lockfile and remove package managers from the runtime. Keep all build/test tools in build stages or on the developer machine. Debian packages still resolve from their repository at build time; save image digest and scan inventory for each promotion.
+- Test TLS in an internal Docker network with a temporary CA explicitly passed to the client; never disable certificate validation or install that CA into Windows. This does not establish public-port reachability, public certificate issuance or real hosted OAuth.
+- Scan image archives offline with Trivy and a separately refreshed DB, without mounting the Docker socket or uploading images. Keep unresolved advisories visible. The Bookworm/media and Caddy reports require remediation or evidence-backed dispositions before promotion; functional smoke success does not override them. License inventory is not license-compliance approval.
+
+## Dependency hardening — 28 October 2026
+
+- Use digest-pinned Node 24/Trixie and a constrained FFmpeg source build for Linux deployment. A newer distribution FFmpeg alone still left a large unused dependency tree. Keep native decoders plus x264/dav1d support, but compile out network protocols and non-MP4 input formats. App architecture, authorized MP4 upload, private master and separately encoded outputs are unchanged.
+- Treat source-build visibility as a separate security obligation. Query the exact source commit against OSV, retain archive/patch checksums, and use upstream backports for two relevant findings with failing-before/passing-after regressions. Do not describe package-scan reductions as proof of source security. Four backports remain an explicit maintenance responsibility until superseded by a supported upstream release.
+- Build Caddy from official modules and committed Go lockfiles with the tested toolchain, including x/net v0.62.0 and Go JOSE v4.1.6. Use a static non-root runtime, retained license notices, disabled admin API and read-only configuration. The residual Go JOSE v3 dependency is documented, not hidden; no visitor JWK/provisioner endpoint is configured. Existing certificate volumes require explicit backed-up ownership migration.
+- Retain the 44 high package/advisory occurrences and lower/unknown findings in raw reports. Record only scoped prerequisite/reachability assessments supported by config/code/runtime checks. Public promotion and distribution review remain separate gates; no paid host or public launch follows from local preparation.
+
+## Load and media alternatives — 28 October 2026
+
+- Measure scheduled-to-persist alongside transaction latency so finite synchronous bursts cannot hide their wait time. Keep vote fixtures network-disabled and video fixtures on private certificate-verified HTTPS. Short range delivery is distinct from browser playback, sustained load and Internet capacity.
+- Cap pending EventSub handlers at 1,024; fail closed by interrupting the open round rather than dropping input while presenting a complete tally. Track-handler bounds do not prove bounded OS/network buffers.
+- Add optional English plain-text WebVTT and descriptive text inside existing immutable edit revisions. Keep setup/reveal separate, validate times against each processed duration, include nonempty alternatives in review hashes and use existing attempt/session/revocation gates. Empty alternatives retain legacy approval hashes. New text requires a new reviewed revision; no silent change to the approved local recording.
+- Recreate the production dependency tree from the offline locked cache. Top-level missing dev symlinks did not prove the pnpm virtual store was clean; verify both.
+- Prepare submission materials locally and in a private saved deck. Repository/license selection, public posting and hosting costs remain user decisions. Existing real rehearsals and synthetic evidence must remain labelled distinctly.
+# Minimal Linux runtime and release boundary — 28 October 2026
+
+- Select required Node/FFmpeg/FFprobe/addon libraries from the tested Debian build into a scratch final image. Keep the original package/version records, exact runtime hashes, CA certificates and full component/common license texts. Omitting unused executable packages is an actual reduction in runtime contents; do not lower scanner counts by concealing retained libraries.
+- Support the verified Linux x64 target only for this build. The final image has no shell/package manager; rebuild to patch it, and use Node for operator commands. Keep runtime checks compatible with this boundary and retain an older local image tag for rollback.
+- Keep the 26 lower-severity app occurrences and proxy's high/unknown findings visible. Document prerequisite/reachability limits without equating non-root operation to a fix. Do not introduce an unreviewed libc upgrade or cryptographic fork solely to zero the report.
+- Prepare the submission as source and build instructions, excluding binary/image archives. Retain upstream FFmpeg patch attribution and GPL text. A future binary release requires its own corresponding-source/materials review. The original project's license requires Anish's choice; the prepared MIT proposal is not active authorization.
+
+## Applied license and prepared hosting plan — 28 October 2026
+
+- Anish subsequently delegated the license decision. Use MIT with copyright 2026 Anish for original code; leave third-party patches/notices/assets under their existing terms. Root LICENSE is authoritative and is included in future application builds. Keep workspace packages private; an MIT choice does not publish the repository or enable npm publication.
+- Verify a clean source extraction through frozen installation, production build, retained notices and all nine synthetic workflow/recovery checks. Preserve the previously scanned local image identity; keep this licensed source-build image separately tagged until actual host validation/rescanning.
+- Recommend the exact DigitalOcean Basic/Regular 2-vCPU/4-GiB bundled plan for an initial measured public host, subject to the user's budget and current checkout availability. Do not substitute an uncapped v5 configuration or add paid services silently. The next user input is spending/account availability, not another license confirmation.
+
+## Submission versus public launch — 28 October 2026
+
+- After the user asked about avoiding hosting, rechecked official Section 4 and the FAQ. The published access mechanism is an accessible runnable repository; a public app deployment is not explicitly listed. Prioritize a reproducible local application and actual Twitch/Codex video for submission. The earlier paid-host recommendation is optional public-launch preparation, not a submission prerequisite.
+- Preserve the distinction between contest rules and our product test plan. The two-independent-viewer test improves acceptance evidence but is not an explicit contest participant-count rule. Keep real versus synthetic and local versus publicly deployed claims accurate.
+- No spending was authorized by the hosting question. Continue no-cost preparation; the host plan remains available if later chosen. Judges need required code/assets/instructions and access for the judging period, not the user's private secrets.
+
+## Isolated local judge setup — 28 October 2026
+
+- Add a dedicated Windows evaluation launcher at `127.0.0.1:5180` with backend `127.0.0.1:3010`, fixed DEMO mode and `data/judge-demo`. An IP origin keeps its cookies separate from the creator's `localhost` Twitch session. Preserve existing startup scripts and real data.
+- Generate original synthetic video and label all 12 seeded responses as synthetic. Require normal review/publication in the interactive guide. Do not ship personal recordings, installed binaries or Twitch credentials in the source archive.
+- Pin pnpm through npx rather than requiring a global installation. Require an updated Node 24 runtime; a private portable runtime may be used when present but is not redistributed. Check the Windows FFmpeg checksum and retain the separate Windows/Linux security scope.
+- Force the child configuration and strip inherited credential/dotenv override variables. Verify this isolation explicitly with conflicting parent settings. A successful clean-copy setup with installed build tools/cache is not described as testing a different fresh computer.
+- Complete human content/accessibility review next. Preserve the already approved real release; any new captions or text are a new revision requiring review. Automated synthetic approval and muted playback do not replace a person's review.

@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-28",
+  "scope": "Evidence for this exact non-root, capability-free, no-new-privileges deployment; not a general statement about vulnerable packages",
+  "uid": 1000,
+  "capabilities": "none",
+  "noNewPrivileges": true,
+  "absent": [
+    "systemd-homed",
+    "setfacl",
+    "Perl Archive::Tar"
+  ],
+  "runtimeLinkage": {
+    "node": [
+      "/lib64/ld-linux-x86-64.so.2",
+      "libc.so.6",
+      "libdl.so.2",
+      "libgcc_s.so.1",
+      "libm.so.6",
+      "libpthread.so.0",
+      "libstdc++.so.6",
+      "linux-vdso.so.1"
+    ],
+    "ffmpeg": [
+      "/lib64/ld-linux-x86-64.so.2",
+      "libc.so.6",
+      "libdav1d.so.7",
+      "libm.so.6",
+      "libx264.so.164",
+      "linux-vdso.so.1"
+    ],
+    "ffprobe": [
+      "/lib64/ld-linux-x86-64.so.2",
+      "libc.so.6",
+      "libdav1d.so.7",
+      "libm.so.6",
+      "libx264.so.164",
+      "linux-vdso.so.1"
+    ],
+    "linux-x64.node": [
+      "/lib64/ld-linux-x86-64.so.2",
+      "libc.so.6",
+      "libgcc_s.so.1",
+      "libm.so.6",
+      "libstdc++.so.6",
+      "linux-vdso.so.1"
+    ]
+  }
+}

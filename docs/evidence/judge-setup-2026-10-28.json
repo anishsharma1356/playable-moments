@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-28",
+  "scope": "Clean-copy Windows x64 interactive judge setup on the existing machine. Existing Python/Visual Studio and pnpm cache were available; not a separate fresh machine.",
+  "node": "24.22.1",
+  "nodeArchiveSha256": "d2046d28c2c3dcd211ac5145c0bf30e2047ef9dfb306693c8c6e2eccd8b95fa5",
+  "pnpm": "11.25.0 via npx; no global pnpm required",
+  "ffmpeg": "9.0.2 Windows essentials, checksum-pinned; separate from patched Linux build",
+  "ffmpegArchiveSha256": "60f467265b1e312373dbcd92200c2618a74850f98d3d078e94296bb3fa2047ba",
+  "fixtureSha256": "2217bc93449a94caacafa046f29a2bb6ea9ec01cd993c97d1ec00dd85aa04d12",
+  "freshInstall": "passed",
+  "sqliteMigrationsAndDoctor": "passed",
+  "originalFixtureGeneration": "passed",
+  "repeatPreparation": "passed; existing moments preserved",
+  "loopback": "127.0.0.1:5180 and 127.0.0.1:3010 only",
+  "inheritedRealModeIsolation": "passed with APP_MODE=real, NODE_ENV=production, HOST=0.0.0.0, unrelated DATA_DIR and DOTENV_CONFIG_OVERRIDE; forbidden data path absent",
+  "browser": {
+    "date": "2026-10-28T12:38:18.286Z",
+    "scope": "Automated clean-copy Windows judge-demo walkthrough, original synthetic fixture only; muted playback does not confirm human audio perception or accessibility.",
+    "checks": [
+      "Prepared synthetic moment reachable without Twitch credentials",
+      "Generated original fixture uploaded, split and both rendered clips played",
+      "Fresh mobile-sized browser receives setup without reveal/result requests",
+      "Keyboard choice, reveal/comparison and saved choice after refresh",
+      "Independent browser session still requires its own choice"
+    ],
+    "replayPath": "/m/b30a01cd-462f-4ff8-aab2-83209f6d080e"
+  },
+  "checks": [
+    "TypeScript noEmit passed",
+    "ESLint passed for judge entrypoints",
+    "PowerShell helper ran successfully",
+    "CMD launcher started the actual isolated server"
+  ],
+  "limitations": [
+    "Automated browser playback was muted; no human audio/caption/screen-reader acceptance inferred",
+    "Synthetic fixture approved by automation only; actual Twitch media untouched",
+    "Initial browser requests were blocked/timed out by sandbox access; final run passed with test server/client outside the sandbox",
+    "No public deployment or new Twitch authorization"
+  ]
+}

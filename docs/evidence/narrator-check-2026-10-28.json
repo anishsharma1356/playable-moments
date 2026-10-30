@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-28",
+  "status": "Partial check; speaker confirmation pending",
+  "environment": "Windows Narrator and Codex in-app browser; isolated judge demo",
+  "actions": [
+    "Launched the preinstalled Windows Narrator executable through computer-use",
+    "Observed Narrator process window and informational updates window after launcher reported no targetable window",
+    "Dismissed the informational update notice",
+    "Reloaded the saved-Blue replay; focus reached Watch the actual outcome",
+    "Moved Tab to Privacy & data, then Shift+Tab back to Watch the actual outcome"
+  ],
+  "observedAccessibilityLabels": [
+    "Privacy & data, link",
+    "Watch the actual outcome, button"
+  ],
+  "limitations": [
+    "Narrator panel access approval timed out; speech-recap contents were not read",
+    "Browser accessibility text is not proof of spoken output",
+    "User has not yet confirmed the two announcements",
+    "No claim of full screen-reader, phone or WCAG acceptance"
+  ],
+  "source": "https://support.microsoft.com/en-us/accessibility/windows/narrator/chapter-2-narrator-basics",
+  "realTwitchOrReleaseChanged": false
+}

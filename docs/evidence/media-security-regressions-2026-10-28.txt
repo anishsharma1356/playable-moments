@@ -1,0 +1,3 @@
+PASS: HDR serialization initializes all bytes and round-trips saturation without tone mapping
+PASS: 100000 encryption records freed within a 128 KiB stack
+PASS: upstream encryption metadata tests, including append equivalence

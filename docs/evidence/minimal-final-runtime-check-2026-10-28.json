@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-28T11:36:47.601Z",
+  "uid": 1000,
+  "capabilities": "none",
+  "noNewPrivileges": true,
+  "absent": [
+    "/bin/sh",
+    "/bin/bash",
+    "/usr/bin/perl",
+    "/usr/bin/dpkg",
+    "/usr/bin/apt",
+    "/usr/bin/mount",
+    "/usr/bin/nsenter",
+    "/usr/bin/infocmp",
+    "/usr/bin/setfacl",
+    "/usr/lib/systemd",
+    "/usr/sbin/nscd",
+    "/usr/lib/x86_64-linux-gnu/gconv"
+  ],
+  "filesVerified": 20,
+  "packageProvenance": [
+    {
+      "name": "base-files",
+      "version": "13.8+deb13u7",
+      "source": "base-files",
+      "sourceVersion": "13.8+deb13u7"
+    },
+    {
+      "name": "ca-certificates",
+      "version": "20250419+deb13u1",
+      "source": "ca-certificates",
+      "sourceVersion": "20250419+deb13u1"
+    },
+    {
+      "name": "libc6",
+      "version": "2.41-12+deb13u4",
+      "source": "glibc",
+      "sourceVersion": "2.41-12+deb13u4"
+    },
+    {
+      "name": "libdav1d7",
+      "version": "1.5.1-1",
+      "source": "dav1d",
+      "sourceVersion": "1.5.1-1"
+    },
+    {
+      "name": "libgcc-s1",
+      "version": "14.2.0-19",
+      "source": "gcc-14",
+      "sourceVersion": "14.2.0-19"
+    },
+    {
+      "name": "libstdc++6",
+      "version": "14.2.0-19",
+      "source": "gcc-14",
+      "sourceVersion": "14.2.0-19"
+    },
+    {
+      "name": "libx264-164",
+      "version": "2:0.164.3108+git31e19f9-2+b1",
+      "source": "x264",
+      "sourceVersion": "2:0.164.3108+git31e19f9-2"
+    }
+  ],
+  "twitchTls": "DNS and verified TLS reached official Twitch endpoint; 401 with no credentials, not an OAuth authorization test",
+  "scope": "Minimal runtime boundary/inventory check; not proof of absence of vulnerabilities"
+}

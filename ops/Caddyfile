@@ -1,0 +1,22 @@
+{
+    # Immutable deployment config; changes use a reviewed image/config restart.
+    admin off
+}
+
+{$PUBLIC_HOST} {
+    # Health probes are container-internal. No access log: OAuth codes and
+    # overlay capabilities occur in request URLs and must not be recorded.
+    @health path /health/*
+    respond @health 404
+    request_body {
+        max_size 501MiB
+    }
+    reverse_proxy app:3000 {
+        # Caddy flushes text/event-stream immediately. Do not buffer or retry
+        # mutations; keep Range and the original Host intact.
+        transport http {
+            dial_timeout 5s
+            response_header_timeout 120s
+        }
+    }
+}

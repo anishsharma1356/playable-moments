@@ -1,0 +1,211 @@
+{
+  "date": "2026-10-28",
+  "scope": "Isolated automated application/browser checks; not human accessibility or live Twitch acceptance",
+  "unitIntegration": {
+    "passed": 61,
+    "failed": 0,
+    "files": 7
+  },
+  "browser": {
+    "total": 6,
+    "expected": 6,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "ok": true
+  },
+  "browserDurationMs": 203489.585,
+  "axeAuditCount": 26,
+  "axeViolationCount": 0,
+  "audits": [
+    {
+      "project": "desktop",
+      "state": "home",
+      "violations": [],
+      "incompleteRuleIds": [
+        "color-contrast"
+      ]
+    },
+    {
+      "project": "desktop",
+      "state": "studio",
+      "violations": [],
+      "incompleteRuleIds": []
+    },
+    {
+      "project": "desktop",
+      "state": "privacy",
+      "violations": [],
+      "incompleteRuleIds": []
+    },
+    {
+      "project": "phone",
+      "state": "home",
+      "violations": [],
+      "incompleteRuleIds": [
+        "color-contrast"
+      ]
+    },
+    {
+      "project": "phone",
+      "state": "studio",
+      "violations": [],
+      "incompleteRuleIds": []
+    },
+    {
+      "project": "phone",
+      "state": "privacy",
+      "violations": [],
+      "incompleteRuleIds": []
+    },
+    {
+      "project": "desktop",
+      "state": "twitch-studio-fixture",
+      "violations": [],
+      "incompleteRuleIds": []
+    },
+    {
+      "project": "desktop",
+      "state": "open-round-fixture",
+      "violations": [],
+      "incompleteRuleIds": []
+    },
+    {
+      "project": "phone",
+      "state": "twitch-studio-fixture",
+      "violations": [],
+      "incompleteRuleIds": []
+    },
+    {
+      "project": "phone",
+      "state": "open-round-fixture",
+      "violations": [],
+      "incompleteRuleIds": []
+    },
+    {
+      "project": "desktop",
+      "state": "rendered-review",
+      "violations": [],
+      "incompleteRuleIds": [
+        "color-contrast",
+        "video-caption"
+      ]
+    },
+    {
+      "project": "desktop",
+      "state": "publish-dialog",
+      "violations": [],
+      "incompleteRuleIds": [
+        "color-contrast"
+      ]
+    },
+    {
+      "project": "desktop",
+      "state": "replay-setup",
+      "violations": [],
+      "incompleteRuleIds": [
+        "color-contrast"
+      ]
+    },
+    {
+      "project": "desktop",
+      "state": "replay-choice",
+      "violations": [],
+      "incompleteRuleIds": [
+        "color-contrast"
+      ]
+    },
+    {
+      "project": "desktop",
+      "state": "replay-comparison",
+      "violations": [],
+      "incompleteRuleIds": [
+        "color-contrast"
+      ]
+    },
+    {
+      "project": "desktop",
+      "state": "privacy",
+      "violations": [],
+      "incompleteRuleIds": []
+    },
+    {
+      "project": "desktop",
+      "state": "clear-choices-dialog",
+      "violations": [],
+      "incompleteRuleIds": []
+    },
+    {
+      "project": "desktop",
+      "state": "erase-dialog",
+      "violations": [],
+      "incompleteRuleIds": [
+        "color-contrast"
+      ]
+    },
+    {
+      "project": "phone",
+      "state": "rendered-review",
+      "violations": [],
+      "incompleteRuleIds": [
+        "color-contrast",
+        "video-caption"
+      ]
+    },
+    {
+      "project": "phone",
+      "state": "publish-dialog",
+      "violations": [],
+      "incompleteRuleIds": [
+        "color-contrast"
+      ]
+    },
+    {
+      "project": "phone",
+      "state": "replay-setup",
+      "violations": [],
+      "incompleteRuleIds": [
+        "color-contrast"
+      ]
+    },
+    {
+      "project": "phone",
+      "state": "replay-choice",
+      "violations": [],
+      "incompleteRuleIds": [
+        "color-contrast"
+      ]
+    },
+    {
+      "project": "phone",
+      "state": "replay-comparison",
+      "violations": [],
+      "incompleteRuleIds": [
+        "color-contrast"
+      ]
+    },
+    {
+      "project": "phone",
+      "state": "privacy",
+      "violations": [],
+      "incompleteRuleIds": []
+    },
+    {
+      "project": "phone",
+      "state": "clear-choices-dialog",
+      "violations": [],
+      "incompleteRuleIds": []
+    },
+    {
+      "project": "phone",
+      "state": "erase-dialog",
+      "violations": [],
+      "incompleteRuleIds": [
+        "color-contrast"
+      ]
+    }
+  ],
+  "typecheck": "passed",
+  "lint": "passed",
+  "linuxProductionBuild": "passed"
+}

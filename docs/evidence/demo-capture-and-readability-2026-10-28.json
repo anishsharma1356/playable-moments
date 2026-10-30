@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-28",
+  "freshRealTwitchRound": {
+    "code": "JZ2J",
+    "status": "LOCKED",
+    "mode": "REAL_TWITCH",
+    "countA": 1,
+    "countB": 0,
+    "total": 1,
+    "scope": "One operator-controlled account; offline channel chat and local OBS recording. Not an independent audience or public broadcast."
+  },
+  "approvedReplayObserved": {
+    "moment": "J8QL",
+    "revision": 3,
+    "release": 2,
+    "personalChoice": "A",
+    "creatorChoice": "B",
+    "historyA": 1,
+    "historyB": 0,
+    "setupEndedBeforeChoice": true,
+    "revealCaptionsVisible": true
+  },
+  "readabilityFix": {
+    "files": ["apps/web/src/main.tsx", "apps/web/src/style.css"],
+    "change": "Published caption/text fields use readable explicit colors and readOnly rather than disabled, retaining keyboard access without editing. Published status text corrected.",
+    "visualCheck": "Readable caption and description text observed in real Studio",
+    "keyboardCheck": "Tab moved from setup captions to reveal captions",
+    "typecheckAndProductionBuild": "passed",
+    "focusedEslint": "passed",
+    "newFullBrowserRun": false,
+    "newContainerBuildOrSecurityScan": false,
+    "approvalAndPublishedMediaChanged": false
+  },
+  "privateReviewVideo": {
+    "file": "data/submission-video/playable-moments-review-cut-v1.mp4",
+    "durationSeconds": 128.021354,
+    "bytes": 2294321,
+    "sha256": "f9189276ca8fa259562ae15f5bb96cc03dc39586f07de41588d1bf70ff568dfa",
+    "video": "1920x1080 H.264",
+    "audio": "AAC; original approved reveal tone in the earlier-moment segment. Other segments silent; voiceover pending.",
+    "fullDecode": "passed",
+    "visualReview": "Nine exported frames inspected for layout and source labels; actual Codex conversation crop separately inspected",
+    "rawSourceFilesPreserved": true,
+    "unrelatedSidebarAndBrowserChromeCropped": true,
+    "finalHumanReview": "pending",
+    "publicReleaseApproved": false,
+    "uploaded": false
+  },
+  "obsFinalState": {"recording": "stopped", "streaming": "stopped"},
+  "remaining": [
+    "Narration, matching subtitles and full human video review",
+    "Reviewed source/video publication and final Devpost submission",
+    "Spoken screen-reader, zoom, physical-phone and separate-machine acceptance",
+    "Two independent consenting viewers in a recorded public broadcast",
+    "Residual dependency/platform review and optional public deployment acceptance"
+  ]
+}

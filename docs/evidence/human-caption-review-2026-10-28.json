@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-28",
+  "reviewer": "Anish",
+  "recording": "J8QL local recording rehearsal",
+  "releaseVersion": 1,
+  "editVersion": 2,
+  "setupClipSha256": "124b10b408aeeb538376d733f4dbf388798230e74bff780b845ca761c53a4632",
+  "revealClipSha256": "fed79959ec9d4825ac578fba4aa0dbdb78b3ee88d25eb8f748a3610d0306e215",
+  "captionDraftSha256": {
+    "setup": "43db55cc65b1dcaf565944e6f3704351e9454c3eb030d5290e7c949f82917a85",
+    "reveal": "290615bace4fe1554a595bd5165175249ec967219a9daf9674e5aac814295cc5"
+  },
+  "reviewMethod": "Exact approved clip bytes displayed in a private loopback browser page with proposed WebVTT captions, then both clips played with sound enabled.",
+  "userConfirmed": [
+    "Readable and accurate captions",
+    "Setup free of the outcome",
+    "Audible short reveal tone at the matching caption"
+  ],
+  "userResponse": "Yes \u2014 all three checks passed",
+  "status": "Human draft content review passed; alternatives not applied to published release",
+  "remaining": [
+    "Confirm descriptive text completeness",
+    "Apply alternatives in a new revision and review actual app preview",
+    "Physical keyboard and spoken screen-reader output",
+    "Physical phone/zoom review"
+  ],
+  "scope": "Content review only. No WCAG certification, new Twitch session, independent-viewer test or public publication inferred."
+}
