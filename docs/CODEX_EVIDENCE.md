@@ -1,5 +1,15 @@
 # Codex development evidence
 
+## Security fixes and browser results — 31 October 2026
+
+The security follow-up fixes two moderate production JavaScript advisories through scoped glob/minimatch overrides. The repeat audit reports zero findings across 86 production packages. All 63 unit/integration checks, build/TypeScript and lint passed. The complete Playwright run passed all six desktop and emulated-phone scenarios in 145.9 seconds, with no failed, skipped or flaky tests: public accessibility/reflow, fixture Twitch/overlay, and upload → review → publish → choose → reveal. These are automated fixture results, not new live Twitch or independent-viewer evidence. Exact cases and report hashes: [browser receipt](evidence/browser-regression-2026-10-31.json), [security receipt](evidence/security-followup-2026-10-31.json).
+
+Separate physical-phone core playback, choice, refresh persistence and portrait/landscape checks passed on the local sample on 31 October. Actual Chrome 200% zoom was reached and initial homepage/Studio sections checked. Narrator spoke headings/links and the user confirmed clear speech. Full magnified review/replay and spoken screen-reader acceptance remain incomplete. The user explicitly deferred blocked manual checks, separate-computer acceptance and Docker rebuild/rescan. No blanket accessibility or container-security pass is claimed.
+
+The repository was initially published on 30 October to anishsharma1356/playable-moments. This follow-up includes only the reviewed source/configuration, tests, notices and sanitized evidence. Raw reports, credentials, databases, recordings, downloaded tools and old private Git history remain excluded. The historical entries below describe their dates, not the current release status.
+
+Next: prepare the selected original game challenge (risky shortcut versus safe route), capture a new genuine Twitch/OBS moment, review the exact processed media/captions/audio, finish narration and the final demo, publish the approved video and complete Devpost. Independent consenting viewers remain unavailable; operator-controlled accounts must be labelled honestly. Residual container/proxy and binary-distribution work stays open; public hosting stays deferred.
+
 Date: 26 October 2026. This records implementation performed in this Codex chat, not claims from the original planning pack.
 
 The Codex app returned chat ID `01a1791d-3b64-7590-ab36-a3b1096b4328` when opening project files. This is the observed chat identifier; confirm the organizer's required evidence format before submitting it as a competition session identifier.

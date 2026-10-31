@@ -1,6 +1,6 @@
 # Judge guide: run Playable Moments locally
 
-This is a working local application with two explicitly separate ways to evaluate it. The quick walkthrough below uses generated original video and **12 synthetic responses**. It needs no Twitch account, API key, paid hosting or private project files. Genuine Twitch integration is demonstrated in the submitted video and can also be tested with your own Twitch application using the linked instructions.
+This is a working local application with two explicitly separate ways to evaluate it. The quick walkthrough below uses generated original video and **12 synthetic responses**. It needs no Twitch account, API key, paid hosting or private project files. Genuine Twitch integration has been tested in local rehearsals; the final submission video is still being prepared. It can also be tested with your own Twitch application using the linked instructions.
 
 ## Verified target and prerequisites
 

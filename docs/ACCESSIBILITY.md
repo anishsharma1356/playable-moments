@@ -1,5 +1,7 @@
 # Accessibility checks and remaining human review
 
+**31 October status:** the updated source passed all six browser scenarios, including desktop and emulated-phone accessibility/reflow checks; see [browser results](evidence/browser-regression-2026-10-31.json). Separately, the physical Android core sample passed playback/caption/audio review, choice, refresh persistence and portrait/landscape checks. Actual desktop Chrome reached 200% with initial homepage/Studio inspection, and the user confirmed Narrator speech was clear. Full magnified review/replay and spoken screen-reader navigation remain incomplete and are explicitly deferred. Earlier pending statements below are dated history, not a reversal of the completed physical-phone or partial zoom checks. Automated tests and partial manual checks are not WCAG certification.
+
 Updated 30 October 2026. Automated checks are regression evidence, not a WCAG certification.
 
 The current source passed all six Playwright scenarios in one run on 30 October, including both desktop and phone-sized public-page, creator/replay and fixture-Twitch scenarios. This closes the earlier gap after the published-caption readability change. Evidence: [browser-regression-2026-10-30.json](evidence/browser-regression-2026-10-30.json).

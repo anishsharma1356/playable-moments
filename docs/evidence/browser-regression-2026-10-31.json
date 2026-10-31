@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-31",
+  "scope": "Playwright regression of the security-updated source; desktop and emulated phone projects. Twitch provider and video are test fixtures.",
+  "stats": {
+    "startTime": "2026-10-31T07:05:35.598Z",
+    "duration": 145932.199,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "title": "public pages: accessibility, keyboard skip, narrow reflow and reduced motion",
+      "project": "desktop",
+      "status": "passed"
+    },
+    {
+      "title": "public pages: accessibility, keyboard skip, narrow reflow and reduced motion",
+      "project": "phone",
+      "status": "passed"
+    },
+    {
+      "title": "fixture Twitch authorization \u2192 live controls \u2192 OBS overlay \u2192 reviewed replay; not a live integration claim",
+      "project": "desktop",
+      "status": "passed"
+    },
+    {
+      "title": "fixture Twitch authorization \u2192 live controls \u2192 OBS overlay \u2192 reviewed replay; not a live integration claim",
+      "project": "phone",
+      "status": "passed"
+    },
+    {
+      "title": "upload \u2192 render \u2192 actual-output review \u2192 publish \u2192 independent browser choose \u2192 reveal \u2192 comparison",
+      "project": "desktop",
+      "status": "passed"
+    },
+    {
+      "title": "upload \u2192 render \u2192 actual-output review \u2192 publish \u2192 independent browser choose \u2192 reveal \u2192 comparison",
+      "project": "phone",
+      "status": "passed"
+    }
+  ],
+  "rawReportSha256": "1a2b40623f751f307fce63cf3a3c86943dd2dec9734b54ee73ec041c4ad89de5",
+  "rawReportDistribution": "Private report retained locally; this summary omits absolute paths and browser attachments.",
+  "testedRuntimeInputs": {
+    "package.json": "acaad0fc3bf9c19d217cb1abc775544a1f2a99f5e68e51983c30d5de9c4c1b92",
+    "pnpm-lock.yaml": "04497c7cffbf08c8cfb95839c77a851e3e5300ffc433c0f87f9807fb581208d2",
+    "pnpm-workspace.yaml": "7898cf99c0608e6175d46b3f9a25b929f7811297888505f66a5436f75b0f2f8c"
+  },
+  "limitations": [
+    "Not a new real Twitch or independent-viewer test.",
+    "Phone project is browser emulation; separate physical-phone results are not part of this run.",
+    "Does not complete manual 200% zoom or spoken screen-reader acceptance.",
+    "No current container rebuild, public-host or separate-computer acceptance."
+  ]
+}

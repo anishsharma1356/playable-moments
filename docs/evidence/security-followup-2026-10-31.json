@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-31",
+  "scope": "Local production JavaScript fix, compatibility/security tests, configuration and source-notice review. No public deployment or container rebuild.",
+  "beforeAudit": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 2,
+      "high": 0,
+      "critical": 0
+    },
+    "dependencies": 85,
+    "devDependencies": 0,
+    "optionalDependencies": 0,
+    "totalDependencies": 85
+  },
+  "afterAudit": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0
+    },
+    "dependencies": 86,
+    "devDependencies": 0,
+    "optionalDependencies": 0,
+    "totalDependencies": 86
+  },
+  "fixedAdvisories": [
+    "GHSA-g3hv-75wg-m249",
+    "GHSA-3g3m-2fjr-6pw4"
+  ],
+  "overrides": {
+    "@fastify/static>glob": "14.0.2",
+    "glob@14.0.2>minimatch": "11.0.1"
+  },
+  "compatibility": "Application uses static file serving over a fixed dist/web root. Both wildcard serving and glob-enumerated routes were tested, including HEAD, byte ranges, missing assets and root escape denial.",
+  "tests": {
+    "unitIntegrationPassed": 63,
+    "unitIntegrationFailed": 0,
+    "build": "passed, includes TypeScript",
+    "lint": "passed",
+    "browser": {
+      "passed": 6,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "summary": "browser-regression-2026-10-31.json"
+    }
+  },
+  "notices": {
+    "productionPackageCount": 86,
+    "allDeclaredLicenseMetadata": true,
+    "topLevelNoticeException": "abstract-logging@2.0.1, covered by existing supplemental upstream notice",
+    "newChainLicense": "BlueOak-1.0.0; exact shipped notice texts retained"
+  },
+  "container": {
+    "status": "deferred by user after engine startup was blocked",
+    "reason": "Docker Linux-engine named pipe unavailable before and after a normal startup attempt. Startup command stalled and was cancelled. No reset or deletion.",
+    "baseline": "2026-10-28; images are not rebuilt with these fixes and must not be described as current clean scans"
+  },
+  "proxyAdvisory": {
+    "url": "https://github.com/go-jose/go-jose/security/advisories/GHSA-mgcc-cww5-fp2q",
+    "checked": "2026-10-31",
+    "v3": "upstream still lists no patched version; finding remains open",
+    "config": "Caddy admin off; only health denial and reverse_proxy routes; no configured public JWK-processing service. Scoped review, not exhaustive reachability proof."
+  },
+  "distribution": {
+    "source": "MIT original code; third-party notices retained",
+    "binaries": "not distributed; corresponding-source package remains required before image/tool distribution"
+  },
+  "publication": "Reviewed source follow-up for anishsharma1356/playable-moments; no binaries or private raw reports are included. Remote publication is recorded separately.",
+  "reports": [
+    {
+      "path": "data/qa-2026-10-31/production-audit-followup.json",
+      "sha256": "00fbf24fbe3f64deae6c81152c663c60270bfdda20253b478d4f65cf065dc5de"
+    },
+    {
+      "path": "data/qa-2026-10-31/production-audit-fixed.json",
+      "sha256": "bb7c9a67eece2423abe3dcbe104a63fe146777de8b782ef583618cd6696e0858"
+    },
+    {
+      "path": "data/qa-2026-10-31/security-fix-tests.json",
+      "sha256": "0a2b97a985811ec34ac5bcc236623d49387561aac9524fb78ce5c4e262db8fb7"
+    },
+    {
+      "path": "data/qa-2026-10-31/security-fix-browser-tests.json",
+      "sha256": "1a2b40623f751f307fce63cf3a3c86943dd2dec9734b54ee73ec041c4ad89de5"
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # Dependency notices and distribution checklist
 
+**31 October security-update inventory:** the local production JavaScript graph now contains 86 packages after the scoped glob/minimatch security overrides. [The updated inventory](evidence/runtime-license-inventory-2026-10-31.json) and [collected notices](licenses/runtime-npm-notices.txt) reflect those installed versions. The changed glob/minimatch/path-scurry/nonrecursive matcher chain declares BlueOak-1.0.0 and its shipped texts are retained without relicensing. All packages declare license metadata; abstract-logging retains its separately collected notice below. This inventory covers the installed Windows production graph, not a newly rebuilt Linux image. The 28 October image inventory below is historical.
+
 28 October 2026. Original Playable Moments code is now under the root [MIT license](../LICENSE), credited to Anish, following the user's delegation of this decision. This file records third-party evidence and distribution boundaries; it does not relicense those components or certify all possible forms of distribution.
 
 The final runtime tree contains **85 JavaScript packages**, all with declared license metadata. [The inventory](evidence/runtime-license-inventory-2026-10-28.json) records package versions and notice hashes; [collected original notices](licenses/runtime-npm-notices.txt) preserve the available top-level license/copyright/notice files. The collector is `ops/license-inventory.mjs` and runs offline against the built image. It excludes development tools and non-JavaScript components.

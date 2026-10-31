@@ -1,6 +1,10 @@
 packages:
   - apps/*
   - packages/*
+overrides:
+  # Security fixes pending @fastify/static's adoption of glob 14.
+  "@fastify/static>glob": "14.0.2"
+  "glob@14.0.2>minimatch": "11.0.1"
 allowBuilds:
   better-sqlite3: true
   esbuild: true
