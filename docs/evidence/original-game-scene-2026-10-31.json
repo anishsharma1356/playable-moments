@@ -54,6 +54,29 @@
       "recording": "stopped",
       "streaming": "stopped",
       "screenshotSha256": "89d935c9c39c3917e2619888081bc03f6b9f5d20f2683e326d55eb41db02a8e2"
+    },
+    "obsRehearsal": {
+      "scope": "Actual local OBS game-only recording, without a Twitch round or broadcast.",
+      "durationSeconds": 46.833333,
+      "sizeBytes": 34450477,
+      "video": "1920x1080 H.264 at 30 fps",
+      "audio": "AAC stereo at 48000 Hz",
+      "result": "B Safe route finished in 8.77 seconds",
+      "fullDecode": "passed",
+      "visualReview": "Four sampled frames show movement, finish and correctly cropped controls",
+      "audioPeakDbfs": -18.5,
+      "finishToneDetectedSeconds": [
+        26.792,
+        27.235625
+      ],
+      "recordingSha256": "94032208b78e01df6839d2d06066166df1e4a462c9fbb97c02dfcdc7e075b824",
+      "reviewExcerpt": {
+        "startSeconds": 16,
+        "durationSeconds": 17,
+        "sha256": "4b3d3b4a33b6041b1a8110ae4c21b43292116292ed49e8dd48cd4978f840b77e"
+      },
+      "recordingAndStreamingStoppedAfterCheck": true,
+      "humanPlaybackConfirmation": "pending"
     }
   },
   "sourceSha256": {
@@ -69,7 +92,7 @@
     "tsconfig.json": "5edf25e6c94dfc5b6451a5c0fd147c975cf81ed2145dbfc9a045a9dbf60739cd"
   },
   "pending": [
-    "Actual OBS movement/audio recording rehearsal",
+    "Human confirmation that the OBS rehearsal picture and finish tones are clear",
     "Fresh genuine Twitch moment with this game",
     "Exact new setup/reveal video, captions and audio review by the creator",
     "Final narration/edit/video approval, YouTube publication and Devpost submission"

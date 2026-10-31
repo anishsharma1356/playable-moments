@@ -6,7 +6,9 @@ The selected **Shortcut or Safety?** recording scene is implemented with origina
 
 All **69 unit/integration tests**, including six game-logic tests, passed. **Five dedicated browser scenarios** passed with no retries, including real jump input, pause/reset behavior, keyboard use, responsive layouts, automated axe checks and scene-server access restrictions. Build/TypeScript and full lint passed. The generated OBS import was loaded into OBS 33.0.0 as a separate collection and visually verified; its operator controls are cropped out. This is preparation, not a new Twitch recording or human media approval. See [the scoped evidence](evidence/original-game-scene-2026-10-31.json).
 
-Run `npm run demo:scene` and open `http://127.0.0.1:5190/`; after choosing B and pressing Start run, the safe route should finish. Use `node ops/prepare-game-obs.mjs` for a fresh import file and follow [the recording sheet](demo/FINAL_DEMO_SCRIPT.md). Next: verify actual OBS recording/audio, capture a fresh Twitch moment, review its exact processed media, then finish narration, editing, publication and submission. Previously deferred checks remain deferred.
+Run `npm run demo:scene` and open `http://127.0.0.1:5190/`; after choosing B and pressing Start run, the safe route should finish. Use `node ops/prepare-game-obs.mjs` for a fresh import file and follow [the recording sheet](demo/FINAL_DEMO_SCRIPT.md). Next: confirm human playback of the OBS rehearsal, capture a fresh Twitch moment, review its exact processed media, then finish narration, editing, publication and submission. Previously deferred checks remain deferred.
+
+A subsequent actual OBS rehearsal captured the safe route finishing in 8.77 seconds. The 46.83-second local master is H.264 1920×1080 at 30 fps with stereo AAC; it passed full decoding and sampled-frame review. Finish tones are present (peak −18.5 dBFS). A 17-second review excerpt was prepared for Anish; human playback confirmation is pending. Recording and streaming are stopped. This game-only rehearsal contains no new Twitch votes and is not the final submission footage.
 
 ## Security fixes and browser results — 31 October 2026
 
