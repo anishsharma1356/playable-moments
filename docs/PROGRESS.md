@@ -1,5 +1,11 @@
 # Progress — updated 28 October 2026
 
+## Audio calibration — 31 October 2026
+
+Anish confirmed the rehearsal picture but could not hear the original finish tones in the side browser. A separate six-second copy raised by 10 dB measured a −8.5 dBFS peak without clipping; Anish heard both tones when it played in Windows Media Player. Because both the gain and player changed, this does not prove which caused the initial difficulty. The original master is preserved.
+
+The scene now generates tones at approximately that louder level for future recordings. TypeScript, targeted ESLint and all five game-browser scenarios passed again (24.8 seconds). A new actual OBS capture and its exact video/audio/caption review remain pending; the sound check does not approve any new publication. See [the updated evidence](evidence/original-game-scene-2026-10-31.json).
+
 ## Original game and OBS preparation — 31 October 2026
 
 The selected **Shortcut or Safety?** recording scene is implemented with original SVG art and generated sound effects. A creator chooses the risky shortcut or the longer safe route; actual jump timing determines success or failure. The scene pauses during chat and on tab/background stalls. It runs separately on loopback port 5190 without Twitch credentials, application data or vote simulation.

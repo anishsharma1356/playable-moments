@@ -76,12 +76,30 @@
         "sha256": "4b3d3b4a33b6041b1a8110ae4c21b43292116292ed49e8dd48cd4978f840b77e"
       },
       "recordingAndStreamingStoppedAfterCheck": true,
-      "humanPlaybackConfirmation": "pending"
+      "humanPlaybackConfirmation": "Picture confirmed; initial side-browser finish tones not heard."
+    },
+    "audioCalibration": {
+      "initialFinishExcerptMeanDbfs": -33.3,
+      "initialPeakDbfs": -18.5,
+      "checkCopyGainDb": 10,
+      "checkCopyDurationSeconds": 6,
+      "checkCopyPeakDbfs": -8.5,
+      "checkCopySha256": "36483e8e54858cadbeac193d2dd40b2e044e7425014a2047e28d869a492fecf1",
+      "humanCheck": "Creator confirmed hearing both finish tones in the louder copy played in Windows Media Player.",
+      "causeLimitation": "Gain and player both changed; this does not isolate the side browser as the cause.",
+      "implementation": "Raised the generated tone envelope by approximately 10 dB for future game recordings; original recording unchanged.",
+      "repeatChecks": {
+        "typecheck": "passed",
+        "targetedEslint": "passed",
+        "sceneBrowserPassed": 5,
+        "sceneBrowserSeconds": 24.8
+      },
+      "actualObsCaptureWithChangedSource": "pending"
     }
   },
   "sourceSha256": {
     "docs/demo/shortcut-game.ts": "479aac943bffae2de4e8b60fa7bad1f68098abd4bbc87a18a24a709054df7cb0",
-    "docs/demo/shortcut-scene.ts": "94ac2fd1a78b85f7d70db8c655e277af05b0ed1bc4d14ccf6fd6bd7c236ef046",
+    "docs/demo/shortcut-scene.ts": "e7146f34c7f98c40aaad4a989c89a5320b9a6ace48ff8e1ca4e49218da9dfbcc",
     "docs/demo/shortcut-or-safety.html": "d0f25a13d542991e42ab650dd67e552aff03df758ef1ca05779bf884b192a1f2",
     "ops/demo-scene.mjs": "fe825c68307d9c6a1750d583850218939c3c5b5c7c8ad7bf47e59ffcb80f42cb",
     "ops/prepare-game-obs.mjs": "0faa8c9f757ec604beb846405e282e24a28216419c734634b4e16279016a3ed0",
@@ -92,7 +110,7 @@
     "tsconfig.json": "5edf25e6c94dfc5b6451a5c0fd147c975cf81ed2145dbfc9a045a9dbf60739cd"
   },
   "pending": [
-    "Human confirmation that the OBS rehearsal picture and finish tones are clear",
+    "Record the louder source through OBS and review the new output; the six-second check is not final media approval",
     "Fresh genuine Twitch moment with this game",
     "Exact new setup/reveal video, captions and audio review by the creator",
     "Final narration/edit/video approval, YouTube publication and Devpost submission"

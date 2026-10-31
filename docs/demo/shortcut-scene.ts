@@ -21,8 +21,10 @@ function tone(frequency: number, duration = 0.18, delay = 0) {
   const gain = audio.createGain();
   const start = audio.currentTime + delay;
   oscillator.frequency.value = frequency;
-  gain.gain.setValueAtTime(0.12, start);
-  gain.gain.exponentialRampToValueAtTime(0.001, start + duration);
+  // Match the +10 dB OBS playback check confirmed audible by the creator.
+  // That check peaked at -8.5 dBFS, retaining headroom below clipping.
+  gain.gain.setValueAtTime(0.38, start);
+  gain.gain.exponentialRampToValueAtTime(0.00316, start + duration);
   oscillator.connect(gain).connect(audio.destination);
   oscillator.start(start);
   oscillator.stop(start + duration);
