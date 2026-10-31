@@ -1,0 +1,308 @@
+{
+  "prepared": "2026-10-31",
+  "status": "AWAITING HUMAN REVIEW; not a Twitch session or approved release",
+  "validator": "chess.js 1.4.0, private build-time use only",
+  "plies": 33,
+  "verifiedStates": [
+    {
+      "ply": 30,
+      "san": "Nxd7",
+      "fen": "4kb1r/p2n1ppp/4q3/4p1B1/4P3/1Q6/PPP2PPP/2KR4 w k - 0 16",
+      "legalReplies": [
+        "Bf6",
+        "Be7",
+        "Bd8",
+        "Bh6",
+        "Bh4",
+        "Bf4",
+        "Be3",
+        "Bd2",
+        "Qa4",
+        "Qb4",
+        "Qb5",
+        "Qb6",
+        "Qb7",
+        "Qb8+",
+        "Qc4",
+        "Qd5",
+        "Qxe6+",
+        "Qc3",
+        "Qd3",
+        "Qe3",
+        "Qf3",
+        "Qg3",
+        "Qh3",
+        "Qa3",
+        "a3",
+        "a4",
+        "c3",
+        "c4",
+        "f3",
+        "f4",
+        "g3",
+        "g4",
+        "h3",
+        "h4",
+        "Kd2",
+        "Kb1",
+        "Rd2",
+        "Rd3",
+        "Rd4",
+        "Rd5",
+        "Rd6",
+        "Rxd7",
+        "Re1",
+        "Rf1",
+        "Rg1",
+        "Rh1"
+      ],
+      "check": false,
+      "checkmate": false
+    },
+    {
+      "ply": 31,
+      "san": "Qb8+",
+      "fen": "1Q2kb1r/p2n1ppp/4q3/4p1B1/4P3/8/PPP2PPP/2KR4 b k - 1 16",
+      "legalReplies": [
+        "Nxb8"
+      ],
+      "check": true,
+      "checkmate": false
+    },
+    {
+      "ply": 32,
+      "san": "Nxb8",
+      "fen": "1n2kb1r/p4ppp/4q3/4p1B1/4P3/8/PPP2PPP/2KR4 w k - 0 17",
+      "legalReplies": [
+        "Bf6",
+        "Be7",
+        "Bd8",
+        "Bh6",
+        "Bh4",
+        "Bf4",
+        "Be3",
+        "Bd2",
+        "a3",
+        "a4",
+        "b3",
+        "b4",
+        "c3",
+        "c4",
+        "f3",
+        "f4",
+        "g3",
+        "g4",
+        "h3",
+        "h4",
+        "Kd2",
+        "Kb1",
+        "Rd2",
+        "Rd3",
+        "Rd4",
+        "Rd5",
+        "Rd6",
+        "Rd7",
+        "Rd8#",
+        "Re1",
+        "Rf1",
+        "Rg1",
+        "Rh1"
+      ],
+      "check": false,
+      "checkmate": false
+    },
+    {
+      "ply": 33,
+      "san": "Rd8#",
+      "fen": "1n1Rkb1r/p4ppp/4q3/4p1B1/4P3/8/PPP2PPP/2K5 b k - 1 17",
+      "legalReplies": [],
+      "check": true,
+      "checkmate": true
+    }
+  ],
+  "alternativeLegal": "Qb5",
+  "creatorChoice": null,
+  "liveVotes": null,
+  "resolvedAnswer": null,
+  "sourceReferences": [
+    "https://www.chesshistory.com/winter/extra/morphy.html",
+    "https://www.chessgames.com/njs/api/game/viewPGN/1233404"
+  ],
+  "speech": "Original script; synthetic Microsoft Zira Desktop review narration; no music",
+  "cues": [
+    {
+      "id": "setup-1",
+      "part": "setup",
+      "state": "setup",
+      "audioSeconds": 1.959184,
+      "frames": 93,
+      "seconds": 3.1
+    },
+    {
+      "id": "setup-2",
+      "part": "setup",
+      "state": "setup",
+      "audioSeconds": 4.248889,
+      "frames": 180,
+      "seconds": 6
+    },
+    {
+      "id": "setup-3",
+      "part": "setup",
+      "state": "setup",
+      "audioSeconds": 3.888753,
+      "frames": 150,
+      "seconds": 5
+    },
+    {
+      "id": "reveal-1",
+      "part": "reveal",
+      "state": "queen",
+      "audioSeconds": 3.44898,
+      "frames": 138,
+      "seconds": 4.6
+    },
+    {
+      "id": "reveal-2",
+      "part": "reveal",
+      "state": "knight",
+      "audioSeconds": 3.783764,
+      "frames": 150,
+      "seconds": 5
+    },
+    {
+      "id": "reveal-3",
+      "part": "reveal",
+      "state": "mate",
+      "audioSeconds": 2.399138,
+      "frames": 120,
+      "seconds": 4
+    },
+    {
+      "id": "reveal-4",
+      "part": "reveal",
+      "state": "mate",
+      "audioSeconds": 4.288571,
+      "frames": 180,
+      "seconds": 6
+    },
+    {
+      "id": "reveal-5",
+      "part": "reveal",
+      "state": "mate",
+      "audioSeconds": 6.193469,
+      "frames": 219,
+      "seconds": 7.3
+    }
+  ],
+  "preparationMasterOnly": {
+    "setupStartMs": 3000,
+    "setupEndMs": 17100,
+    "revealStartMs": 19100,
+    "revealEndMs": 46000
+  },
+  "boundaryNote": "These measured preparation-master offsets must NOT be reused for a future OBS/Twitch recording.",
+  "outputs": [
+    {
+      "file": "data/chess-reconstruction/setup.mp4",
+      "sha256": "f3ee43f15af6acd1504b7963bafbba74f6abf19fa8540662decbe4072f0ecb78",
+      "videoDuration": 14.1,
+      "audioDuration": 14.096438,
+      "width": 1280,
+      "height": 720,
+      "decoded": true,
+      "audioLevel": {
+        "meanDbfs": -20.7,
+        "peakDbfs": -4.5,
+        "heardByUser": false
+      }
+    },
+    {
+      "file": "data/chess-reconstruction/reveal.mp4",
+      "sha256": "df296c7a6c45e59bca0579788c87e2120d02e13212874a87a9b7cea9d4448545",
+      "videoDuration": 26.9,
+      "audioDuration": 26.9,
+      "width": 1280,
+      "height": 720,
+      "decoded": true,
+      "audioLevel": {
+        "meanDbfs": -20.6,
+        "peakDbfs": -4.5,
+        "heardByUser": false
+      }
+    }
+  ],
+  "previewChecks": {
+    "pageErrors": [],
+    "externalRequests": [],
+    "setupContainsNoResult": true,
+    "resetToSetup": true,
+    "encodedFrames": [
+      {
+        "file": "setup-first-encoded.png",
+        "timeSeconds": 0.5,
+        "visualReview": "PASS: reviewed actual encoded frame; board/state, readable text and disclosure intact"
+      },
+      {
+        "file": "setup-last-encoded.png",
+        "timeSeconds": 14.04,
+        "visualReview": "PASS: reviewed actual encoded frame; board/state, readable text and disclosure intact"
+      },
+      {
+        "file": "reveal-first-encoded.png",
+        "timeSeconds": 0.5,
+        "visualReview": "PASS: reviewed actual encoded frame; board/state, readable text and disclosure intact"
+      },
+      {
+        "file": "reveal-knight-encoded.png",
+        "timeSeconds": 5.5,
+        "visualReview": "PASS: reviewed actual encoded frame; board/state, readable text and disclosure intact"
+      },
+      {
+        "file": "reveal-mate-encoded.png",
+        "timeSeconds": 11,
+        "visualReview": "PASS: reviewed actual encoded frame; board/state, readable text and disclosure intact"
+      },
+      {
+        "file": "reveal-explanation-encoded.png",
+        "timeSeconds": 16,
+        "visualReview": "PASS: reviewed actual encoded frame; board/state, readable text and disclosure intact"
+      },
+      {
+        "file": "reveal-last-encoded.png",
+        "timeSeconds": 25,
+        "visualReview": "PASS: reviewed actual encoded frame; board/state, readable text and disclosure intact"
+      }
+    ],
+    "visualReview": "Seven encoded frames checked, including final setup and all historical steps; human review remains pending",
+    "reviewPagePlayback": {
+      "played": [
+        {
+          "part": "setup",
+          "duration": 14.1,
+          "width": 1280,
+          "height": 720,
+          "ended": true
+        },
+        {
+          "part": "reveal",
+          "duration": 26.9,
+          "width": 1280,
+          "height": 720,
+          "ended": true
+        }
+      ],
+      "pageErrors": [],
+      "externalRequests": [],
+      "headlessMuted": true,
+      "humanAudioReview": "PENDING"
+    }
+  },
+  "humanReview": "PENDING",
+  "master": {
+    "file": "data/chess-reconstruction/opera-preparation-master.mp4",
+    "sha256": "6734420fff59a2c9972048e30d0059f0473cb4778b7e80d1825abc36ceebb4a4",
+    "decoded": true,
+    "durationSeconds": 49
+  }
+}

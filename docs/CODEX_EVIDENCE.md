@@ -1,5 +1,25 @@
 # Codex development evidence
 
+## Complete product video preparation — 31 October 2026
+
+Assembled a roughly 2:51 complete product demonstration with synthetic narration and English subtitles. It combines the genuine earlier JZ2J chat/lock capture, a fresh anonymous RF6S replay capture, the full exact approved chess setup/reveal clips, the real creator-review screen, actual 28 October Codex readability-fix footage, original-game footage and the three labelled illustrative topic screenshots. The prior integration round and current chess round are explicitly distinct; there is no invented chat history, independent audience or public broadcast claim.
+
+Fixed the private capture tooling configuration by pointing Playwright at the already installed FFmpeg binary, without changing application code or extracting browser authentication. The isolated real-app recording observed choice gating, an accepted personal A choice, unchanged original history and no page errors. The raw recording, cue audio, deterministic edit scripts, subtitles and source manifest remain under ignored `data/submission-video/final-v2/`. Read-only Studio screenshots were captured through the existing authorized browser session. Codex app footage was reused from the existing recording; no new automation of the Codex UI was performed.
+
+Media checks cover full export decoding, duration below three minutes, audio loudness/peak measurement and chapter-by-chapter frame inspection. [Final video receipt](evidence/final-demo-video-2026-10-31.json) distinguishes these checks from pending human final review. This step ran no new application regression suite and performed no public upload, repository push or submission.
+
+## Real chess rehearsal and measured Studio revision — 31 October 2026
+
+Prepared and scoped-checked an isolated read-only loopback creator player, with setup hold, an operator lock confirmation, explicitly coached host-choice narration, and historical reveal playback. Its checks covered route/host/method restrictions, range delivery, capture crop, reveal not loaded during setup, complete playback and reset, with no page errors or external requests. Generated a separate OBS import without stream credentials or changes to the original-game collection. These creator assets are not an ungated public replay route.
+
+Used native Windows controls to verify chaitime56/READY, create RF6S, import the chess collection, record the original scene and send one authorized genuine Twitch chat command. Studio accepted B and locked; a read-only query of this moment's snapshot confirmed A=0/B=1/total=1 REAL_TWITCH. No events were fabricated, no database state was edited directly, and the channel remained offline. The coached B demonstration was recorded before playing the historical move.
+
+The 173.267-second OBS recording was uploaded via the regular owner UI. Measured normalized-master scene/audio transitions and inspected boundary frames, then rendered setup 6.000–20.100s and historical reveal 127.900–154.800s through Studio. Added separate text descriptions using existing fields. Both hashes and full decodes passed, four encoded boundary frames were inspected, and audio peaks measured −4.4/−4.5 dBFS. Anish then confirmed working audio/video in reply to the exact-revision review/local-publication question. Approved and published unchanged revision 1 as local release 1 through the Studio UI. [Rehearsal receipt](evidence/chess-rehearsal-2026-10-31.json).
+
+Fresh anonymous Chrome acceptance passed natural setup/reveal playback, pre-choice request/payload gating, personal A choice persistence across reload, comparison against coached host B and original A0/B1, reveal text access and unchanged historical snapshot. No page errors occurred. Playback in this automated check was muted; human audio confirmation was separate. Screenshots of the actual published UI were saved and visually inspected. The initial optional video-capture attempt failed before creating a page because Playwright's FFmpeg was absent; the successful check omitted video capture and installed nothing. [Replay receipt](evidence/chess-replay-2026-10-31.json).
+
+No application source/security architecture was changed and no unrelated regression suite was rerun. Remote repository, presentation and submission updates remain pending. Prepared media, private databases and credentials stay outside the source distribution.
+
 ## Audio calibration — 31 October 2026
 
 Anish confirmed the rehearsal picture but could not hear the original finish tones in the side browser. A separate six-second copy raised by 10 dB measured a −8.5 dBFS peak without clipping; Anish heard both tones when it played in Windows Media Player. Because both the gain and player changed, this does not prove which caused the initial difficulty. The original master is preserved.

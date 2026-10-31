@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-31",
+  "scope": "Bounded source/docs/asset publication review; no new application regression suite or exhaustive security certification.",
+  "changedFiles": 33,
+  "runtimeFilesMatched": 31,
+  "javascriptSyntaxChecks": 6,
+  "knownSecretAndCredentialPatterns": "PASS",
+  "privateAbsolutePaths": "none",
+  "documentationLinks": "PASS",
+  "sourceOnly": true,
+  "chessAuthoringPreview": {
+    "date": "2026-10-31",
+    "status": "PASS",
+    "scope": "Fresh isolated browser opened the exact publication checkout, with no app/Twitch writes or external requests.",
+    "checks": [
+      "33-ply game legal and ends in checkmate",
+      "both offered moves legal",
+      "forced Nxb8 and Rd8# continuation verified",
+      "setup has no historical answer",
+      "preview/reveal/pause/reset work",
+      "zero page errors or external requests"
+    ]
+  },
+  "video": {
+    "durationSeconds": 170.884,
+    "fullVideoReview": "PENDING",
+    "YouTube": "NOT UPLOADED",
+    "Devpost": "DRAFT"
+  },
+  "excluded": [
+    "credentials",
+    "databases",
+    "private recordings",
+    "downloaded tools",
+    "node_modules",
+    "original private Git history",
+    "prebuilt binaries/images"
+  ]
+}

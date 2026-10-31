@@ -1,5 +1,31 @@
 # Progress — updated 28 October 2026
 
+## Complete narrated demo — 31 October 2026
+
+Prepared the **complete product demo**, not only the chess clip: approximately **2:51**, 1080p, synthetic narration, burned English subtitles and a complete SRT sidecar. The private review package is `data/submission-video/final-v2/`; its video is `playable-moments-final-demo-review-v2.mp4`. It includes genuine earlier JZ2J Twitch chat/locking footage with explicit offline/operator-controlled labels; the current RF6S chess replay and full approved setup/reveal; creator review; authentic cropped Codex development footage; the preserved original game; and three clearly illustrative strategy/geography/programming screenshots. The host's coached B remains distinct from Morphy's historical A. No creator footage was downloaded and no source recording, application code or published clip was replaced.
+
+Captured a new isolated-browser replay video using the existing local FFmpeg binary through Playwright's configured browser-tools directory. The real UI accepted A, gated reveal access until the choice, and left RF6S's frozen live snapshot unchanged; zero page errors. This resolves the earlier optional-video-capture tooling limitation. The new replay is a personal QA attempt, not a Twitch vote or independent viewer. Owner credentials and signed-in browser state were not extracted.
+
+The export was decoded end to end, loudness measured, and sampled across every section for layout, captions, disclosure and privacy. Exact final measurements and review status are in [the video receipt](evidence/final-demo-video-2026-10-31.json). Narration is synthetic Microsoft Zira Desktop, not Anish's voice. Human full-video sound/pacing/content review remains pending. The package also contains the narration transcript, source/edit manifest, review notes and a YouTube-description draft.
+
+**Next:** Anish reviews the exact complete cut; then approved video publication, reviewed GitHub updates and the saved Devpost submission. No external upload or Git push occurred in this step. Deferred independent-viewer/public-broadcast, residual human accessibility/fresh-computer, and distribution/public-host checks remain separate and are not represented as passed.
+
+## Fresh chess Twitch/OBS rehearsal — 31 October 2026
+
+Verified desktop Chrome Studio as **chaitime56 / READY** and independently checked Twitch's signed-in account menu. Created a separate session and moment **RF6S — Would you offer your queen?** through the existing Studio UI. The actual Twitch message `!pick RF6S B` was accepted while OPEN. Manual locking froze **A=0, B=1, total=1, REAL_TWITCH**. This is one operator-controlled account in offline channel chat, not independent viewers or a public broadcast. Earlier door/game moments remain intact.
+
+Imported a separate **Playable Moments — Opera Chess** OBS collection, confirmed the original chess scene fits the capture frame, and recorded a 173.267-second 1920×1080 H.264/AAC take. It includes setup, a hold during the real vote/lock, an explicitly coached host demonstration choice **B** selected with assistant help, then the verified historical sequence. The host choice is not Morphy's historical move and is not presented as an unaided prediction. Recording and streaming are stopped.
+
+Uploaded that exact take through Studio, saved the observed outcome with these distinctions, and rendered **revision 1** using measured offsets in its processed master: setup **6.000–20.100s**, historical reveal **127.900–154.800s**. The intervening host-choice segment remains in the private full recording; the comparison records B. Both clips have embedded captions, matching separate text alternatives and the independent-reconstruction disclosure. Sidecar captions are left empty to avoid duplicate displayed captions.
+
+Both final files passed hash verification and full audio/video decoding. First/last encoded frames were visually checked; setup remains spoiler-free and the reveal includes the explanation. Setup/reveal peaks are **−4.4/−4.5 dBFS**, with mean −20.7 dBFS. This verifies recorded audio presence, not human audibility. [Sanitized rehearsal receipt](evidence/chess-rehearsal-2026-10-31.json).
+
+Anish replied **“yes the audio and video is working”** to the exact-revision review/local-publication request. Recorded the review through Studio and published unchanged **revision 1 / release 1 locally**. The replay is `/m/88cdf414-59cb-4647-8914-ce68f0d9d4a9` on port 5173.
+
+A fresh anonymous Chrome check played both clips to their natural ends, chose **A**, verified the choice survived reload, and obtained the comparison **personal A / coached host B / original A=0,B=1**. No result/reveal/owner request or protected result fields appeared before choice; the reveal text alternative became available after choice. The original live snapshot remained byte-for-byte unchanged and there were zero page errors. This automated replay was muted and is not another Twitch voter or independent human. [Replay acceptance receipt](evidence/chess-replay-2026-10-31.json). Screenshots were visually inspected. Optional browser video capture was unavailable because the Playwright-specific FFmpeg binary is absent; screenshots and the verified OBS take are available, but no fresh replay screen video is claimed.
+
+**Next: final demo editing and narration/captions**, then GitHub/video publication and Devpost. No Git push or external media upload occurred in this step. Previously deferred independent-viewer, manual accessibility/fresh-computer and residual distribution/deployment checks stay deferred.
+
 ## Audio calibration — 31 October 2026
 
 Anish confirmed the rehearsal picture but could not hear the original finish tones in the side browser. A separate six-second copy raised by 10 dB measured a −8.5 dBFS peak without clipping; Anish heard both tones when it played in Windows Media Player. Because both the gain and player changed, this does not prove which caused the initial difficulty. The original master is preserved.
@@ -57,7 +83,7 @@ Next: prepare the selected original game challenge (risky shortcut versus safe r
 | Supplied `checks/check_media_boundaries.py` | **5 passed**, with verified media tools prepended to PATH. |
 | Visual review | Desktop creator and phone replay screenshots inspected; browser test asserts no horizontal overflow. |
 
-Default Python 3.11 did not have PyYAML; the reference contract command actually executed was `& 'C:\Users\Anish\anaconda3\python.exe' checks/check_pack.py`. The media checker used `python checks/check_media_boundaries.py` with the local FFmpeg bin directory on PATH.
+Default Python 3.11 did not have PyYAML; the reference contract command actually executed was `& '<local Python runtime>' checks/check_pack.py`. The media checker used `python checks/check_media_boundaries.py` with the local FFmpeg bin directory on PATH.
 
 Coverage includes first votes/source deduplication, mode isolation, stale versions/codes, zero/tie snapshots, cut bounds, immutable history/releases, forbidden Origin/CSRF/Host/remote demo access, corrupt media, byte-hashed upload retries, split-frame/audio samples, no-audio sources, tampered output hashes, HEAD/Range behavior, wrong-session denial, choice conflicts, refresh/restart persistence, unpublish, streaming byte limits, subprocess timeouts, failed-job retry and restart recovery.
 
@@ -271,7 +297,7 @@ Rebuilt Caddy 2.11.7 with Go 1.27.3, pinned module updates and a minimal set of 
 
 The 43 app high occurrences represent eight advisory IDs; the proxy high finding is Go JOSE v3. The exact configuration lacks the privileged operations or exposed parser paths identified during review. These are scoped assessments, not patched-package claims or exhaustive security certification. Lower/unknown findings remain visible. Custom FFmpeg is outside OS-package scanning and has its separate source/patch evidence. See [DEPENDENCY_SECURITY.md](DEPENDENCY_SECURITY.md).
 
-Evidence: [image identities and report hashes](evidence/dependency-hardening-2026-10-28.json), [container workflow](evidence/hardened-container-2026-10-28.json), [HTTPS proxy](evidence/hardened-proxy-2026-10-28.json), [media regressions](evidence/media-security-regressions-2026-10-28.txt), and [runtime assumptions](evidence/runtime-boundaries-2026-10-28.json). Tested images are tagged `playable-moments:local` and `playable-moments-proxy:local`. Test app/proxy services are stopped. Nothing was pushed or publicly deployed.
+Evidence: image identities and report hashes (maintainer record; not distributed), container workflow (maintainer record; not distributed), HTTPS proxy (maintainer record; not distributed), [media regressions](evidence/media-security-regressions-2026-10-28.txt), and runtime assumptions (maintainer record; not distributed). Tested images are tagged `playable-moments:local` and `playable-moments-proxy:local`. Test app/proxy services are stopped. Nothing was pushed or publicly deployed.
 
 Changed in this task: `Dockerfile`, `.dockerignore`, `.gitattributes`, `compose.yaml`, `ops/Caddyfile`, `ops/media/*`, `ops/proxy/*`, `ops/container-smoke.mjs`, `ops/proxy-smoke.mjs`, `ops/runtime-security-check.mjs`, the current evidence files, README and these operator/progress/decision documents. Existing application/browser changes belong to prior work; their suites were not rerun for this container/dependency-only task.
 

@@ -1,0 +1,148 @@
+{
+  "date": "2026-10-31",
+  "kind": "isolated DEMO presentation fixtures",
+  "appSourceEdited": false,
+  "databaseUsed": false,
+  "externalRequests": 0,
+  "publication": false,
+  "screenshots": [
+    {
+      "file": "strategy-sample.png",
+      "sha256": "c92244fc2f91974d3056ce8096b79c404f70f2604142f69b4ba6621de357f3b3",
+      "fixture": {
+        "title": "Attack or prepare? — sample content",
+        "question": "Which approach would you explore first?",
+        "options": [
+          "Attack now",
+          "Prepare first"
+        ],
+        "containsVotesOrOutcome": false
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/m/strategy"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/index-OOmONkUG.js"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/index-wuDbijzb.css"
+        },
+        {
+          "method": "GET",
+          "path": "/api/config"
+        },
+        {
+          "method": "GET",
+          "path": "/api/replay/strategy"
+        },
+        {
+          "method": "GET",
+          "path": "/api/replay/strategy/attempt"
+        },
+        {
+          "method": "GET",
+          "path": "/sample.mp4"
+        }
+      ],
+      "pageErrors": [],
+      "unexpectedRequests": [],
+      "visualReview": "Reviewed final PNG: readable text, visible DEMO/sample labels, no clipping or spinner; no votes/outcome shown"
+    },
+    {
+      "file": "geography-sample.png",
+      "sha256": "428ff9854059eef733bbdffa21ff365f9c3af65eaca7441e371c6e4923ffb79c",
+      "fixture": {
+        "title": "Read the clues — sample content",
+        "question": "Which clue would you inspect first?",
+        "options": [
+          "Road markings",
+          "Written signs"
+        ],
+        "containsVotesOrOutcome": false
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/m/geography"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/index-OOmONkUG.js"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/index-wuDbijzb.css"
+        },
+        {
+          "method": "GET",
+          "path": "/api/config"
+        },
+        {
+          "method": "GET",
+          "path": "/api/replay/geography"
+        },
+        {
+          "method": "GET",
+          "path": "/api/replay/geography/attempt"
+        },
+        {
+          "method": "GET",
+          "path": "/sample.mp4"
+        }
+      ],
+      "pageErrors": [],
+      "unexpectedRequests": [],
+      "visualReview": "Reviewed final PNG: readable text, visible DEMO/sample labels, no clipping or spinner; no votes/outcome shown"
+    },
+    {
+      "file": "programming-sample.png",
+      "sha256": "c6dbb0ea2873e9e11227d3d65c24a80effc709304eae97c453cc4323c8a111fa",
+      "fixture": {
+        "title": "Trace the click — sample content",
+        "question": "Where would you investigate first?",
+        "options": [
+          "Click handlers",
+          "State updates"
+        ],
+        "containsVotesOrOutcome": false
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/m/programming"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/index-OOmONkUG.js"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/index-wuDbijzb.css"
+        },
+        {
+          "method": "GET",
+          "path": "/api/config"
+        },
+        {
+          "method": "GET",
+          "path": "/api/replay/programming"
+        },
+        {
+          "method": "GET",
+          "path": "/api/replay/programming/attempt"
+        },
+        {
+          "method": "GET",
+          "path": "/sample.mp4"
+        }
+      ],
+      "pageErrors": [],
+      "unexpectedRequests": [],
+      "visualReview": "Reviewed final PNG: readable text, visible DEMO/sample labels, no clipping or spinner; no votes/outcome shown"
+    }
+  ]
+}

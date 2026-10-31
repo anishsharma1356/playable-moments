@@ -4,6 +4,12 @@ Make your choice before the reveal. **M0/M1 work locally. Real Twitch voting, re
 
 React/TypeScript, Fastify, SQLite and a bounded FFmpeg worker. Upload a recording, review separately encoded setup/reveal files, approve a content-bound revision, and publish it. A second browser watches setup, chooses, and then accesses the recorded outcome and frozen comparison. Replay choices never update historical votes.
 
+## Current presentation example
+
+The complete product demonstration uses an **independent Opera chess reconstruction** and genuine, accurately labelled Twitch rehearsals. The original game remains available. See [chess sources and credits](docs/demo/chess/README.md), [the final submission text](docs/DEVPOST_ENTRY_DRAFT.md) and [video verification](docs/evidence/final-demo-video-2026-10-31.json). The 2:51 narrated/captioned video is prepared; full human review and public YouTube upload are pending.
+
+The judge quick start below intentionally uses the small original synthetic door fixture. It exercises the same workflow without private recordings or Twitch secrets. Opening `docs/demo/chess/scene.html` locally previews the original chess visuals; the media brief documents optional authoring prerequisites. Source-only distribution includes no private recordings, credentials, downloaded tools or prebuilt images.
+
 ## Try the local demo
 
 **Evaluating a fresh download? Start with [the judge guide](docs/JUDGE_GUIDE.md).** Its isolated Windows walkthrough installs pinned dependencies without requiring global pnpm, generates original demo media and uses its own loopback ports/data. No Twitch secrets or paid app host are needed for that walkthrough. The instructions below describe the creator's existing development setup.

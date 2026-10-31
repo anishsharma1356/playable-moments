@@ -1,60 +1,62 @@
-# Playable Moments — Devpost entry draft
+# Playable Moments — final submission text
 
-Prepared 28 October 2026. Registration is confirmed in Devpost. Project draft created as **Playable Moments**, with the name and tagline saved. This document supplies the remaining story; it is not a submitted entry. No final video or repository URL exists yet.
+Updated 31 October 2026 to match the complete 2:51 video. Ready to paste; the Devpost entry remains a draft. The public YouTube URL is still missing.
 
 ## Name and elevator pitch
 
-**Playable Moments**
+**Name:** Playable Moments
 
-Missed the stream? Watch the setup, make your choice, then see the real recorded outcome—without changing the original Twitch responses.
+**Pitch:** Missed the stream? Make your choice before the reveal. Turn a creator's recorded decision into a replay people can participate in.
 
 ## Project story
 
 ### Inspiration
 
-A livestream can ask viewers to choose before something happens. Someone arriving later usually sees the recording without that decision step. Playable Moments preserves the original question and real outcome so the later viewer can participate in a personal replay experience.
+Live viewers get a moment to decide before they know the answer. Later viewers usually lose that opportunity. We wanted to preserve the decision, then help the later viewer understand what happened and why. Creators can use their own or authorised recordings: a game challenge, chess explanation, coding session or educational demonstration.
 
 ### What it does
 
-The creator opens an A/B round and receives authorized Twitch chat commands. The first accepted response from each account counts. Locking the round freezes the historical responses. The creator records the actual outcome, uploads an authorized MP4, selects separate setup and reveal segments, and reviews both outputs with their captions and text descriptions before publishing locally.
+A creator opens an A/B round connected to Twitch chat. One first-accepted response counts per account. Locking freezes the original history. The creator records the actual host choice and outcome, uploads an authorised MP4, selects separate setup and reveal segments, then reviews the encoded video, sound, captions and text alternatives before publication.
 
-A later viewer watches the setup, makes a personal choice and then receives access to the recorded reveal. The comparison clearly distinguishes that personal choice, the creator's actual choice and the original audience responses. Replay activity never changes the live history, and the application does not invent alternate endings.
+A later viewer watches setup, chooses, then accesses the recorded reveal and comparison. That personal choice never rewrites the video or original responses. Reveal media, captions and results are gated by the saved session choice. Editing creates a new revision and resets approval; the full master remains private.
+
+### The demonstration
+
+Our main example independently reconstructs Morphy's Opera Game, Paris 1858. A viewer chooses whether to offer the queen or keep it, then sees the historical continuation and an explanation of piece coordination. Both options are legal; this is reflection, not an AI-graded puzzle.
+
+The host's B is explicitly a coached demonstration selected with assistant help, distinct from Morphy's historical A. The chess rehearsal used one operator-controlled Twitch account in offline chat and froze A=0/B=1. A later personal A choice leaves that history unchanged. The video labels the earlier real chat/lock footage as a separate integration rehearsal. No independent audience, public broadcast, celebrity participation or original broadcast footage is claimed.
+
+Original-game footage and illustrative strategy, geography and programming screenshots show possible uses. These are not adoption evidence or additional live sessions. No third-party creator videos were downloaded.
 
 ### How it was built with Codex
 
-Codex assisted throughout implementation and verification: the state machine, Twitch OAuth and EventSub adapter, atomic voting/lock behavior, private media processing, session-gated reveal, accessible interface, regression tests, judge setup and deployment preparation. Actual development evidence includes investigating a Twitch keepalive timeout, testing controlled reconnect and late-vote rejection, and reviewing caption access before a replay choice.
+Codex helped implement and verify the state machine, Twitch OAuth/EventSub adapter, atomic voting/locking, private media processing, session-gated replay, accessibility, regression tests and judge setup. The video includes actual development footage of a caption-readability issue being identified, corrected and checked.
 
-The application uses TypeScript, React and Vite, a Fastify API, SQLite with migrations, and bounded FFmpeg processing. Vitest covers domain/API behavior; Playwright exercises desktop and phone-sized browser workflows. Codex is a development tool here, not a runtime AI service.
+The application uses TypeScript, React/Vite, Fastify, SQLite and bounded FFmpeg workers. Vitest checks domain/API behavior; Playwright exercises browser workflows. Codex is a development tool, not a required runtime AI service.
 
-### Challenges and what was learned
+### Challenges and accomplishments
 
-A disconnected chat intake must not leave a round looking complete. Unexpected outages interrupt an open round, and reconnection does not silently reopen it. Preventing spoilers also requires more than pausing a player: setup and reveal are separate files, and reveal media, captions and comparison data require a saved session choice.
+Spoiler prevention needs separate encoded files and server authorization, not just a paused player. Unexpected chat outages must interrupt an open round instead of producing a misleading tally. Reconnect, late-vote rejection and exact-file media review required careful testing.
 
-Human review matters. The first recording needed an audio adjustment, and a keyboard walkthrough exposed misleading comparison wording when the replay and creator choices matched. The approved local revision now includes reviewed captions and separate text alternatives. Automated checks support these decisions but do not replace a person's hearing, screen-reader or device review.
+The local upload → review → publish → choose → reveal workflow works. Genuine Twitch rehearsals, including two user-operated accounts, test technical behavior rather than an independent audience. An Android phone completed basic replay, persistence and orientation checks. Clean-source setup passed on the existing machine; a separate computer remains untested.
 
-### Accomplishments and verification
-
-The local prototype completes upload → review → publish → choose → reveal. Genuine Twitch rehearsals cover first-vote behavior, lock, late rejection and reconnect. Two user-operated accounts were used for technical testing; this is not a two-person audience study. The reviewed OBS moment contains one genuine account response and a recorded Blue outcome.
-
-Synthetic local load measurements accepted 1,000 valid votes in 30 seconds with 2.62 ms p95 transaction time. Ten local video clients passed the recorded test. These measurements do not establish public-host capacity. A clean-source local judge walkthrough and Linux container/restart/backup-restore checks are documented alongside their machine/cache limits.
+Recorded synthetic local load checks accepted 1,000 valid votes in 30 seconds at 2.62 ms p95 transaction time, and ten local video clients passed. These are local measurements, not public-host capacity claims. Dated evidence and limits are in the repository.
 
 ### What's next
 
-The MVP supports one allowlisted creator, two choices and manual recording/review. Remaining product acceptance includes spoken screen-reader feedback, zoom and physical-phone review, a separate-machine setup, and a broadcast with independent consenting viewers. Public hosting is deferred. Residual dependency/platform findings remain documented; the project is not represented as vulnerability-free or fully WCAG-certified.
+The MVP supports one allowlisted creator, two choices and manual recording/review. Independent viewers, remaining human screen-reader/magnified-flow acceptance, a fresh-computer installation and public-host testing remain. Hosting is deferred. Residual platform/security and binary-distribution work is documented; no vulnerability-free or full-WCAG claim is made.
 
-## Form fields still to finish
+## Submission fields
 
-- Suggested Built with tags: TypeScript, React, Vite, Node.js, Fastify, SQLite, FFmpeg, Twitch API, OpenAI Codex, Vitest, Playwright, Docker.
-- Runnable repository URL: **pending publication/access decision**. GitHub/GitLab/Bitbucket is accepted. The official homepage names `testing@devpost.com` for private GitHub/GitLab judge access; verify before sharing.
-- YouTube demonstration: **pending final recording, approval and upload**. Target 2:45 and use public visibility to meet the official rules' stricter wording.
-- Actual Codex build session ID: `01a1791d-3b64-7590-ab36-a3b1096b4328`.
-- Public app URL: not available. Do not insert a localhost URL as a remotely accessible demo; provide the judge guide in the repository.
-- Team/eligibility/rights and any additional attestations: Anish reviews and answers personally.
+- Repository: https://github.com/anishsharma1356/playable-moments
+- Judge setup: https://github.com/anishsharma1356/playable-moments/blob/main/docs/JUDGE_GUIDE.md
+- Video: paste the real **public YouTube URL** after review/upload. Never use a local path or invented URL.
+- Codex session ID: `01a1791d-3b64-7590-ab36-a3b1096b4328` (app-reported build-thread identifier).
+- Built with: TypeScript, React, Vite, Node.js, Fastify, SQLite, FFmpeg, Twitch API, OpenAI Codex, Vitest, Playwright, Docker.
+- Public app URL: not hosted. Supply repository/judge instructions where appropriate, not localhost.
 
-## Registration and deadline
+## Credits and final action
 
-Devpost displayed “Thanks for registering!” and created draft submission `1269326`. Name/pitch are saved; the project is **DRAFT**, not submitted. Entry details can be revisited from My projects in the registered account.
+Original project visuals/script; synthetic Microsoft Zira Desktop narration, not a player imitation. Historical sources: [Edward Winter](https://www.chesshistory.com/winter/extra/morphy.html) and [game score](https://www.chessgames.com/perl/chessgame?gid=1233404). No article prose, broadcast media or downloaded artwork reused. MIT project copyright 2026 Anish; third-party notices retained.
 
-Deadline displayed: **3 November 2026, 3:30 am IST**. Recheck before submission. Sources: [official competition](https://twitchcon-codex.devpost.com/), [rules](https://twitchcon-codex.devpost.com/rules), [resources](https://twitchcon-codex.devpost.com/resources).
-
-Final action: review the completed entry, verify signed-out video and repository access, then have Anish submit. Do not present registration or a saved draft as a completed submission.
+Registered draft: `1269326-playable-moments`. Anish reviews team/eligibility/rights statements personally. Verify signed-out repository/video access, then submit the completed entry. Deadline checked 31 October: **2 November 2026, 2:00 pm PST / 3 November, 3:30 am IST**. [Official rules](https://twitchcon-codex.devpost.com/rules).

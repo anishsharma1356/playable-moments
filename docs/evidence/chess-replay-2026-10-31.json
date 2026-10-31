@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-31",
+  "code": "RF6S",
+  "releaseVersion": 1,
+  "reviewedRevision": 1,
+  "scope": "Fresh anonymous browser; real published local release; automated QA choice, not another Twitch vote or independent person.",
+  "checks": [
+    "setup played to natural end",
+    "no protected requests or result fields before choice",
+    "A choice saved and survived refresh",
+    "historical reveal played to natural end",
+    "comparison A personal / B coached host / A0 B1 original",
+    "reveal text alternative available only after choice",
+    "original live snapshot unchanged",
+    "zero page errors"
+  ],
+  "playback": "Headless Chrome, real time, muted; human audio review was supplied separately.",
+  "comparison": {
+    "yourChoice": "A",
+    "creatorChoice": "B",
+    "historical": {
+      "countA": 0,
+      "countB": 1,
+      "total": 1,
+      "mode": "REAL_TWITCH",
+      "lockedAtMs": 1793457984849
+    }
+  },
+  "status": "PASS"
+}

@@ -1,6 +1,8 @@
 # Judge guide: run Playable Moments locally
 
-This is a working local application with two explicitly separate ways to evaluate it. The quick walkthrough below uses generated original video and **12 synthetic responses**. It needs no Twitch account, API key, paid hosting or private project files. Genuine Twitch integration has been tested in local rehearsals; the final submission video is still being prepared. It can also be tested with your own Twitch application using the linked instructions.
+This is a working local application with two explicitly separate ways to evaluate it. The quick walkthrough below uses generated original video and **12 synthetic responses**. It needs no Twitch account, API key, paid hosting or private project files. Genuine Twitch integration has been tested in local rehearsals; the complete narrated video is prepared, with final review/upload pending. It can also be tested with your own Twitch application using the linked instructions.
+
+The submission video uses our independent **Opera chess decision** reconstruction. The quick-start fixture remains the small original door sample so judges can run the same workflow without private recordings, Twitch credentials or speech tools. Its synthetic history is separate from the real rehearsals in the video. Chess visuals, score, captions and optional authoring instructions are in [the media brief](demo/chess/README.md); open its standalone `scene.html` for a silent preview.
 
 ## Verified target and prerequisites
 
