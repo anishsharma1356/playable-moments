@@ -1,4 +1,65 @@
-# Final demo recording sheet — 28 October 2026
+# Final demo recording sheet — updated 31 October 2026
+
+## Selected replacement example: Shortcut or Safety?
+
+Anish selected the original game challenge on 31 October. The game scene is now implemented and verified with six game-logic tests and five browser scenarios. New real Twitch/OBS footage and processed-media approval remain pending. The existing door footage remains a historical rehearsal and fallback, not the final chosen example.
+
+### Run and rehearse the implemented scene
+
+With Node 24 and the project dependencies installed, run `npm run demo:scene` from the project folder, then open `http://127.0.0.1:5190/`. The server binds only to loopback and serves only the original scene assets. It does not access the application database or Twitch. The existing Studio/overlay servers remain separate.
+
+Choose A or B, then **Start run**. The shortcut takes about 4.6 seconds and requires one Space press just before the gap; an early or absent jump falls. The safe route takes about 8.8 seconds. Pause/Resume and reset confirmation work; leaving the tab automatically pauses the run. Sound starts off: click **Sound off** to enable it, then confirm the short check tone is audible at a comfortable level. Human audio and final-recording review remain required.
+
+To prepare OBS, run `node ops/prepare-game-obs.mjs`. Import `data/obs/Playable-Moments-Shortcut-Safety.json` as a separate scene collection. Use a 1920×1080 canvas. The browser source uses a 1280×900 page, crops 180 pixels of operator controls from its bottom, and scales the remaining 1280×720 frame to 1920×1080. Open that source's **Interact** window to choose/start/jump and enable sound; controls are available there but cropped from the recording. The imported microphone is muted initially. Verify routing/levels and make a local rehearsal before starting a real take. Importing does not start recording or streaming, and the existing OBS collection is not edited by the preparation script.
+
+The game is original project code and code-drawn SVG art. It has no external fonts, images, game logos or music. Tests do not stand in for the next real Twitch/OBS capture or human review.
+
+**The scene:** a tiny original platform game shows a character at a fork, with a finish flag in view. A short upper route requires one well-timed jump over a gap. A longer lower route avoids the gap. The streamer is trying to finish quickly without falling. The scene pauses clearly at the decision while chat responds; no hidden countdown keeps running during voting.
+
+**Exact moment text:**
+
+- Title: `Shortcut or Safety?`
+- Question: `One run. Which route would you take?`
+- A: `Risky shortcut`
+- B: `Safe route`
+- Streamer line: “Chat, do I risk the jump for a faster finish, or take the safe route? A or B?”
+- Later-viewer line: “You missed the stream. You haven't missed the decision.”
+
+Use original code-drawn scenery, a simple character and generated sound effects; no commercial-game branding, borrowed VOD or external music is needed. Keep this an isolated capture scene, not a new game engine or Twitch-to-game-control feature inside Playable Moments. Both paths must actually work. The creator selects a route and plays; a jump succeeds or fails based on the real attempt, not a preselected video ending. Record the observed outcome accurately, including a failed jump if that is what happens. Do not change the game after seeing votes to manufacture a result.
+
+### Implemented scene boundaries
+
+- One screen, one fork, one finish, one jump; legible at 1280×720 capture.
+- Large A/B route names with distinct shapes and text as well as color.
+- Explicit “Paused for chat” state, then creator-controlled route selection/start.
+- Keyboard controls and a visible restart control for rehearsal. Record a continuous actual attempt after the live round locks.
+- Clear landing/falling/finish state and a short sound that is also described in reveal captions/text.
+- No fake chat panel, audience count, vote simulation or automatic game control attributed to Playable Moments.
+
+### Capture one coherent moment
+
+1. Prepare and rehearse the game without opening a voting round. Frame OBS around the game and approved read-only overlay. Capture only intended windows.
+2. In real Twitch mode, confirm Studio READY, create a fresh moment with the text above, and use its actual displayed round code. Start local OBS recording before opening responses. A public broadcast, if used, is a separate deliberate action.
+3. Accept real chat commands and lock responses. Keep the actual vote count and provenance. Operator-controlled accounts are a technical rehearsal; they are not independent audience feedback. Stop if intake is interrupted.
+4. The creator states the chosen route and plays it. Keep the entire attempt, actual outcome and genuine reaction together in the master recording. Later-viewer choices never control this game or change this footage.
+5. Upload that recording. SETUP should be about 8–12 seconds: the question, both routes and their stakes, ending before the chosen route, result, audience split or revealing sound. REVEAL should be about 8–15 seconds: the actual route, attempt and outcome. Exact offsets come from the new recording, not this estimate.
+6. Add separate accurate captions and descriptions. Anish reviews the exact processed setup and reveal with sound and approves this revision before local publication. Earlier door approvals do not apply.
+7. In a fresh replay session, choose the other option from the creator when useful for comparison. Reveal the one actual recorded ending and show the genuine frozen live history separately from the replay choice.
+
+### Final edit: target 2:45
+
+| Time | Shot and purpose |
+|---|---|
+| 0:00–0:15 | Show the fork and question. “Would you risk the shortcut? Most replays tell you what happened before you get to decide.” Keep the outcome hidden. |
+| 0:15–0:45 | Real Twitch command, accepted participation count, then Studio lock. State honestly whether these are operator-controlled test accounts. |
+| 0:45–1:10 | Upload and creator boundaries/caption review, with encoding waits clearly shortened. Avoid showing the reveal before the replay sequence. |
+| 1:10–1:55 | Fresh viewer watches setup, chooses, unlocks the real outcome, then sees personal choice, creator choice and frozen live history. This is the main product demonstration. |
+| 1:55–2:25 | Actual Codex development footage and a real tested fix. Explain separate setup/reveal files and server-side choice gating in one sentence. |
+| 2:25–2:45 | Close: “Keep the decision alive after the stream ends.” Show repository/local judge setup and accurately label the prototype's limits. |
+
+The [official rules](https://twitchcon-codex.devpost.com/rules), rechecked 31 October, request a video under three minutes with functioning Twitch and Codex-development footage, publicly visible on YouTube. Use this brief to plan the edit; final duration, final content approval and public upload remain undone. The scene's automated tests are complete; a genuine Twitch recording using the new example remains pending.
+
+## Historical door recording sheet — 28 October 2026
 
 **Narrated target: 2 minutes 45 seconds. Status: real product/Codex footage captured; private text-led review cut v1 exported at 2:08. Final narration, full-video human review and upload remain.**
 

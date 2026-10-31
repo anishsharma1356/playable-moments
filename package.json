@@ -18,6 +18,7 @@
     "test:e2e": "playwright test",
     "db:migrate": "tsx ops/manage.ts migrate",
     "demo:seed": "tsx ops/manage.ts seed",
+    "demo:scene": "node ops/demo-scene.mjs",
     "doctor": "tsx ops/manage.ts doctor"
   },
   "dependencies": {

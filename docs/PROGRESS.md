@@ -1,5 +1,13 @@
 # Progress — updated 28 October 2026
 
+## Original game and OBS preparation — 31 October 2026
+
+The selected **Shortcut or Safety?** recording scene is implemented with original SVG art and generated sound effects. A creator chooses the risky shortcut or the longer safe route; actual jump timing determines success or failure. The scene pauses during chat and on tab/background stalls. It runs separately on loopback port 5190 without Twitch credentials, application data or vote simulation.
+
+All **69 unit/integration tests**, including six game-logic tests, passed. **Five dedicated browser scenarios** passed with no retries, including real jump input, pause/reset behavior, keyboard use, responsive layouts, automated axe checks and scene-server access restrictions. Build/TypeScript and full lint passed. The generated OBS import was loaded into OBS 33.0.0 as a separate collection and visually verified; its operator controls are cropped out. This is preparation, not a new Twitch recording or human media approval. See [the scoped evidence](evidence/original-game-scene-2026-10-31.json).
+
+Run `npm run demo:scene` and open `http://127.0.0.1:5190/`; after choosing B and pressing Start run, the safe route should finish. Use `node ops/prepare-game-obs.mjs` for a fresh import file and follow [the recording sheet](demo/FINAL_DEMO_SCRIPT.md). Next: verify actual OBS recording/audio, capture a fresh Twitch moment, review its exact processed media, then finish narration, editing, publication and submission. Previously deferred checks remain deferred.
+
 ## Security fixes and browser results — 31 October 2026
 
 The security follow-up fixes two moderate production JavaScript advisories through scoped glob/minimatch overrides. The repeat audit reports zero findings across 86 production packages. All 63 unit/integration checks, build/TypeScript and lint passed. The complete Playwright run passed all six desktop and emulated-phone scenarios in 145.9 seconds, with no failed, skipped or flaky tests: public accessibility/reflow, fixture Twitch/overlay, and upload → review → publish → choose → reveal. These are automated fixture results, not new live Twitch or independent-viewer evidence. Exact cases and report hashes: [browser receipt](evidence/browser-regression-2026-10-31.json), [security receipt](evidence/security-followup-2026-10-31.json).

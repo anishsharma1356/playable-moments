@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shortcut or Safety? · Playable Moments</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: Inter, "Segoe UI", Arial, sans-serif;
+        color: #f2f5ff;
+        background: #090e19;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      button {
+        font: inherit;
+        cursor: pointer;
+        border: 1px solid #55657e;
+        border-radius: 10px;
+        color: #f2f5ff;
+        background: #1a263c;
+        padding: 12px 18px;
+        font-weight: 650;
+      }
+      button:disabled {
+        cursor: default;
+        opacity: 0.45;
+      }
+      button:focus-visible,
+      a:focus-visible {
+        outline: 3px solid #fff;
+        outline-offset: 4px;
+      }
+      button[aria-pressed="true"] {
+        border-color: #d9fd8c;
+        box-shadow: inset 0 0 0 2px #d9fd8c;
+      }
+      #capture {
+        width: min(100%, 1440px);
+        margin: auto;
+        padding: 30px 44px 20px;
+        background: radial-gradient(ellipse at 30% 50%, #142b3d, #0b1222 70%);
+      }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: center;
+      }
+      .brand {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 2px;
+      }
+      .brand b {
+        color: #0b1820;
+        background: #cffa86;
+        padding: 6px 9px;
+        border-radius: 5px;
+        letter-spacing: 0;
+      }
+      .tag {
+        color: #b8c8dc;
+        font-size: 12px;
+        letter-spacing: 1.5px;
+      }
+      .heading {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: center;
+        margin-top: 23px;
+      }
+      h1 {
+        font-size: clamp(30px, 4vw, 58px);
+        line-height: 1.06;
+        letter-spacing: -2px;
+        margin: 0 0 8px;
+        font-weight: 780;
+      }
+      .sub {
+        color: #bdcbe0;
+        font-size: 19px;
+        margin: 0;
+      }
+      .clock {
+        text-align: right;
+        min-width: 110px;
+      }
+      .clock span {
+        display: block;
+        color: #b8c8dc;
+        font-size: 11px;
+        letter-spacing: 2px;
+      }
+      #timer {
+        display: block;
+        font:
+          700 37px "Cascadia Code",
+          Consolas,
+          monospace;
+        margin-top: 5px;
+      }
+      .world {
+        margin-top: 12px;
+        border-bottom: 1px solid #32465b;
+      }
+      svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      svg text {
+        font-family: Inter, "Segoe UI", Arial, sans-serif;
+      }
+      .outcome {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 16px 0 0;
+        min-height: 77px;
+      }
+      #status {
+        font-size: 22px;
+        font-weight: 700;
+        margin: 0;
+      }
+      #instruction {
+        margin: 4px 0 0;
+        color: #bdcbe0;
+        font-size: 15px;
+      }
+      #phase {
+        white-space: nowrap;
+        border: 1px solid #62758b;
+        color: #d8e5f6;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 12px;
+        letter-spacing: 1px;
+      }
+      .operator {
+        max-width: 1440px;
+        margin: auto;
+        padding: 22px 44px;
+        border-top: 1px solid #263447;
+      }
+      .operator h2 {
+        font-size: 13px;
+        letter-spacing: 1px;
+        color: #b8c8dc;
+        margin: 0 0 12px;
+        text-transform: uppercase;
+      }
+      .buttons {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      #start {
+        background: #cffa86;
+        color: #102017;
+        border-color: #cffa86;
+      }
+      #jump {
+        background: #4fdddc;
+        color: #081c26;
+        border-color: #4fdddc;
+      }
+      .help {
+        color: #a8bad0;
+        line-height: 1.6;
+        font-size: 13px;
+        margin: 12px 0 0;
+      }
+      .audio {
+        margin-left: auto;
+      }
+      .sr {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+      }
+      #confirm-reset {
+        max-width: 400px;
+        border: 1px solid #71839b;
+        border-radius: 16px;
+        padding: 25px;
+        background: #111c30;
+        color: #f2f5ff;
+      }
+      #confirm-reset::backdrop {
+        background: #000a;
+      }
+      @media (max-width: 650px) {
+        #capture {
+          padding: 22px 16px 16px;
+        }
+        .operator {
+          padding: 20px 16px;
+        }
+        .tag {
+          display: none;
+        }
+        h1 {
+          letter-spacing: -1px;
+        }
+        .sub {
+          font-size: 15px;
+        }
+        .clock {
+          min-width: 75px;
+        }
+        #timer {
+          font-size: 25px;
+        }
+        .outcome {
+          align-items: flex-start;
+        }
+        #status {
+          font-size: 18px;
+        }
+        #instruction {
+          font-size: 13px;
+        }
+        #phase {
+          font-size: 10px;
+        }
+        .audio {
+          margin-left: 0;
+        }
+        .buttons button {
+          min-height: 44px;
+        }
+        .world {
+          margin-top: 26px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section id="capture" aria-labelledby="title" data-phase="waiting">
+        <div class="top">
+          <div class="brand"><b>PM</b> PLAYABLE MOMENTS</div>
+          <span class="tag">ORIGINAL GAME CHALLENGE</span>
+        </div>
+        <div class="heading">
+          <div>
+            <h1 id="title">Shortcut or safety?</h1>
+            <p class="sub">One run. Which route would you take?</p>
+          </div>
+          <div class="clock" aria-hidden="true">
+            <span>RUN TIME</span><output id="timer">00.00</output>
+          </div>
+        </div>
+        <div class="world">
+          <svg
+            viewBox="0 0 1200 430"
+            role="img"
+            aria-labelledby="map-title map-desc"
+          >
+            <title id="map-title">Two routes to the finish</title>
+            <desc id="map-desc">
+              The upper shortcut has a gap requiring a timed jump. The longer
+              lower safe route is continuous. Both lead to the same finish flag.
+            </desc>
+            <defs>
+              <linearGradient id="mountain" x2="0" y2="1">
+                <stop stop-color="#263d51" />
+                <stop offset="1" stop-color="#101d30" />
+              </linearGradient>
+              <linearGradient id="cliff" x2="0" y2="1">
+                <stop stop-color="#35556a" />
+                <stop offset="1" stop-color="#122337" />
+              </linearGradient>
+              <pattern
+                id="grid"
+                width="40"
+                height="40"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M 40 0 L 0 0 0 40"
+                  fill="none"
+                  stroke="#90b9d3"
+                  stroke-opacity=".035"
+                />
+              </pattern>
+            </defs>
+            <path
+              d="M0 270 100 180 230 250 360 105 500 240 620 140 800 245 930 65 1070 230 1200 155V430H0Z"
+              fill="url(#mountain)"
+              opacity=".5"
+            />
+            <circle cx="1040" cy="70" r="32" fill="#d2f5bf" opacity=".12" />
+            <rect width="1200" height="430" fill="url(#grid)" />
+            <g id="safe-path">
+              <path
+                d="M160 230 260 360H940L1040 230"
+                fill="none"
+                stroke="#16283c"
+                stroke-width="28"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M160 230 260 360H940L1040 230"
+                fill="none"
+                stroke="#7eddd2"
+                stroke-width="7"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M160 230 260 360H940L1040 230"
+                fill="none"
+                stroke="#b8faf3"
+                stroke-width="2"
+                stroke-dasharray="9 15"
+              />
+            </g>
+            <g id="risk-path">
+              <path
+                d="M80 230H520L490 275H115Z M675 230H1120L1085 275H700Z"
+                fill="url(#cliff)"
+              />
+              <path
+                d="M80 230H520 M675 230H1120"
+                stroke="#ffc58b"
+                stroke-width="7"
+                stroke-linecap="round"
+              />
+              <path
+                d="M500 212 Q590 20 700 212"
+                fill="none"
+                stroke="#ffcd94"
+                stroke-width="2"
+                stroke-dasharray="7 8"
+                opacity=".45"
+              />
+              <path
+                d="M500 222V238 M510 222V238"
+                stroke="#fff1d0"
+                stroke-width="3"
+              />
+            </g>
+            <g transform="translate(335 53)">
+              <rect
+                width="246"
+                height="70"
+                rx="12"
+                fill="#232b39"
+                stroke="#936b51"
+              />
+              <rect
+                x="13"
+                y="14"
+                width="37"
+                height="37"
+                rx="8"
+                fill="#ffc58b"
+              />
+              <text
+                x="31"
+                y="40"
+                text-anchor="middle"
+                fill="#182130"
+                font-size="23"
+                font-weight="800"
+              >
+                A
+              </text>
+              <text
+                x="65"
+                y="32"
+                fill="#ffe0b6"
+                font-size="20"
+                font-weight="700"
+              >
+                Risky shortcut
+              </text>
+              <text x="65" y="54" fill="#c2cddd" font-size="14">
+                Faster. Land the jump.
+              </text>
+            </g>
+            <g transform="translate(425 378)">
+              <rect
+                width="348"
+                height="40"
+                rx="10"
+                fill="#152e39"
+                stroke="#528e8d"
+              />
+              <text
+                x="18"
+                y="26"
+                fill="#a3eee5"
+                font-size="18"
+                font-weight="750"
+              >
+                B
+              </text>
+              <text
+                x="48"
+                y="26"
+                fill="#c8fff4"
+                font-size="18"
+                font-weight="700"
+              >
+                Safe route
+              </text>
+              <text x="157" y="26" fill="#b9d4db" font-size="14">
+                Longer. No gap.
+              </text>
+            </g>
+            <g transform="translate(1040 230)">
+              <path d="M0 0V-96" stroke="#dbeef5" stroke-width="5" />
+              <path d="M3-96H64L49-72H3Z" fill="#cffa86" />
+              <text
+                x="0"
+                y="-114"
+                text-anchor="middle"
+                fill="#dcebf7"
+                font-size="14"
+                letter-spacing="2"
+              >
+                FINISH
+              </text>
+            </g>
+            <text
+              x="120"
+              y="196"
+              fill="#b5c7dc"
+              font-size="12"
+              letter-spacing="2"
+            >
+              START
+            </text>
+            <g id="runner" transform="translate(160 230)">
+              <ellipse
+                cx="0"
+                cy="4"
+                rx="18"
+                ry="4"
+                fill="#050e1a"
+                opacity=".7"
+              />
+              <path
+                d="M-8-9V0 M8-9V0"
+                stroke="#dafff1"
+                stroke-width="7"
+                stroke-linecap="round"
+              />
+              <rect
+                x="-17"
+                y="-43"
+                width="34"
+                height="31"
+                rx="11"
+                fill="#cffa86"
+                stroke="#efffd7"
+                stroke-width="2"
+              />
+              <rect
+                x="-10"
+                y="-35"
+                width="23"
+                height="12"
+                rx="5"
+                fill="#152c3b"
+              />
+              <circle cx="7" cy="-29" r="2.5" fill="#b3fff3" />
+              <path d="M-18-28H-22V-15H-18" fill="#74b689" />
+            </g>
+          </svg>
+        </div>
+        <div class="outcome">
+          <div>
+            <p id="status">Paused for chat.</p>
+            <p id="instruction">
+              Take the shortcut, or play it safe? The creator decides after
+              voting locks.
+            </p>
+          </div>
+          <span id="phase">WAITING FOR A CHOICE</span>
+        </div>
+        <p
+          id="announcement"
+          class="sr"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          Paused for chat. Choose a route, then start the run.
+        </p>
+      </section>
+      <section class="operator" aria-label="Creator controls">
+        <h2>Creator controls · choose after locking responses in Studio</h2>
+        <div class="buttons">
+          <button id="route-a" aria-pressed="false">A · Risky shortcut</button
+          ><button id="route-b" aria-pressed="false">B · Safe route</button
+          ><button id="start" disabled>Start run</button
+          ><button id="jump" disabled>Jump · Space</button
+          ><button id="pause" disabled>Pause</button
+          ><button id="reset">Reset scene</button
+          ><button class="audio" id="sound" aria-pressed="false">
+            Sound off
+          </button>
+        </div>
+        <p class="help">
+          Choose a route, then Start. Shortcut: press Space once near the edge.
+          Safe route: the runner follows the longer path. P pauses. Leaving this
+          tab pauses the run. Sound is optional.<br />This original scene is
+          controlled by the creator. Twitch votes are handled separately in
+          Playable Moments Studio.
+        </p>
+      </section>
+    </main>
+    <dialog id="confirm-reset" aria-labelledby="reset-title">
+      <h2 id="reset-title">Reset this run?</h2>
+      <p>
+        The current attempt will be cleared. Keep completed recordings before
+        starting a new take.
+      </p>
+      <div class="buttons">
+        <button id="keep-run" autofocus>Keep this run</button
+        ><button id="do-reset">Reset to question</button>
+      </div>
+    </dialog>
+    <script type="module" src="/scene.js"></script>
+  </body>
+</html>

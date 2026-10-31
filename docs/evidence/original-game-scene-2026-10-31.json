@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-31",
+  "example": "Shortcut or Safety?",
+  "scope": "Original optional recording scene; no changes to live-vote, media-publication or replay behavior.",
+  "verification": {
+    "unitAndIntegration": {
+      "passed": 69,
+      "failed": 0,
+      "gameLogicCasesIncluded": 6,
+      "reportSha256": "8bce7864b4e16da0512e233d6d710e8f1b5d58d5a3a3ee1eeedc48bedc966a53"
+    },
+    "sceneBrowser": {
+      "passed": 5,
+      "failed": 0,
+      "retries": 0,
+      "elapsedSeconds": 21.6,
+      "command": "npx playwright test --config playwright.scene.config.ts",
+      "cases": [
+        "Paused question, keyboard safe route and reset confirmation",
+        "Timed shortcut landing and no-jump fall",
+        "Pause, resume and route locking",
+        "1280px/390px reflow and axe WCAG checks",
+        "Private-path denial, write rejection, Host restriction and CSP"
+      ],
+      "lastRunSha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+    },
+    "productionBuildAndTypecheck": "passed",
+    "fullEslint": "passed",
+    "obsFrameGeometry": {
+      "capture": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      },
+      "controls": {
+        "x": 0,
+        "y": 720,
+        "width": 1280,
+        "height": 180
+      },
+      "world": {
+        "x": 44,
+        "y": 182.265625,
+        "width": 1192,
+        "height": 428.125
+      },
+      "scope": "Browser rendering with generated OBS CSS/crop settings; not an actual OBS capture or audio check."
+    },
+    "obsImport": {
+      "version": "33.0.0",
+      "status": "Imported as a separate collection and visually verified",
+      "microphone": "muted",
+      "recording": "stopped",
+      "streaming": "stopped",
+      "screenshotSha256": "89d935c9c39c3917e2619888081bc03f6b9f5d20f2683e326d55eb41db02a8e2"
+    }
+  },
+  "sourceSha256": {
+    "docs/demo/shortcut-game.ts": "479aac943bffae2de4e8b60fa7bad1f68098abd4bbc87a18a24a709054df7cb0",
+    "docs/demo/shortcut-scene.ts": "94ac2fd1a78b85f7d70db8c655e277af05b0ed1bc4d14ccf6fd6bd7c236ef046",
+    "docs/demo/shortcut-or-safety.html": "d0f25a13d542991e42ab650dd67e552aff03df758ef1ca05779bf884b192a1f2",
+    "ops/demo-scene.mjs": "fe825c68307d9c6a1750d583850218939c3c5b5c7c8ad7bf47e59ffcb80f42cb",
+    "ops/prepare-game-obs.mjs": "0faa8c9f757ec604beb846405e282e24a28216419c734634b4e16279016a3ed0",
+    "tests/unit/demo-game.test.ts": "0649c06c29e36bfcb2de891c6af5f47509fb47f019cb834677b230af5bfa58c0",
+    "tests/scene/demo-scene.spec.ts": "471230f8ad8a6145ce304e74d61f806dbe4beb4026860866a22100c2ae90f4a1",
+    "playwright.scene.config.ts": "87152e5e78017a9d9ce5eef1a24eaf632fdf2e076011b5ad193089738543edf2",
+    "package.json": "59bddbd37ad4d093906379d183c6ca49a4af02d917199d82cddc37d210e165e5",
+    "tsconfig.json": "5edf25e6c94dfc5b6451a5c0fd147c975cf81ed2145dbfc9a045a9dbf60739cd"
+  },
+  "pending": [
+    "Actual OBS movement/audio recording rehearsal",
+    "Fresh genuine Twitch moment with this game",
+    "Exact new setup/reveal video, captions and audio review by the creator",
+    "Final narration/edit/video approval, YouTube publication and Devpost submission"
+  ],
+  "limitations": [
+    "Automated axe checks are not human screen-reader acceptance.",
+    "Existing door approvals do not approve the new game media.",
+    "No independent audience or public-broadcast claim follows from these tests.",
+    "Previously deferred checks and public hosting remain deferred."
+  ]
+}

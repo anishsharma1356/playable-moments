@@ -19,6 +19,14 @@ Open **http://127.0.0.1:5180**. Follow the judge guide to upload the generated f
 
 ## Existing development setup
 
+### Original game for recording
+
+After installing the project dependencies, `npm run demo:scene` opens a separate creator-controlled **Shortcut or Safety?** scene at `http://127.0.0.1:5190/`. Choose the risky jump or the longer safe route, then start and play the actual attempt. It has no Twitch vote intake or connection to replay results; Studio handles those separately. The game is original code/SVG art with optional generated sound effects.
+
+Run `node ops/prepare-game-obs.mjs` to generate a separate OBS scene collection under ignored `data/obs/`; it does not start streaming or recording. The [recording sheet](docs/demo/FINAL_DEMO_SCRIPT.md) explains the controls, OBS import, capture boundaries and required human review. New Twitch/OBS footage using this example is still pending.
+
+### Creator installation
+
 On the maintainer's already-prepared computer, dependencies, a private `.env`, FFmpeg/FFprobe, SQLite and an original fixture are available. These private/generated files are not part of a fresh source download. From that prepared folder:
 
 ```powershell
